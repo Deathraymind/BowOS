@@ -18,7 +18,7 @@
 
   home.file."/home/bowyn/.config/" = { # this is where you want the file
     source = ./home/config; # this is where you are pulling the file from
-    recursive = true; # recusris the e ntire directory
+    recursive = true; # recusris the entire directory
   };
 
   # TODO please change the username & home directory to your own
