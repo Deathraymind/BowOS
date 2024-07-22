@@ -183,6 +183,8 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     krita
     cura
+
+    expressvpn
     
     # rocmPackages.rocblas
     # rocmPackages.miopen
@@ -206,7 +208,9 @@ nixpkgs.config.packageOverrides = pkgs: {
   services.udisks2.enable = true; 
 
   security.polkit.enable = true;
-
+  
+  services.expressvpn.enable = true;
+  
   services.flatpak.enable = true;
 
   services.openssh.enable = true; # enables the sshd server on the computer
