@@ -192,7 +192,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     # rocmPackages.hipcub
 
     # rocm-opencl-runtime
-    
+    chromium
+    obs-studio
+
   ];
 
 
