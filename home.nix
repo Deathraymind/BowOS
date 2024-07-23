@@ -4,7 +4,8 @@
 {
    
    imports = [
-    ./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
+     #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
+    ./bluetheme.nix
   ];
 
   qt = {
