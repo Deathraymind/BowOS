@@ -115,8 +115,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     blueman
     brightnessctl
     
-    dunst # this is the notification daemon.
-    
+    # dunst # this is the notification daemon.
+    swaynotificationcenter
 
     # screenshot
     grim

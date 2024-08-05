@@ -9,7 +9,7 @@
 
     "modules-left": [ "cpu", "memory", "custom/divider", "network", "battery"],
     "modules-center": ["clock"],
-    "modules-right": [ "backlight", "custom/divider", "pulseaudio", "custom/divider", "bluetooth", "tray"],
+    "modules-right": ["notification", "backlight", "custom/divider", "pulseaudio", "custom/divider", "tray", "custom/notification"],
 
     "clock": {
         "format": " {:%a, %e %b, %I:%M %p }",
@@ -98,5 +98,11 @@
 
     "custom/divider": {
         "format": "|"
+    },
+
+    "custom/notification": {
+        "format": "",
+        "on-click": "swaync-client -t"          
     }
+    
 }
