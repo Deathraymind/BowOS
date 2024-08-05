@@ -138,6 +138,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     nwg-look
     qt5ct
     qt6ct
+    gtk4
     
     hyprland 
     neofetch
@@ -172,9 +173,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     obsidian
 
     # Pytorch/Skynet
-    python3
-    python3
-    python3Packages.pytorch
+    # python3
+    # python3
+    # python3Packages.pytorch
 
     remmina
     
@@ -194,6 +195,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     # rocm-opencl-runtime
     chromium
     obs-studio
+    arduino-ide
+    radeontop
 
   ];
 
@@ -288,11 +291,7 @@ services.xserver.videoDrivers = ["amdgpu"];
 
   # Enable networking
   networking.networkmanager.enable = true; # Enables dhcp and ethernet support IMPORTANT
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
