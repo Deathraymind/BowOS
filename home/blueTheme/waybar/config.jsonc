@@ -7,27 +7,16 @@
     "height": "20",
     "gtk-layer-shell": true,
 
-    "modules-left": ["custom/launcher", "custom/divider", "cpu", "custom/divider", "memory", "custom/divider", "network", "custom/divider", "battery"],
+    "modules-left": [ "cpu", "memory", "custom/divider", "network", "battery"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/updates", "custom/divider", "backlight", "custom/divider", "pulseaudio", "custom/divider", "bluetooth", "tray"],
+    "modules-right": [ "backlight", "custom/divider", "pulseaudio", "custom/divider", "bluetooth", "tray"],
 
     "clock": {
-        "format": " {:%a, %e %b, %I:%M %p }"
+        "format": " {:%a, %e %b, %I:%M %p }",
+        "on-click" : "firefox https://calendar.google.com"
     },
-    
-    "custom/gpu-usage": {
-        "exec": "radeontop -d --limit 1 -i 4 - | cut -c 32-35 -",
-        "format": "{}%  GPU",
-        "return-type": "",
-        "interval": 4
-    },
+ 
 
-    "custom/launcher": {
-        "tootltip": false,
-        "format" : " 󰣇",
-        "on-click": "wofi",
-        "on-click-right": "killall wofi"
-    },
 
     "cpu": {
         "interval": 1,
@@ -56,13 +45,7 @@
         "exec": "kitty -e nmcli dev wifi "
     },
 
-    "custom/updates":{
-        "format": " {} Update(s)",
-        "exec": "checkupdates | wc -l",
-        //"exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "kitty -e yay -Syu && notify-send 'The system has been updated' "
-    },
+
 
     "backlight": {
         "device": "intel_backlight",
@@ -77,7 +60,7 @@
         "format": "{icon} {volume}%",
         "tooltip": false,
         "format-muted": " Muted",
-        "on-click": "pamixer -t",
+        "on-click": "pavucontrol -t 3",
         "on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
@@ -111,14 +94,7 @@
                },
 	
 
-    "bluetooth": {
-	    "format": " {status} ",
-	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": " {num_connections} ",
-	    "tooltip-format": "{device_alias} ",
-	    "tooltip-format-connected": " {device_enumerate} ",
-	    "tooltip-format-enumerate-connected": "{device_alias} "
-    }, 
+ 
 
     "custom/divider": {
         "format": "|"
