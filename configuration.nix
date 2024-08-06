@@ -187,6 +187,7 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     expressvpn
     
+    kdePackages.kdeconnect-kde
     # rocmPackages.rocblas
     # rocmPackages.miopen
     # rocmPackages.hipfft
@@ -219,6 +220,8 @@ nixpkgs.config.packageOverrides = pkgs: {
   services.expressvpn.enable = true;
   
   services.flatpak.enable = true;
+
+  
 
   services.openssh.enable = true; # enables the sshd server on the computer
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login

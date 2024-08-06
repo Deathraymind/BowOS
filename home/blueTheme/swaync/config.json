@@ -57,11 +57,7 @@
         },
         {
           "label": "󰌾",
-          "command": "swaylock-corrupter"
-        },
-        {
-          "label": "󰍃",
-          "command": "swaymsg exit"
+          "command": "hyprlock"
         },
         {
           "label": "󰏥",
@@ -77,15 +73,12 @@
         },
         {
           "label": "󰖩",
-          "command": "iwgtk"
+          "command": "nm-connection-editor"
         },
         {
           "label": "󰂯",
           "command": "blueman-manager"
-        },
-        {
-          "label": "",
-          "command": "kooha"
+          
         }
       ]
     }
