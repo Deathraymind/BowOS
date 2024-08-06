@@ -200,13 +200,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     expressvpn
 
     kdePackages.kdeconnect-kde
-
-    # rocmPackages.rocblas
-    # rocmPackages.miopen
-    # rocmPackages.hipfft
-    # rocmPackages.hipcub
-
-    # rocm-opencl-runtime
+    
     obs-studio
 
     ranger
