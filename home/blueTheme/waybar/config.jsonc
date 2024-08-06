@@ -9,7 +9,7 @@
 
     "modules-left": [ "cpu", "memory", "custom/divider", "custom/cava", "battery"],
     "modules-center": ["clock"],
-    "modules-right": ["notification", "backlight", "custom/divider", "pulseaudio", "custom/divider", "tray", "custom/notification"],
+    "modules-right": ["notification", "backlight", "custom/divider", "pulseaudio", "custom/divider", "tray", "custom/whatsapp", "custom/notification"],
 
     "clock": {
         "format": " {:%a, %e %b, %I:%M %p }",
