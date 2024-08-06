@@ -1,24 +1,24 @@
-# template-theme.nix
-
 { config, pkgs, lib, ... }: 
 {
-
-gtk = {
+  gtk = {
     enable = true;
+    
+    # GTK Theme
     theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
+      name = "Colloid-Dark";  # Update the theme name
+      package = pkgs.colloid-gtk-theme;  # Ensure this package is available
     };
   
-    # cursor Theme
+    # Cursor Theme
     cursorTheme = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
-      };
-    # Icon Pack
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+    };
+    
+    # Icon Theme
     iconTheme = {
       name = "Tela-circle-dark";
       package = pkgs.tela-circle-icon-theme;
     };
-};
+  };
 }

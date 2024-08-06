@@ -103,6 +103,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     waybar
     rofi
     nerdfonts
+    xorg.xprop
 
     # audio
     pipewire
@@ -165,7 +166,6 @@ nixpkgs.config.packageOverrides = pkgs: {
     python311Packages.pip
     flatpak
     prismlauncher
-    filezilla
     gnome.gnome-terminal
     gnome.gnome-disk-utility
     udisks2
@@ -194,13 +194,13 @@ nixpkgs.config.packageOverrides = pkgs: {
     # rocmPackages.hipcub
 
     # rocm-opencl-runtime
-    chromium
     obs-studio
-    arduino-ide
-    radeontop
+   
+
 
     ranger
 
+    
   ];
 
 
@@ -213,6 +213,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 #`.  `-. | .-. :|  .--' \  `'  / ,--.| .--'| .-. :(  .-'  
 #.-'    |\   --.|  |     \    /  |  |\ `--.\   --..-'  `) 
 #`-----'  `----'`--'      `--'   `--' `---' `----'`----' 
+
+
+
 
   programs.kdeconnect.enable = true; 
 
