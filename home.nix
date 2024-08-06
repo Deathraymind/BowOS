@@ -14,6 +14,13 @@
   home.file."/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
 
 
+
+
+  home.file."/usr/share/rofi" = { # this is where you want the file
+    source = ./home/blueTheme/rofi; # this is where you are pulling the file from
+    recursive = true; # recusris the entire directory
+  };
+
   home.file."/home/bowyn/.config/" = { # this is where you want the file
     source = ./home/blueTheme; # this is where you are pulling the file from
     recursive = true; # recusris the entire directory
