@@ -10,7 +10,6 @@
 
 
   home.file."/home/bowyn/.profile".source = ./home/.profile;  # Adjust the path to where you store .profile in your flake
-  
   home.file."/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;  # Adjust the path to where you store .profile in your flake
   home.file."/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
 
@@ -27,26 +26,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # system tools
-    kitty
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
-    hyprland
-    rofi
-    #Themeing
-    gtk3
-    dconf
-    glib
-    gsettings-desktop-schemas
-    # Browser
-    firefox
-    dolphin
-    gnome.nautilus
-    hyprpaper
-    
+    # system tools  
   ];
 
 

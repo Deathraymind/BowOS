@@ -103,6 +103,11 @@ nixpkgs.config.packageOverrides = pkgs: {
     waybar
     rofi
     nerdfonts
+    ethtool
+    gnome.nautilus
+
+    pciutils # lspci
+    usbutils # lsusb
 
     # audio
     pipewire
@@ -142,8 +147,10 @@ nixpkgs.config.packageOverrides = pkgs: {
     qt5ct
     qt6ct
     gtk4
+    gtk3
 
     hyprland 
+    hyprpaper
     fastfetch
     unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
     pavucontrol 
@@ -158,6 +165,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     htop
     playerctl
     flatpak
+    dconf
+    glib
+    
 
     # Virtual Machine
     qemu
@@ -171,6 +181,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     udisks2
     cava
     obsidian
+    firefox
 
     # Pytorch/Skynet
     # python3

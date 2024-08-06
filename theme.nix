@@ -1,15 +1,12 @@
 { config, pkgs, lib, ... }: 
-
-
-
 {
+  # qt Theme
+  qt.enable = true;
+  qt.platformTheme = "gtk";
+  qt.style.name = "adwaita-dark";
+  qt.style.package = pkgs.adwaita-qt;
 
-qt.enable = true;
-qt.platformTheme = "gtk";
-qt.style.name = "adwaita-dark";
-qt.style.package = pkgs.adwaita-qt;
-
-
+  # GTK Themes
   gtk = {
     enable = true;
     
@@ -31,8 +28,4 @@ qt.style.package = pkgs.adwaita-qt;
       package = pkgs.tela-circle-icon-theme;
     };
   };
-
-  
-
-
 }
