@@ -8,12 +8,6 @@
     ./theme.nix
   ];
 
-  qt = {
-  enable = true; # This enables qt themeing for KDE applications. 
-  platformTheme = "qtct";
-
-  
-};
 
   home.file."/home/bowyn/.profile".source = ./home/.profile;  # Adjust the path to where you store .profile in your flake
   
@@ -30,11 +24,6 @@
   home.username = "bowyn";
   home.homeDirectory = "/home/bowyn";
   
-  # set cursor size and dpi for 4k monitor
-  xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
-  };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [

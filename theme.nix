@@ -5,15 +5,11 @@
 
 gtk = {
     enable = true;
-    # theme
     theme = {
-      name = "Catppuccin-Mocha-Compact-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
-        variant = "mocha";
-        size = "compact";
-      };
+      name = "Materia-dark";
+      package = pkgs.materia-theme;
     };
+  
     # cursor Theme
     cursorTheme = {
         package = pkgs.bibata-cursors;
