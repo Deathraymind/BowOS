@@ -105,6 +105,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     nerdfonts
     ethtool
     gnome.nautilus
+    libsForQt5.filelight
 
     pciutils # lspci
     usbutils # lsusb
