@@ -103,19 +103,21 @@ nixpkgs.config.packageOverrides = pkgs: {
     waybar
     rofi
     nerdfonts
-    xorg.xprop
 
     # audio
     pipewire
     pamixer
+
     # network
     networkmanager
     networkmanagerapplet
+
     # bluetooth
     bluez
     blueman
+
     brightnessctl
-    
+
     # dunst # this is the notification daemon.
     swaynotificationcenter
 
@@ -140,10 +142,10 @@ nixpkgs.config.packageOverrides = pkgs: {
     qt5ct
     qt6ct
     gtk4
-    
+
     hyprland 
-    neofetch
-    unstable.hyprlock # The unstable. is puleld from the unstable channle of nixos
+    fastfetch
+    unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
     pavucontrol 
     pipewire
     steam
@@ -156,14 +158,12 @@ nixpkgs.config.packageOverrides = pkgs: {
     htop
     playerctl
     flatpak
-    r2modman
+
     # Virtual Machine
     qemu
+
     discord
-    r2mod_cli
     unstable.r2modman
-    python3
-    python311Packages.pip
     flatpak
     prismlauncher
     gnome.gnome-terminal
@@ -178,7 +178,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     # python3Packages.pytorch
 
     remmina
-    
+
     polkit
     lxqt.lxqt-policykit
 
@@ -186,8 +186,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     cura
 
     expressvpn
-    
+
     kdePackages.kdeconnect-kde
+
     # rocmPackages.rocblas
     # rocmPackages.miopen
     # rocmPackages.hipfft
@@ -195,12 +196,8 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     # rocm-opencl-runtime
     obs-studio
-   
-
 
     ranger
-
-    
   ];
 
 

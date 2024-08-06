@@ -1,5 +1,15 @@
 { config, pkgs, lib, ... }: 
+
+
+
 {
+
+qt.enable = true;
+qt.platformTheme = "gtk";
+qt.style.name = "adwaita-dark";
+qt.style.package = pkgs.adwaita-qt;
+
+
   gtk = {
     enable = true;
     
@@ -21,4 +31,8 @@
       package = pkgs.tela-circle-icon-theme;
     };
   };
+
+  
+
+
 }
