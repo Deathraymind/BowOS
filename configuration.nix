@@ -198,6 +198,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     arduino-ide
     radeontop
 
+    ranger
+
   ];
 
 

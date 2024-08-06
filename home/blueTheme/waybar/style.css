@@ -177,4 +177,15 @@ window#waybar {
     border-radius: 10px 10px 10px 10px;
 }
 
+#custom-cava {
+    background: #24273a;
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 10px 10px 10px 10px;
+}
+
 

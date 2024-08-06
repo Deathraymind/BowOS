@@ -7,7 +7,7 @@
     "height": "20",
     "gtk-layer-shell": true,
 
-    "modules-left": [ "cpu", "memory", "custom/divider", "network", "battery"],
+    "modules-left": [ "cpu", "memory", "custom/divider", "custom/cava", "battery"],
     "modules-center": ["clock"],
     "modules-right": ["notification", "backlight", "custom/divider", "pulseaudio", "custom/divider", "tray", "custom/notification"],
 
@@ -99,6 +99,7 @@
     "custom/divider": {
         "format": "|"
     },
+
 
     "custom/notification": {
         "format": "",
