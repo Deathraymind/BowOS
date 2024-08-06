@@ -213,6 +213,11 @@ nixpkgs.config.packageOverrides = pkgs: {
 #`.  `-. | .-. :|  .--' \  `'  / ,--.| .--'| .-. :(  .-'  
 #.-'    |\   --.|  |     \    /  |  |\ `--.\   --..-'  `) 
 #`-----'  `----'`--'      `--'   `--' `---' `----'`----' 
+
+  programs.kdeconnect.enable = true; 
+
+  
+  
   services.udisks2.enable = true; 
 
   security.polkit.enable = true;
@@ -232,8 +237,11 @@ nixpkgs.config.packageOverrides = pkgs: {
 
  networking.firewall = {
   enable = true; # Make sure the firewall is enabled
-  allowedTCPPorts = [ 9943 9944 51112]; # List of TCP ports to open
-  allowedUDPPorts = [ 9943 9944 51112]; # List of UDP ports to open, if needed
+  
+  allowedTCPPorts = [ 9943 9944 51112 ]; # List of TCP ports to open
+  allowedUDPPorts = [ 9943 9944 51112 ]; # List of UDP ports to open, if needed
+  allowedTCPPortRanges = [  { from = 1714; to = 1764; }]; # List of TCP ports to open
+  allowedUDPPortRanges = [  { from = 1714; to = 1764; }]; # List of UDP ports to open, if needed
  
 };
 
