@@ -8,7 +8,7 @@
     [ 
       (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master") # this includes the nix os vs code server. 
       
-      ./hardware-configuration.nix # Include the results of the hardware scan.
+      /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
     ];
 
@@ -183,6 +183,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     cava
     obsidian
     firefox
+    whatsapp-for-linux
 
     # Pytorch/Skynet
     # python3
@@ -200,7 +201,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     expressvpn
 
     kdePackages.kdeconnect-kde
-    
+
     obs-studio
 
     ranger
