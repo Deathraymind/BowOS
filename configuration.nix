@@ -97,6 +97,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    neovim
     git
     kitty
     vscode
@@ -106,9 +107,11 @@ nixpkgs.config.packageOverrides = pkgs: {
     ethtool
     gnome.nautilus
     libsForQt5.filelight
+    vlc
 
     pciutils # lspci
     usbutils # lsusb
+    libva
 
     # audio
     pipewire
@@ -205,6 +208,12 @@ nixpkgs.config.packageOverrides = pkgs: {
     obs-studio
 
     ranger
+
+    # Screen Sharing
+    pipewire
+    wireplumber
+
+    qbittorrent-qt5
   ];
 
 
@@ -218,6 +227,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 #\___ \ / _ \ '__\ \ / / |/ __| |/ _ \/ __|
 # ___) |  __/ |   \ V /| | (__| |  __/\__ \
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
+
+  # Screen Sharing
+  
 
   programs.kdeconnect.enable = true; 
   
@@ -262,6 +274,15 @@ nixpkgs.config.packageOverrides = pkgs: {
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = false;
+  };
+
+    xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland
+    ];
   };
 
 # _____ _                        _ _ 
