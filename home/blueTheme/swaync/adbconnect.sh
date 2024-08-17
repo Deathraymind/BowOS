@@ -1,10 +1,22 @@
 #!/bin/bash
-echo "Please open up developer wireless debuging on youre android phone and look for pair with code. Be sure both this computer and phone are on the same network!"
-echo "Please enter the IP"
+
+# Prompt the user to enable wireless debugging on their Android phone
+echo "Please open up Developer Options and enable Wireless Debugging on your Android phone."
+echo "Look for the 'Pair with code' option. Ensure both this computer and the phone are on the same network!"
+
+# Ask for the IP address
+echo -n "Please enter the IP address: "
 read ip
-clear
-echo "Please enter port"
-read port
+
+# Clear the screen
 clear
 
-adb pair $ip:$port 
+# Ask for the port number
+echo -n "Please enter the port number: "
+read port
+
+# Clear the screen
+clear
+
+# Pair the device using the provided IP and port
+adb pair "$ip:$port"
