@@ -8,8 +8,8 @@
     "gtk-layer-shell": true,
 
     "modules-left": [ "cpu", "memory", "custom/divider", "custom/cava", "battery"],
-    "modules-center": ["clock"],
-    "modules-right": ["notification", "backlight", "custom/divider", "pulseaudio", "custom/divider", "tray", "custom/whatsapp", "custom/notification"],
+    "modules-center": ["clock", "custom/divider", "custom/launcher"],
+    "modules-right": [ "backlight", "pulseaudio", "custom/divider", "tray", "custom/divider", "custom/notification"],
 
     "clock": {
         "format": " {:%a, %e %b, %I:%M %p }",
@@ -100,15 +100,20 @@
         "format": "|"
     },
 
-    "custom/whatsapp": {
+    "custom/phone": {
         "format": "",
-        "on-click": "whatsapp-for-linux"
+        "on-click": "scrcpy"
     },
 
 
     "custom/notification": {
         "format": "",
         "on-click": "swaync-client -t"          
+    },
+
+    "custom/launcher": {
+        "format": "BowOS",
+        "on-click": "echo"
     }
     
 }

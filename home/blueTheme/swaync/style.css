@@ -1,7 +1,7 @@
-@define-color cc-bg rgba(26, 27, 38, 1);
+@define-color cc-bg rgba(26, 27, 38, 0.60);
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
 @define-color noti-bg rgb(17, 17, 27);
-@define-color noti-bg-darker rgb(43, 43, 57);
+@define-color noti-bg-darker rgba(43, 43, 57, 0.80);
 @define-color noti-bg-hover rgb(27, 27, 43);
 @define-color noti-bg-focus rgba(27, 27, 27, 0.6);
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
@@ -16,7 +16,7 @@
 
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
-  opacity: 1;
+  opacity: 0.80;
   background: @noti-bg-darker;
 }
 
@@ -29,7 +29,7 @@
 .notification {
   background: @cc-bg;
   border: 2px solid #34548a;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 3px -2px 3px 0px;
 }
 
@@ -40,7 +40,7 @@
 .notification-default-action {
   margin: 0;
   padding: 0;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .close-button {
@@ -48,7 +48,7 @@
   color: @cc-bg;
   text-shadow: none;
   padding: 0px;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-top: 5px;
   margin-right: 5px;
 }
@@ -63,7 +63,7 @@
 .notification-action {
   border: 2px solid #34548a;
   border-top: none;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .notification-default-action:hover,
@@ -73,7 +73,7 @@
 }
 
 .notification-default-action {
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 0px;
 }
 
@@ -101,14 +101,14 @@
   color: @text-color;
   caret-color: @text-color;
   border: 1px solid @noti-border-color;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .inline-reply-button {
   margin-left: 4px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
-  border-radius: 5px;
+  border-radius: 15px;
   color: @text-color;
 }
 
@@ -123,7 +123,7 @@
 }
 
 .image {
-  border-radius: 5px;
+  border-radius: 15px;
   margin-right: 10px;
 }
 
@@ -155,7 +155,7 @@
 .control-center {
   background: @cc-bg;
   border: 2px solid #34548a;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .control-center-list {
@@ -177,8 +177,8 @@
   background: @noti-bg-darker;
   padding: 5px 10px;
   margin: 10px 10px 5px 10px;
-  font-size: 1.5rem;
-  border-radius: 5px;
+  font-size: medium;
+  border-radius: 15px;
 }
 
 .widget-title>button {
@@ -187,7 +187,7 @@
   text-shadow: none;
   background: @noti-bg;
   box-shadow: none;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .widget-title>button:hover {
@@ -199,13 +199,13 @@
   background: @noti-bg-darker;
   padding: 5px 10px;
   margin: 5px 10px;
-  border-radius: 5px;
-  font-size: large;
+  border-radius: 15px;
+  font-size: medium;
   color: #7aa2f7;
 }
 
 .widget-dnd>switch {
-  border-radius: 5px;
+  border-radius: 15px;
   background: #7aa2f7;
 }
 
@@ -216,12 +216,12 @@
 
 .widget-dnd>switch slider {
   background: @cc-bg;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .widget-dnd>switch:checked slider {
   background: @cc-bg;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .widget-label {
@@ -236,18 +236,18 @@
 .widget-mpris {
   color: @text-color;
   background: @noti-bg-darker;
-  padding: 5px 10px;
-  margin: 5px 10px 5px 10px;
-  border-radius: 5px;
+  padding: 3px 1px;
+  margin: 5px 5px 5px 5px;
+  border-radius: 15px;
 }
 
 .widget-mpris>box>button {
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .widget-mpris-player {
-  padding: 5px 10px;
-  margin: 10px;
+  padding: 3px 3px;
+  margin: 3px;
 }
 
 .widget-mpris-title {
@@ -263,14 +263,14 @@
   font-size: x-large;
   padding: 5px;
   margin: 5px 10px 10px 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   background: @noti-bg-darker;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
   margin: 3px;
   background: @cc-bg;
-  border-radius: 5px;
+  border-radius: 15px;
   color: @text-color;
 }
 
@@ -293,7 +293,7 @@
   background: @noti-bg-darker;
   padding: 5px;
   margin: 5px 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 2rem;
   color: #7aa2f7;
 }
@@ -302,7 +302,7 @@
   background: @noti-bg-darker;
   padding: 5px;
   margin: 5px 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 2rem;
   color: #7aa2f7;
 }

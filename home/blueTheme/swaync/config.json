@@ -13,7 +13,7 @@
   "timeout-critical": 0,
   "fit-to-screen": false,
   "control-center-width": 500,
-  "control-center-height": 1032,
+  "control-center-height": 800,
   "notification-window-width": 500,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
@@ -56,29 +56,16 @@
           "command": "systemctl reboot"
         },
         {
-          "label": "󰌾",
-          "command": "hyprlock"
-        },
-        {
           "label": "󰏥",
           "command": "systemctl suspend"
         },
         {
-          "label": "󰕾",
-          "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+          "label": "󰌾",
+          "command": "hyprlock"
         },
         {
-          "label": "󰍬",
-          "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-        },
-        {
-          "label": "󰖩",
-          "command": "nm-connection-editor"
-        },
-        {
-          "label": "󰂯",
-          "command": "blueman-manager"
-          
+          "label":  "",
+          "command": "scrcpy"
         }
       ]
     }

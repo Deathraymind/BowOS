@@ -13,6 +13,8 @@
     ];
 
 
+
+
    
 
 # run these two commands
@@ -29,6 +31,16 @@ nixpkgs.config.packageOverrides = pkgs: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Phone Camera
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
+
+  boot.extraModprobeConfig = ''
+  options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
+  '';
+  # Run this command to run the virtual camera
+  # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. 
@@ -214,6 +226,12 @@ nixpkgs.config.packageOverrides = pkgs: {
     wireplumber
 
     qbittorrent-qt5
+    # Phone Sync
+    scrcpy
+    v4l2-relayd
+    v4l-utils
+    localsend
+    android-tools
   ];
 
 

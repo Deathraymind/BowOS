@@ -3,7 +3,7 @@
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     min-height: 30px;
 
 }
@@ -28,19 +28,19 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
-    margin-right: 8px;
-    border-radius: 10px 10px 10px 10px;
+    margin-right: 0px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 #custom-gpu-usage {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
@@ -50,8 +50,8 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
@@ -63,8 +63,8 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
@@ -74,8 +74,8 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
@@ -85,19 +85,19 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
 }
 
 #custom-updates {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
@@ -107,8 +107,8 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
@@ -118,8 +118,8 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
@@ -128,18 +128,18 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
-    margin-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 8px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
 }
 #custom-launcher {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 8px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
@@ -148,19 +148,19 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 0px 0px 10px;
 }
 
 #custom-divider {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
@@ -170,33 +170,44 @@ window#waybar {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 10px 10px 10px 10px;
+    margin-right: 8px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 #custom-cava {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px 10px 10px 10px;
 }
 
-#custom-whatsapp {
+#custom-phone {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
-    margin-top: 8px;
-    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#custom-launcher {
+    background: #24273a;
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 
