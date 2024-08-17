@@ -7,4 +7,4 @@ echo "Please enter port"
 read port
 clear
 
-adb pair $ip:$port
+adb pair $ip:$port 
