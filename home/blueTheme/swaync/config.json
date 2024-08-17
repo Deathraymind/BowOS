@@ -65,7 +65,15 @@
         },
         {
           "label":  "",
-          "command": "scrcpy"
+          "command": "kitty -e bash -c '~/.config/swaync/addconnect.sh'"
+        },
+        {
+          "label":  "",
+          "command": "kitty -e bash -c './adbcamera.sh'"
+        },
+        {
+          "label":  "",
+          "command": "kitty -e bash -c  './adbpair.sh'"
         }
       ]
     }

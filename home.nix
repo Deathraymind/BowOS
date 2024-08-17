@@ -13,6 +13,24 @@
   home.file."/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;  # Adjust the path to where you store .profile in your flake
   home.file."/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
 
+  home.file = {
+    "/home/bowyn/.config/swaync/adbconnect.sh" = {
+      source = ./home/blueTheme/swaync/adbconnect.sh;
+      target = "symlink"; # This is the default, creating a symlink
+      mode = "0755";      # This ensures the file is executable
+    };
+    "/home/bowyn/.config/swaync/adbcamera.sh" = {
+      source = ./home/blueTheme/swaync/adbcamera.sh;
+      target = "symlink";
+      mode = "0755";      # This ensures the file is executable
+    };
+    "/home/bowyn/.config/swaync/adbpair.sh" = {
+      source = ./home/blueTheme/swaync/adbpair.sh;
+      target = "symlink";
+      mode = "0755";      # This ensures the file is executable
+    };
+  };
+
 
 
 
