@@ -13,6 +13,17 @@ ask_for_change() {
     return 0
 }
 
+# Function to ask if the connection is wired or wireless
+ask_for_connection_type() {
+    echo -n "Is the connection wired? (y/n): "
+    read is_wired
+    if [ "$is_wired" == "y" ]; then
+        return 0  # Wired connection
+    else
+        return 1  # Wireless connection
+    fi
+}
+
 # Check if configuration file exists
 if [ -f "$CONFIG_FILE" ]; then
     # Source the configuration file to load IP and port
@@ -50,12 +61,18 @@ fi
 # Clear the screen
 clear
 
-# Attempt to connect using scrcpy over TCP/IP
-scrcpy --tcpip="$ip:$port"
+# Ask the user if the connection is wired or wireless
+if ask_for_connection_type; then
+    # Run the scrcpy command without the TCP/IP option for wired connection
+    scrcpy
+else
+    # Run the scrcpy command using the stored IP and port for wireless connection
+    scrcpy --tcpip="$ip:$port"
+fi
 
 # Check if scrcpy was successful
 if [ $? -eq 0 ]; then
-    echo "Successfully connected to $ip:$port using scrcpy."
+    echo "Successfully connected to the device using scrcpy."
 else
-    echo "Failed to connect to $ip:$port. Please check the IP, port, and ensure that Wireless Debugging is enabled."
+    echo "Failed to connect to the device. Please check your setup."
 fi

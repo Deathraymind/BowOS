@@ -1,0 +1,33 @@
+* {
+    background-color: #003366;  /* Dark blue background */
+    border-color: #00509e;      /* Blue border */
+    text-color: #ffffff;        /* White text */
+    border: 2px solid;
+}
+
+window {
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+entry {
+    background-color: #004080;  /* Slightly lighter blue for the entry */
+    border-color: #00509e;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+entry:selected {
+    background-color: #00509e;  /* Highlight color */
+    text-color: #ffffff;
+}
+
+listview {
+    border: 1px solid #00509e;
+    border-radius: 5px;
+}
+
+listview:selected {
+    background-color: #003366;
+}

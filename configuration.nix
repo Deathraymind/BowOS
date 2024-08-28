@@ -232,6 +232,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     v4l-utils
     localsend
     android-tools
+    teamviewer
   ];
 
 
@@ -247,6 +248,8 @@ nixpkgs.config.packageOverrides = pkgs: {
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
   # Screen Sharing
+
+    services.teamviewer.enable = true;
   
 
   programs.kdeconnect.enable = true; 
@@ -301,6 +304,25 @@ nixpkgs.config.packageOverrides = pkgs: {
       xdg-desktop-portal-wlr
       xdg-desktop-portal-hyprland
     ];
+  };
+
+
+    services.dbus.packages = [ pkgs.miraclecast ];
+
+  # Enable systemd services
+  systemd.services.miracle-wifid = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-wifid";
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = "10";
+  };
+  
+
+  systemd.services.miracle-dhcp = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-dhcp --netdev=wlp0s20f3";
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = "10";
   };
 
 # _____ _                        _ _ 

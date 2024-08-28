@@ -65,15 +65,15 @@
         },
         {
           "label":  "",
-          "command": "kitty -e bash -c '~/.config/swaync/addconnect.sh'"
+          "command": "kitty --hold bash -c 'cd /home/bowyn/.config/swaync && bash adbconnect.sh'"
         },
         {
-          "label":  "",
-          "command": "kitty -e bash -c './adbcamera.sh'"
+          "label":  "󰶶",
+          "command": "kitty --hold bash -c 'cd /home/bowyn/.config/swaync && bash adbcamera.sh'"
         },
         {
-          "label":  "",
-          "command": "kitty -e bash -c  './adbpair.sh'"
+          "label":  "󰏷",
+          "command": "kitty --hold bash -c 'cd /home/bowyn/.config/swaync && bash adbpair.sh'"
         }
       ]
     }
