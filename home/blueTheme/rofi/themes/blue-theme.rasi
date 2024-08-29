@@ -1,33 +1,42 @@
 * {
     background-color: #003366;  /* Dark blue background */
     border-color: #00509e;      /* Blue border */
-    text-color: #ffffff;        /* White text */
-    border: 2px solid;
+    border-width: 2px;          /* Set border width */
+    border-style: solid;        /* Set border style */
+    color: #ffffff;             /* White text */
 }
 
 window {
     width: 50%;
     padding: 10px;
     border-radius: 10px;
+    background-color: #003366;  /* Ensure window background matches general theme */
 }
 
 entry {
     background-color: #004080;  /* Slightly lighter blue for the entry */
     border-color: #00509e;
+    border-width: 1px;          /* Set border width for entry */
+    border-style: solid;        /* Set border style for entry */
     border-radius: 5px;
     padding: 5px;
+    color: #ffffff;             /* Use 'color' for text color */
 }
 
 entry:selected {
     background-color: #00509e;  /* Highlight color */
-    text-color: #ffffff;
+    color: #ffffff;             /* White text for selected entry */
 }
 
 listview {
-    border: 1px solid #00509e;
+    border-color: #00509e;
+    border-width: 1px;          /* Set border width for listview */
+    border-style: solid;        /* Set border style for listview */
     border-radius: 5px;
+    background-color: #003366;  /* Ensure listview background matches general theme */
 }
 
 listview:selected {
-    background-color: #003366;
+    background-color: #004080;  /* Highlight color for selected listview item */
+    color: #ffffff;             /* White text for selected listview item */
 }

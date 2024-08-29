@@ -233,6 +233,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     localsend
     android-tools
     teamviewer
+    woeusb-ng
+
+    virtualboxKvm
   ];
 
 
