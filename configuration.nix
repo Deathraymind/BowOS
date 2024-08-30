@@ -238,6 +238,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     virtualboxKvm
 
     spicetify-cli
+    gcc
   ];
 
 
