@@ -112,8 +112,8 @@
     },
 
     "custom/launcher": {
-        "format": "BowOS",
-        "on-click": "echo"
+        "format": "",
+        "on-click": "rofi -show run"
     }
     
 }

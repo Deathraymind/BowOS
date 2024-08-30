@@ -236,6 +236,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     woeusb-ng
 
     virtualboxKvm
+
+    spicetify-cli
   ];
 
 
