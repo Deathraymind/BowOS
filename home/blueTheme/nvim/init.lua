@@ -16,4 +16,4 @@ vim.g.mapleader = " "
 require("lazy").setup("plugins")
 
 -- Keybindings
-vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>', {})
+
