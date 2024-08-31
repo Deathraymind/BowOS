@@ -11,11 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local opts = {}
 vim.g.mapleader = " "
 require("lazy").setup("plugins")
 
+-- Keybindings
 vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>', {})
-
-
