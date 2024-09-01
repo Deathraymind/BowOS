@@ -125,7 +125,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     pciutils # lspci
     usbutils # lsusb
     libva
-
+    lazygit
     # audio
     pipewire
     pamixer
