@@ -1,4 +1,4 @@
-# configuration.nix
+# cooooonfiguration.nix
 { config, pkgs, inputs, lib, ... }:
 
 
