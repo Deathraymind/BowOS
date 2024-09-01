@@ -121,7 +121,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     libsForQt5.filelight
     vlc
     wl-clipboard
-
+# test
     pciutils # lspci
     usbutils # lsusb
     libva
