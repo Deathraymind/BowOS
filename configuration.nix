@@ -32,7 +32,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # P hone Camera
+  # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" ];
 
