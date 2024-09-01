@@ -15,5 +15,5 @@ local opts = {}
 vim.g.mapleader = " "
 require("lazy").setup("plugins")
 
-
-
+-- Map yy to yank to both the default register and the system clipboard
+vim.api.nvim_set_keymap('n', 'yy', 'yy"+yy', { noremap = true, silent = true })
