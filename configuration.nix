@@ -17,7 +17,7 @@
 
    
 
-# run these two commands
+# r un these two commands
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
 # append unstable. to the package you want to pull from the unstable channel
