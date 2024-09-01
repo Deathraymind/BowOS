@@ -120,6 +120,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     gnome.nautilus
     libsForQt5.filelight
     vlc
+    wl-clipboard
 
     pciutils # lspci
     usbutils # lsusb
