@@ -239,6 +239,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     spicetify-cli
     gcc
+
+
+    lua-language-server
   ];
 
 
