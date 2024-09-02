@@ -115,12 +115,14 @@ nixpkgs.config.packageOverrides = pkgs: {
     vscode
     waybar
     rofi
+    
     nerdfonts
     ethtool
     gnome.nautilus
     libsForQt5.filelight
     vlc
     wl-clipboard
+    ollama 
 # test
     pciutils # lspci
     usbutils # lsusb
