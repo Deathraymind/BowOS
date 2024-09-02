@@ -20,7 +20,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.bowyn = import ./home.nix;  # Load user-specific configuration
+            home-manager.users.bowyn = import ./hosts/default/home.nix;  # Load user-specific configuration
           }
         ];
       };
