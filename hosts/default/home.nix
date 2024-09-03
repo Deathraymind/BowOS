@@ -9,15 +9,11 @@
     ./theme.nix
   ];
 
-  
-
-
-  home.file."/home/bowyn/.profile".source = ./home/.profile;  # Adjust the path to where you store .profile in your flake
-  home.file."/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;  # Adjust the path to where you store .profile in your flake
-  home.file."/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
-
-
-
+  home.file = { 
+       "/home/bowyn/.profile".source = ./home/.profile; 
+       "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json; 
+       "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
+  };
 
   home.file."/usr/share/rofi" = { # this is where you want the file
     source = ./home/blueTheme/rofi; # this is where you are pulling the file from
@@ -29,11 +25,6 @@
     recursive = true; # recusris the entire directory
   };
 
-
-
-  
-
-  # TODO please change the username & home directory to your own
   home.username = "bowyn";
   home.homeDirectory = "/home/bowyn";
   
@@ -42,8 +33,6 @@
   home.packages = with pkgs; [
     # system tools  
   ];
-
-
 
   # basic configuration of git, please change to your own
   programs.git = {
