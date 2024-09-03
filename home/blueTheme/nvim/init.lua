@@ -1,44 +1,25 @@
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.loop or vim.uv).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
-    "--branch=stable",
-    lazyrepo,
-    lazypath
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." }
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
-local status, lazy = pcall(require, "lazy")
-if not status then
-  print("Error loading lazy.nvim: " .. lazy)
-  return
-end
-
-lazy.setup({
-  spec = {
-    -- add your plugins here
-  },
-  install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
-})
-
--- Set leader keys and mappings
+local opts = {}
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+require("lazy").setup("plugins")
+
+-- Map yy to yank to both the default register and the system clipboard
 vim.api.nvim_set_keymap('n', 'yy', 'yy"+yy', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-x>', ':lcd %:p:h<CR>:ToggleTerm<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-x>', ':lcd %:p:h<CR>:ToggleTerm<CR>', { noremap = true, silent = true }) --This is for toggleterm ctrl x will open temrinal in current directory
+
+
+-- if shit brokon run these commands 
+-- rm -rf ~/.local/share/nvim/lazy/lazy.nvim
+-- git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
