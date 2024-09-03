@@ -6,7 +6,6 @@
 {
   imports =
     [ 
-      (fetchTarball "https://github.com/nix-community/nixos-vscode-server/tarball/master") # this includes the nix os vs code server. 
       
       /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
@@ -51,7 +50,7 @@ nixpkgs.config.packageOverrides = pkgs: {
 
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Asia/Tokyo";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -112,7 +111,6 @@ nixpkgs.config.packageOverrides = pkgs: {
     neovim
     git
     kitty
-    vscode
     waybar
     rofi
     nerdfonts
@@ -177,11 +175,9 @@ nixpkgs.config.packageOverrides = pkgs: {
     obs-studio
     appimage-run
     flatpak
-    unstable.alvr
     home-manager
     htop
     playerctl
-    flatpak
     dconf
     glib
     
@@ -242,7 +238,6 @@ nixpkgs.config.packageOverrides = pkgs: {
     gcc
 
 
-    lua-language-server
   ];
 
 
@@ -269,7 +264,6 @@ nixpkgs.config.packageOverrides = pkgs: {
   services.expressvpn.enable = true;
   services.flatpak.enable = true;
   services.openssh.enable = true; # enables the sshd server on the computer
-  services.vscode-server.enable = true; # this enables the vs code server.
   
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
   services.openssh.passwordAuthentication = true; # // or false to disable password authentication
