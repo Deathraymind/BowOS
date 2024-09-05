@@ -13,7 +13,6 @@
 
 
 
-
    
 
 # run these two commands
@@ -33,7 +32,7 @@ nixpkgs.config.packageOverrides = pkgs: {
 
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" ];
+  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
 
   boot.extraModprobeConfig = ''
   options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
@@ -185,7 +184,6 @@ nixpkgs.config.packageOverrides = pkgs: {
     # Virtual Machine
     qemu
 
-    discord
     unstable.r2modman
     flatpak
     prismlauncher
@@ -236,8 +234,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     spicetify-cli
     gcc
-
-
+    cpufrequtils 
+    vencord
+    vesktop
   ];
 
 
@@ -264,7 +263,29 @@ nixpkgs.config.packageOverrides = pkgs: {
   services.expressvpn.enable = true;
   services.flatpak.enable = true;
   services.openssh.enable = true; # enables the sshd server on the computer
-  
+
+
+# power saving
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+      #CPU_SCALING_GOVERNOR_ON_AC="powersave";
+
+      # The following prevents the battery from charging fully to
+      # preserve lifetime. Run `tlp fullcharge` to temporarily force
+      # full charge.
+      # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+
+      # 100 being the maximum, limit the speed of my CPU to reduce
+      # heat and increase battery usage:
+      CPU_MAX_PERF_ON_AC=95;
+      CPU_MAX_PERF_ON_BAT=40;
+    };
+  };
+
+
+
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
   services.openssh.passwordAuthentication = true; # // or false to disable password authentication
 
