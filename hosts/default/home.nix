@@ -7,6 +7,7 @@
    imports = [
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
     ./theme.nix
+    ./applications/firefox.nix
   ];
 
   home.file = { 
