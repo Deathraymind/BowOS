@@ -7,13 +7,6 @@
     enable = true;
     profiles.default = {
 
-
-
-
-      extensions = [
-
-      ];
-
     };
   };
 }
