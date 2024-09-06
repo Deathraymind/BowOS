@@ -7,7 +7,6 @@
    imports = [
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
     ./theme.nix
-    ./applications/firefox.nix
   ];
 
   home.file = { 
@@ -34,6 +33,21 @@
   home.packages = with pkgs; [
     # system tools  
   ];
+
+
+{
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+
+    };
+  };
+}
+
+
+
+
+
 
   # basic configuration of git, please change to your own
   programs.git = {
