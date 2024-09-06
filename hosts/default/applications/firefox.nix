@@ -1,12 +1,9 @@
 #firefox.nix
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.firefox = {
     enable = true;
-    profiles.default = {
-
-    };
   };
 }
