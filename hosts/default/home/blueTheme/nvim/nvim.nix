@@ -5,6 +5,11 @@
   home.packages = with pkgs; [
     lua-language-server        # Lua LSP
     nixd
+
+    #none_ls
+    stylua
+    statix
+    nixpkgs-fmt
     ];
 
   programs.neovim = {
