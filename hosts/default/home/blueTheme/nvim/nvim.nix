@@ -22,7 +22,8 @@
 
     # Install Neovim plugins
     plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig  
+      nvim-lspconfig
+      none-ls-nvim			
     ];
   };
 }
