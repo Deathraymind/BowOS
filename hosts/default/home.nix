@@ -8,6 +8,7 @@
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
     ./theme.nix
     ./applications/firefox.nix
+    ./home/blueTheme/nvim/nvim.nix
   ];
 
   home.file = { 
@@ -32,7 +33,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # system tools  
+    nixd 
   ];
 
 

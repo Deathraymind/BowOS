@@ -1,29 +1,21 @@
 { config, pkgs, ... }:
-
 {
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
 
-programs.neovim = {
-  enable = true;
-	viAlias = true;
-	vimAlias = true;
-	vimdiffAlias = true;
+    extraLuaConfig = ''
+      ${builtins.readFile ./init.lua}
+      ${builtins.readFile ./lua/plugins.lua}
+      ${builtins.readFile ./lua/plugins/telescope.lua}
+    '';
 
-	extraLuaConfig =''
-${builtins.readFile .init.lua}
-${builtins.readFile ./lua/plugins.lua}
-${builtins.readFile ./lua/plugins/config/telescope}
-        '';
-  plugins = with pkgs.vimPlugins ; [
-
-
-
-
-  ]
-
-
-
-
-
-
+    plugins = with pkgs.vimPlugins; [
+      {
+      plugin = nvim-lspconfig;
+      }
+    ];
   };
 }
