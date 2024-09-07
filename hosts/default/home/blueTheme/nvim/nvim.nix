@@ -23,7 +23,6 @@
     # Install Neovim plugins
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig  
-      telescope-nvim  
     ];
   };
 }
