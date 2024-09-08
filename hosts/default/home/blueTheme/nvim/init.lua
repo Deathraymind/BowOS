@@ -19,7 +19,8 @@ require("lazy").setup("plugins")
 vim.api.nvim_set_keymap('n', 'yy', 'yy"+yy', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-x>', ':lcd %:p:h<CR>:ToggleTerm<CR>', { noremap = true, silent = true }) --This is for toggleterm ctrl x will open temrinal in current directory
 
+vim.opt.tabstop = 4         -- Number of spaces that a <Tab> counts for
+vim.opt.shiftwidth = 4      -- Number of spaces to use for autoindent
+vim.opt.expandtab = true    -- Use spaces instead of tabs
 
--- if shit brokon run these commands 
--- rm -rf ~/.local/share/nvim/lazy/lazy.nvim
--- git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
+
