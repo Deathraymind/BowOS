@@ -126,7 +126,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     # audio
     pipewire
     pamixer
-
+    logseq
     # network
     networkmanager
     networkmanagerapplet
