@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     lua-language-server        # Lua LSP
     nixd
+    jdt-language-server
 
     #none_ls
     stylua

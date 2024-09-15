@@ -39,20 +39,14 @@ nixpkgs.config.packageOverrides = pkgs: {
   '';
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
-
+ time.timeZone = lib.mkDefault "Asia/Tokyo"; 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. 
 
   # Configure w network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-
-  # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+# Set your time zone. time.timeZone = "Asia/Tokyo"; Select internationalisation properties. i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
@@ -118,6 +112,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     libsForQt5.filelight
     vlc
     wl-clipboard
+    btop
 # test
     pciutils # lspci
     usbutils # lsusb
@@ -136,7 +131,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     blueman
 
     brightnessctl
-
+    playerctl
     # dunst # this is the notification daemon.
     swaynotificationcenter
 
@@ -237,6 +232,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     cpufrequtils 
     vencord
     vesktop
+
+    jdk
   ];
 
 
@@ -270,7 +267,10 @@ nixpkgs.config.packageOverrides = pkgs: {
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-      #CPU_SCALING_GOVERNOR_ON_AC="powersave";
+      CPU_BOOST_ON_BAT=0;
+      CPU_BOOST_ON_AC=1;
+      
+        #CPU_SCALING_GOVERNOR_ON_AC="powersave";
 
       # The following prevents the battery from charging fully to
       # preserve lifetime. Run `tlp fullcharge` to temporarily force
@@ -280,7 +280,7 @@ nixpkgs.config.packageOverrides = pkgs: {
       # 100 being the maximum, limit the speed of my CPU to reduce
       # heat and increase battery usage:
       CPU_MAX_PERF_ON_AC=95;
-      CPU_MAX_PERF_ON_BAT=40;
+      CPU_MAX_PERF_ON_BAT=30;
     };
   };
 
