@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/bin/bash                                                                                              
+# Redirect all output to a log file
+exec > >(tee -i /mnt/disk_formatter.log)
+exec 2>&1
 
 # Call the Python Textual UI to format the disk
-
 
 # After the disk is formatted, continue with the NixOS installation
 nixos-generate-config --root /mnt
@@ -18,3 +20,4 @@ export NIXPKGS_ALLOW_INSECURE=1
 nixos-rebuild switch --impure --flake .
 '
 echo "Installation complete. Rebooting in 5 seconds..."
+
