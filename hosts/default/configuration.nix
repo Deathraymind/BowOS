@@ -31,12 +31,12 @@ nixpkgs.config.packageOverrides = pkgs: {
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Phone Camera
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    boot.kernelModules = [ "acpi-cpufreq" ];
 
-  boot.extraModprobeConfig = ''
-  options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
-  '';
+    # boot.extraModprobeConfig = ''
+    # options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
+    # '';
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
  time.timeZone = lib.mkDefault "Asia/Tokyo"; 
@@ -109,7 +109,6 @@ nixpkgs.config.packageOverrides = pkgs: {
     nerdfonts
     ethtool
     gnome.nautilus
-    libsForQt5.filelight
     wl-clipboard
 # test
     pciutils # lspci
@@ -165,12 +164,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     
 
     # Virtual Machine
-    qemu
 
-    unstable.r2modman
-    flatpak
-    prismlauncher
-    gnome.gnome-terminal
     gnome.gnome-disk-utility
     udisks2
     firefox
@@ -196,9 +190,6 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     # Phone Sync
     scrcpy
-    v4l2-relayd
-    v4l-utils
-    localsend
     android-tools
 
 
@@ -220,17 +211,8 @@ nixpkgs.config.packageOverrides = pkgs: {
 # ___) |  __/ |   \ V /| | (__| |  __/\__ \
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
-  # Screen Sharing
-
-    services.teamviewer.enable = true;
-  
-
-  programs.kdeconnect.enable = true; 
-  
   services.udisks2.enable = true; 
   security.polkit.enable = true;
-  services.expressvpn.enable = true;
-  services.flatpak.enable = true;
   services.openssh.enable = true; # enables the sshd server on the computer
 
 
@@ -263,11 +245,11 @@ nixpkgs.config.packageOverrides = pkgs: {
 
   # Steam
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  }; 
+  # programs.steam = {
+  # enable = true;
+  # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  # }; 
  
   # Graphics
   hardware.opengl = {
@@ -304,23 +286,10 @@ nixpkgs.config.packageOverrides = pkgs: {
   };
 
 
-    services.dbus.packages = [ pkgs.miraclecast ];
 
   # Enable systemd services
-  systemd.services.miracle-wifid = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-wifid";
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = "10";
-  };
   
 
-  systemd.services.miracle-dhcp = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-dhcp --netdev=wlp0s20f3";
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = "10";
-  };
 
 # _____ _                        _ _ 
 #|  ___(_)_ __ _____      ____ _| | |
@@ -341,8 +310,8 @@ networking.firewall = {
 
 # Virtual Machines
 
-virtualisation.libvirtd.enable = true;
-programs.virt-manager.enable = true;
+# virtualisation.libvirtd.enable = true;
+# programs.virt-manager.enable = true;
 
   
   nixpkgs.config.permittedInsecurePackages = [
