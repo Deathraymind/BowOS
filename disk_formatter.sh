@@ -17,7 +17,6 @@ rm flake.lock
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 nix-channel --update
 export NIXPKGS_ALLOW_INSECURE=1
-nixos-rebuild switch --impure --flake .
+nixos-rebuild boot --install-bootloader --impure --flake .
 '
-echo "Installation complete. Rebooting in 5 seconds..."
 
