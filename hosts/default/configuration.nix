@@ -29,7 +29,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.intird.systemd.enable = true;
   # Phone Camera
   # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     boot.kernelModules = [ "acpi-cpufreq" ];
