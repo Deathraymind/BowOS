@@ -9,7 +9,7 @@ exec 2>&1
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd
 nixos-enter -- nix-shell -p git --run '
-git clone --branch fix https://github.com/deathraymind/BowOS
+git clone --branch beta https://github.com/deathraymind/BowOS
 
 cd BowOS
 rm -r .git 
