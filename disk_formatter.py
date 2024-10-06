@@ -3,18 +3,29 @@ import asyncio
 from textual.app import App, ComposeResult
 from textual.containers import Container
 from textual.widgets import Header, Footer, Button, Label, Input, Static
+from textual.reactive import Reactive
+from textual.message import Message
 
 class DiskFormatterApp(App):
 
+    password_mismatch_label: Reactive[str] = Reactive("")
+
     def compose(self) -> ComposeResult:
-        yield Header()
-        yield Container(
-            Label("Available disks and partitions:"),
-            Label(self.get_disks(), id="disk_list"),
-            Input(placeholder="Enter the disk to format (e.g., /dev/sda)", id="disk_input"),
-            Label("", id="status_label"),
-            Button("Proceed with Formatting", id="proceed_button")
-        )
+        yield Label("Available disks and partitions:")
+        yield Label(self.get_disks(), id="disk_list")
+        yield Input(placeholder="Enter the disk to format (e.g., /dev/sda)", id="disk_input")
+        yield Label("", id="status_label")
+       
+        # User Creation
+        yield Input(placeholder="Username", id="username_input")
+        yield Label("", id="password_mismatch_label")
+        yield Input(placeholder="Password", id="password_input", password=True)
+        yield Input(placeholder="Confirm Password", id="confirm_password_input", password=True)
+
+        yield Button("Proceed with Formatting", id="proceed_button")
+        
+
+        # Output view
         yield Container(Static("Terminal output will appear here.", id="output_view"), id="output_container")
         yield Footer()
 
@@ -22,6 +33,14 @@ class DiskFormatterApp(App):
         """Get the available disks and partitions using lsblk."""
         result = subprocess.run(['lsblk'], capture_output=True, text=True)
         return result.stdout
+
+    async def on_input_changed(self, message: Message) -> None: # on_input_changed is a hook method
+        password = self.query_one("#password_input").value
+        confirm_password = self.query_one("#confirm_password_input").value
+        if password != confirm_password:
+            self.query_one("#password_mismatch_label", Label).update("Passwords do not match!")
+        else:
+            self.query_one("#password_mismatch_label", Label).update("Passwords match!")
 
     def on_button_pressed(self, event):
         if event.button.id == "proceed_button":
