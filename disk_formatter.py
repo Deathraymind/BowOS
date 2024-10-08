@@ -106,6 +106,9 @@ class DiskFormatterApp(App):
                 stderr=asyncio.subprocess.PIPE
             )
 
+            await self.run_command(f"sudo user add -m -G  networkmanager, wheel, libvirt {self.query_one('#username_input', Input).value}")
+
+
             while True:
                 line = await process.stdout.readline()
                 if not line:
