@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "BowOS flake configuration";
 
   inputs = {
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";  # Use the unstable channel from Nix
@@ -11,7 +11,11 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+    let
+      username = builtins.getEnv "NIX_USER";
+    in
+    {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -20,7 +24,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.bowyn = import ./hosts/default/home.nix;  # Load user-specific configuration
+            home-manager.users.${username} = import ./hosts/default/home.nix;  # Load user-specific configuration
           }
         ];
       };

@@ -1,7 +1,10 @@
 # configuration.nix
 { config, pkgs, inputs, lib, ... }:
 
-
+# run export NIX_USER=$(whoami) before rebuilding the system
+let
+  username = builtins.getEnv "NIX_USER";
+in
 
 {
   imports =
@@ -10,11 +13,6 @@
       /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
     ];
-
-
-
-   
-
 # run these two commands
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
@@ -67,9 +65,9 @@ nixpkgs.config.packageOverrides = pkgs: {
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bowyn = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "bowyn";
+    description = "${username}";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [];
   };

@@ -1,6 +1,10 @@
 # home.nix
 { config, pkgs, lib, ... }:
 
+let
+  username = builtins.getEnv "NIX_USER";
+in
+
 
 {
    
@@ -10,7 +14,7 @@
   ];
 
   home.file = { 
-       "/home/bowyn/.profile".source = ./home/.profile; 
+       "/home/${username}/.profile".source = ./home/.profile; 
        "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/swaync/config.json; 
        "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/swaync/style.css;
   };
@@ -20,13 +24,13 @@
     recursive = true; # recusris the entire directory
   };
 
-  home.file."/home/bowyn/.config/" = { # this is where you want the file
+  home.file."/home/${username}/.config/" = { # this is where you want the file
     source = ./home; # this is where you are pulling the file from
     recursive = true; # recusris the entire directory
   };
 
-  home.username = "bowyn";
-  home.homeDirectory = "/home/bowyn";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
   
 
   # Packages that should be installed to the user profile.
