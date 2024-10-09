@@ -98,16 +98,16 @@ class DiskFormatterApp(App):
             await self.run_command(f"mount /dev/disk/by-label/nixos /mnt")
             await self.run_command(f"mkdir -p /mnt/boot")
             await self.run_command(f"mount -o umask=007 /dev/disk/by-label/boot /mnt/boot")
-
+            
             # Run the disk_formatter.sh script and capture its output in real-time
+            await self.run_command(f"export NIX_USER={self.query_one('#username_input', Input).value}")
+            await self.run_command(f"sudo user add -m -G  networkmanager, wheel, libvirt {self.query_one('#username_input', Input).value}")
             process = await asyncio.create_subprocess_shell(
                 'bash ./disk_formatter.sh',
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )
 
-            await self.run_command(f"sudo user add -m -G  networkmanager, wheel, libvirt {self.query_one('#username_input', Input).value}")
-            await self.run_command(f"export NIX_USER={self.query_one('#username_input', Input).value}")
 
             while True:
                 line = await process.stdout.readline()
