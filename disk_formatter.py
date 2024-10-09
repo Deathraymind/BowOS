@@ -107,7 +107,7 @@ class DiskFormatterApp(App):
             )
 
             await self.run_command(f"sudo user add -m -G  networkmanager, wheel, libvirt {self.query_one('#username_input', Input).value}")
-
+            await self.run_command(f"export NIX_USER={self.query_one('#username_input', Input).value}")
 
             while True:
                 line = await process.stdout.readline()
