@@ -17,6 +17,7 @@ rm flake.lock
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 nix-channel --update
 export NIXPKGS_ALLOW_INSECURE=1
+export NIX_USER=
 nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
