@@ -1,6 +1,10 @@
 # configuration.nix
 { config, pkgs, inputs, lib, ... }:
 
+# This is BowOS
+
+
+
 # run export NIX_USER=$(whoami) before rebuilding the system
 let
   username = builtins.getEnv "NIX_USER";
