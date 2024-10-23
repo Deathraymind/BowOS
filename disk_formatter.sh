@@ -20,6 +20,7 @@ export NIXPKGS_ALLOW_INSECURE=1
 export NIX_USER=bowyn
 export NIX_PASSWORD=6255
 echo 'NIX_USER:NIX_PASSWORD'| sudo chpasswd
+echo 'root:NIX_PASSWORD'| sudo chpasswd
 nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
