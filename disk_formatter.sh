@@ -18,7 +18,8 @@ nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 nix-channel --update
 export NIXPKGS_ALLOW_INSECURE=1
 export NIX_USER=bowyn
-echo "bowyn:6255" | sudo chpasswd
+export NIX_PASSWORD=6255
+echo 'NIX_USER:NIX_PASSWORD'| sudo chpasswd
 nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
