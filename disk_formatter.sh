@@ -20,6 +20,8 @@ export NIXPKGS_ALLOW_INSECURE=1
 export NIX_USER=bowyn
 export NIX_PASSWORD=6255
 
+passwd useradd -m NIX_USER
+
 nix-shell -p expect --run "
 expect -c \"
 spawn passwd \$NIX_USER
@@ -39,9 +41,6 @@ send \\\"\$NIX_PASSWORD\\r\\\"
 expect eof
 \"
 "
-
-
-spawn passwd useradd -m NIX_USER
 
 
 nixos-rebuild boot --install-bootloader --impure --flake .
