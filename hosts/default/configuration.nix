@@ -103,73 +103,73 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    neovim
-    git
-    kitty
-    waybar
-    rofi
-    nerdfonts
-    ethtool
-    gnome.nautilus
-    wl-clipboard
+        # neovim
+        # git
+        # kitty
+        # waybar
+        # rofi
+        # nerdfonts
+        # ethtool
+        # gnome.nautilus
+        # wl-clipboard
 # test
-    pciutils # lspci
-    usbutils # lsusb
+        # pciutils # lspci
+        # usbutils # lsusb
     # audio
-    pipewire
-    pamixer
+        # pipewire
+        # pamixer
     # network
     networkmanager
-    networkmanagerapplet
+        # networkmanagerapplet
 
     # bluetooth
-    bluez
-    blueman
+        # bluez
+        # blueman
 
-    brightnessctl
-    playerctl
+        # brightnessctl
+        # playerctl
     # dunst # this is the notification daemon.
-    swaynotificationcenter
+        # swaynotificationcenter
 
     # screenshot
-    grim
-    slurp
-    swappy
-    cliphist
-    hyprpicker
+        # grim
+        # slurp
+        # swappy
+        # cliphist
+        # hyprpicker
 
     # dependencies
-    polkit-kde-agent
-    xdg-desktop-portal-hyprland
-    imagemagick
-    ffmpegthumbs
+        # polkit-kde-agent
+        # xdg-desktop-portal-hyprland
+        # imagemagick
+        # ffmpegthumbs
 
-    # theme stuff
-    nwg-look
-    qt5ct
-    qt6ct
-    gtk4
-    gtk3
+        # # theme stuff
+        # nwg-look
+        # qt5ct
+        # qt6ct
+        # gtk4
+        # gtk3
 
-    hyprland 
-    hyprpaper
-    fastfetch
-    unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
-    pavucontrol 
-    pipewire
-    xorg.xrandr
-    home-manager
-    htop
-    playerctl
-    dconf
-    glib
+        # hyprland 
+        # hyprpaper
+        # fastfetch
+        # unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
+        # pavucontrol 
+        # pipewire
+        # xorg.xrandr
+        # home-manager
+        # htop
+        # playerctl
+        # dconf
+        # glib
     
 
     # Virtual Machine
 
-    gnome.gnome-disk-utility
-    udisks2
-    firefox
+        # gnome.gnome-disk-utility
+        # udisks2
+        # firefox
 
     # Pytorch/Skynet
     # python3
@@ -310,7 +310,7 @@ networking.firewall = {
 };
 
 
-# Virtual Machines
+# virtual Machines
 
 # virtualisation.libvirtd.enable = true;
 # programs.virt-manager.enable = true;

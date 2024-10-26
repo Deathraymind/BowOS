@@ -19,8 +19,22 @@ nix-channel --update
 export NIXPKGS_ALLOW_INSECURE=1
 export NIX_USER=bowyn
 export NIX_PASSWORD=6255
-echo 'NIX_USER:NIX_PASSWORD'| sudo chpasswd
-echo 'root:NIX_PASSWORD'| sudo chpasswd
+nix-env -iA nixos.expect
+
+spawn passwd useradd -m NIX_USER 
+expect "New password:"
+send "$NIX_PASSWORD\r"
+expect "Retype new password:"
+send "$NIX_PASSWORD\r"
+expect eof
+
+spawn passwd roots
+expect "New password:"
+send "$NIX_PASSWORD\r"
+expect "Retype new password:"
+send "$NIX_PASSWORD\r"
+expect eof 
+
 nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
