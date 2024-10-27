@@ -103,88 +103,78 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-        # neovim
-        # git
-        # kitty
-        # waybar
-        # rofi
-        # nerdfonts
-        # ethtool
-        # gnome.nautilus
-        # wl-clipboard
-# test
-        # pciutils # lspci
-        # usbutils # lsusb
-    # audio
-        # pipewire
-        # pamixer
-    # network
+    neovim
+    git
+    kitty
+    waybar
+    rofi
+    nerdfonts
+    ethtool
+    gnome.nautilus
+    wl-clipboard
+    pciutils  # lspci
+    usbutils  # lsusb
+
+    # Audio
+    pipewire
+    pamixer
+
+    # Network
     networkmanager
-        # networkmanagerapplet
+    networkmanagerapplet
 
-    # bluetooth
-        # bluez
-        # blueman
+    # Bluetooth
+    bluez
+    blueman
 
-        # brightnessctl
-        # playerctl
-    # dunst # this is the notification daemon.
-        # swaynotificationcenter
+    # Utilities
+    brightnessctl
+    playerctl
+    dunst  # notification daemon
+    swaynotificationcenter
 
-    # screenshot
-        # grim
-        # slurp
-        # swappy
-        # cliphist
-        # hyprpicker
+    # Screenshot tools
+    grim
+    slurp
+    swappy
+    cliphist
+    hyprpicker
 
-    # dependencies
-        # polkit-kde-agent
-        # xdg-desktop-portal-hyprland
-        # imagemagick
-        # ffmpegthumbs
+    # Dependencies
+    polkit-kde-agent
+    xdg-desktop-portal-hyprland
+    imagemagick
+    ffmpegthumbs
 
-        # # theme stuff
-        # nwg-look
-        # qt5ct
-        # qt6ct
-        # gtk4
-        # gtk3
+    # Theme and appearance
+    nwg-look
+    qt5ct
+    qt6ct
+    gtk4
+    gtk3
 
-        # hyprland 
-        # hyprpaper
-        # fastfetch
-        # unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
-        # pavucontrol 
-        # pipewire
-        # xorg.xrandr
-        # home-manager
-        # htop
-        # playerctl
-        # dconf
-        # glib
-    
+    # Window manager and related tools
+    hyprland
+    hyprpaper
+    fastfetch
+    unstable.hyprlock
+    pavucontrol
+    pipewire
+    xorg.xrandr
+    home-manager
+    htop
+    playerctl
+    dconf
+    glib
 
     # Virtual Machine
-
-        # gnome.gnome-disk-utility
-        # udisks2
-        # firefox
+    gnome.gnome-disk-utility
+    udisks2
+    firefox
 
     # Pytorch/Skynet
-    # python3
-    # python3
-    # python3Packages.pytorch
-
-
-    polkit
-    lxqt.lxqt-policykit
-
-    
-
-
-
-
+    python3
+    python3Packages.pytorch
 
     # Screen Sharing
     pipewire
@@ -194,11 +184,11 @@ nixpkgs.config.packageOverrides = pkgs: {
     scrcpy
     android-tools
 
-
+    # Development tools
     gcc
-    cpufrequtils 
-
+    cpufrequtils
     jdk
+         
   ];
 
 
