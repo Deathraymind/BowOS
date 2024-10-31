@@ -206,7 +206,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   services.udisks2.enable = true; 
   security.polkit.enable = true;
   services.openssh.enable = true; # enables the sshd server on the computer
-
+  services.logrotate.checkConfig = false;
 
 # power saving
   services.tlp = {
