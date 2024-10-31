@@ -2,7 +2,12 @@
 {
   imports = [
     <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-    
+    # to build the os run
+    #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
+    # to creat a .nar file with all the goofy files use this 
+    # nix-store -qR /run/current-system > installed-packages.txt 
+    # nix-store --export $(cat installed-packages.txt) > all-installed-packages.nar
+
     # Provide an initial copy of the NixOS channel so that the user
     # doesn't need to run "nix-channel --update" first.
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
@@ -70,6 +75,11 @@
       cpufrequtils
       jdk
     ];
+
+    
+   isoImage.contents = [
+    { source = "/home/bowyn/BowOSv0.01/all-installed-packages.nar"; target = "/root/all-installed-packages.nar"; }
+  ];   
     
 
 
