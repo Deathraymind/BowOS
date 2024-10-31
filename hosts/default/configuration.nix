@@ -21,12 +21,6 @@ in
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
 # append unstable. to the package you want to pull from the unstable channel
-nixpkgs.config.packageOverrides = pkgs: {
-    unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-    };
-};
-
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -157,7 +151,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     hyprland
     hyprpaper
     fastfetch
-    unstable.hyprlock
+    hyprlock
     pavucontrol
     pipewire
     xorg.xrandr
