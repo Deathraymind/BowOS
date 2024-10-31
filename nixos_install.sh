@@ -33,4 +33,5 @@ mkdir -p /mnt/boot
 mount -o umask=007 /dev/disk/by-label/boot /mnt/boot
 
 echo "Disk formatting and mounting complete!"
+nixos-generate-config --root /mnt
 
