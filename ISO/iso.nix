@@ -73,15 +73,10 @@
       android-tools
       gcc
       cpufrequtils
-      jdk
     ];
 
     
-   isoImage.contents = [
-    { source = "/home/bowyn/BowOSv0.01/all-installed-packages.nar"; target = "/root/all-installed-packages.nar"; }
-  ];   
     
 
 
 }
-
