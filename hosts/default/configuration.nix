@@ -181,17 +181,10 @@ in
     # Development tools
     gcc
     cpufrequtils
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+
          
   ];
-
-fonts.fonts = with pkgs; [
-  (nerdfonts.overrideAttrs (oldAttrs: rec {
-    fontFamilies = [
-      # Only include the JetBrains Mono variant
-      "JetBrainsMono"
-    ];
-  }))
-];
 
 
 # ____                  _      _           
