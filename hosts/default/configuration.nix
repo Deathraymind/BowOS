@@ -181,15 +181,18 @@ in
     # Development tools
     gcc
     cpufrequtils
-    jdk
          
   ];
 
+fonts.fonts = with pkgs; [
+  (nerdfonts.overrideAttrs (oldAttrs: rec {
+    fontFamilies = [
+      # Only include the JetBrains Mono variant
+      "JetBrainsMono"
+    ];
+  }))
+];
 
-
-  fonts.fonts = with pkgs; [
-     nerdfonts # this pulls the nerdfonts from the nixos and makes it available. 
-  ];
 
 # ____                  _      _           
 #/ ___|  ___ _ ____   _(_) ___(_) ___  ___ 
