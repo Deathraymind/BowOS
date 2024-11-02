@@ -20,7 +20,6 @@
       kitty
       waybar
       rofi
-      nerdfonts
       ethtool
       gnome.nautilus
       wl-clipboard
@@ -73,10 +72,13 @@
       android-tools
       gcc
       cpufrequtils
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      python3
+      python3Packages.textual
+
     ];
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
+    isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
-    
-    
-
-
+    environment.etc."install_bowos.sh".source = /home/bowyn/BowOSv0.01/install_bowos.sh;
 }
