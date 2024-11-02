@@ -11,15 +11,14 @@ exec 2>&1
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd
 
+cp -r /etc/BowOS /mnt
+
 # Enter NixOS environment and run further setup
 nixos-enter -- nix-shell -p git -p expect --run '
-  git clone --branch beta https://github.com/deathraymind/BowOS
 
   cd BowOS
   rm -r .git 
   rm flake.lock
-  nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-  nix-channel --update
   export NIXPKGS_ALLOW_INSECURE=1
   export NIX_USER=bowyn
   export NIX_PASSWORD=6255
