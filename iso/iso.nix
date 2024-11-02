@@ -80,5 +80,10 @@
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
-    environment.etc."install_bowos.sh".source = /home/bowyn/BowOSv0.01/install_bowos.sh;
+    environment.etc."install_bowos.sh".source = /home/bowyn/BowOSv0.01/iso/install_bowos.sh;
+
+    
+    services.openssh.enable = true; # enables the sshd server on the computer 
+    services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
+    services.openssh.passwordAuthentication = true; # // or false to disable password authentication
 }

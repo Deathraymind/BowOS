@@ -221,7 +221,6 @@ in
 
 
   services.openssh.enable = true; # enables the sshd server on the computer 
-  services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
   services.openssh.passwordAuthentication = true; # // or false to disable password authentication
 
   # Steam
