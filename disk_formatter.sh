@@ -12,13 +12,15 @@ nixos-generate-config --root /mnt
 nixos-install --no-root-passwd
 
 cp -r /etc/BowOS /mnt
-
+# add these lines 
+# cp bowos-packages.nar /mnt 
+# nixos-enter 
+# nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
 nixos-enter -- nix-shell -p git -p expect --run '
 
   cd BowOS
   rm -r .git 
-  rm flake.lock
   export NIXPKGS_ALLOW_INSECURE=1
   export NIX_USER=bowyn
   export NIX_PASSWORD=6255
