@@ -103,11 +103,11 @@ class DiskFormatterApp(App):
             await self.run_command(f"export NIX_USER={self.query_one('#username_input', Input).value}")
             await self.run_command(f"sed -i 's/export NIX_USER=.*/export NIX_USER={self.query_one('#username_input', Input).value}/' disk_formatter.sh")
             await self.run_command(f"sed -i 's/export NIX_PASSWORD=.*/export NIX_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh") 
-            process = await asyncio.create_subprocess_shell(
-                'bash ./disk_formatter.sh',
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE
-            )
+            # process = await asyncio.create_subprocess_shell(
+            #    'bash ./disk_formatter.sh',
+            #    stdout=asyncio.subprocess.PIPE,
+            #    stderr=asyncio.subprocess.PIPE
+            # )
 
 
             while True:
