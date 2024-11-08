@@ -53,6 +53,7 @@ nixos-enter -- nix-shell -p git -p expect --run '
 
   # Rebuild the system with the new configurations
   echo building configuration
+  cd /
   nix-store --import < bowos-packages.nar
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
