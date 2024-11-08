@@ -11,7 +11,11 @@ exec 2>&1
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd
 
+echo copying packages
+echo this make take a minute
+
 cp -r /etc/BowOS /mnt
+cp -L /etc/bowos-packages.nar /mnt 
 # add these lines 
 # cp bowos-packages.nar /mnt 
 # nixos-enter 
@@ -48,6 +52,8 @@ nixos-enter -- nix-shell -p git -p expect --run '
   "
 
   # Rebuild the system with the new configurations
+  echo building configuration
+  nix-store --import < bowos_packages.nar
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
