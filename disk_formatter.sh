@@ -21,9 +21,16 @@ cp -L /etc/bowos-packages.nar /mnt
 # nixos-enter 
 # nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
-nixos-enter -- nix-shell -p git -p expect --run '
+nixos-enter -- nix-shell -p expect --run '
 
   # Set the password for the new user and root using expect
+  
+  export NIX_USER=bowyn
+  export NIX_PASSWORD=6255
+  # Create the user
+  useradd -m "$NIX_USER"
+
+
   expect -c "
     spawn passwd $NIX_USER
     expect \"New password:\"
@@ -44,20 +51,14 @@ nixos-enter -- nix-shell -p git -p expect --run '
 
 
 
+  nix-store --import < bowos-packages.nar
+  
+  
+  # Rebuild the system with the new configurations
   cd BowOS
   rm -r .git 
-  export NIXPKGS_ALLOW_INSECURE=1
-  export NIX_USER=bowyn
-  export NIX_PASSWORD=6255
-
-  # Create the user
-  useradd -m "$NIX_USER"
-
-
-
-  # Rebuild the system with the new configurations
   echo building configuration
-  nix-store --import < bowos-packages.nar
+  export NIXPKGS_ALLOW_INSECURE=1
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
