@@ -7,9 +7,22 @@
     "height": "20",
     "gtk-layer-shell": true,
 
-    "modules-left": [ "cpu", "memory", "custom/divider", "custom/cava", "battery"],
-    "modules-center": ["clock", "custom/divider", "custom/launcher"],
-    "modules-right": [ "backlight", "pulseaudio", "custom/divider", "tray", "custom/divider", "custom/notification"],
+    "modules-left": [ "cpu", "memory", "battery"],
+    "modules-center": ["hyprland/workspaces", "clock", "custom/launcher"],
+    "modules-right": [ "backlight", "pulseaudio", "tray", "custom/notification"],
+
+    "hyprland/workspaces": {
+      "format": "{icon} {windows}",
+      "format-window-separator": " ",
+      "window-rewrite-default": "",
+      "window-rewrite": {
+        "title<.*youtube.*>": "", 
+        "class<firefox>": "", 
+        "class<firefox> title<.*github.*>": "", 
+        "kitty": "", 
+        "nvim": "󰨞"
+        }
+    },
 
     "clock": {
         "format": " {:%a, %e %b, %I:%M %p }",
@@ -19,15 +32,14 @@
 
 
     "cpu": {
-        "interval": 1,
-        "format" : "  {}%",
+        "interval": 10,
+        "format" : "  {usage}%",
         "max-length": 10
     },
 
     "memory": {
         "interval": 1,
-        "format": " {}%",
-        "max-length": 10
+        "format": "  {used:.01f}G/{total:0.1f}G" 
     },
 
     "network": {
@@ -100,10 +112,6 @@
         "format": "|"
     },
 
-    "custom/phone": {
-        "format": "",
-        "on-click": "scrcpy"
-    },
 
 
     "custom/notification": {

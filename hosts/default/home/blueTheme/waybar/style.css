@@ -4,13 +4,13 @@
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 14px;
-    min-height: 30px;
+    min-height: 20px;
 
 }
 
 
 window#waybar {
-    background: rgba(21, 18, 27, 0);
+    background: transparent; /* if this is going to work make sure to have blur off in hyprland */
     color: #cad3f5;
 
 }
@@ -33,7 +33,13 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
+    transition: background-color 0.3s ease; 
 }
+
+#tray:hover {
+    background-color: #89B4FB; /* Target color on hover */
+}
+
 
 #custom-gpu-usage {
     background: #24273a;
@@ -55,8 +61,12 @@ window#waybar {
     margin-left: 0px;
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
+    transition: background-color 0.3s ease; 
 }
 
+#bluetooth:hover {
+    background-color: #89B4FB; /* Target color on hover */
+}
 
 
 #battery {
@@ -79,6 +89,11 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
+    transition: background-color 0.3s ease; 
+}
+
+#pulseaudio:hover {
+    background-color: #89B4FB; /* Target color on hover */
 }
 
 #backlight {
@@ -90,7 +105,13 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
+    transition: background-color 0.3s ease; 
 }
+
+#backlight:hover {
+    background-color: #89B4FB; /* Target color on hover */
+}
+
 
 #custom-updates {
     background: #24273a;
@@ -103,16 +124,7 @@ window#waybar {
     border-radius: 10px 0px 0px 10px;
 }
 
-#network {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
-}
+
 
 #memory {
     background: #24273a;
@@ -134,16 +146,6 @@ window#waybar {
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
 }
-#custom-launcher {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 8px;
-    margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
-}
 #clock{
     background: #24273a;
     opacity: 0.9;
@@ -152,7 +154,7 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 #custom-divider {
@@ -175,29 +177,14 @@ window#waybar {
     margin-left: 0px;
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
+    transition: background-color 0.3s ease; 
+
 }
 
-#custom-cava {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 10px 10px 10px 10px;
+#custom-notification:hover {
+    background-color: #89B4FB; /* Target color on hover */
 }
 
-#custom-phone {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
-}
 
 #custom-launcher {
     background: #24273a;
@@ -208,6 +195,45 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
+    transition: background-color 0.3s ease; 
 }
+
+
+#custom-launcher:hover {
+    background-color: #89B4FB; /* Target color on hover */
+}
+
+
+#workspaces{
+    background: #24273a;
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 10px 0px 0px 10px;
+    color: #B8C0E2;
+    padding: 0;
+    margin: 0;
+
+}
+
+#workspaces button label {
+    color: #B8C0E2;
+    font-size: 14px;
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+}
+
+#workspaces button:hover {
+    background-color: #89B4FB; /* Target color on hover */
+}
+
+
+
+
+
+
 
 

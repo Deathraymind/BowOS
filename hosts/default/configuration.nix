@@ -3,6 +3,10 @@
 
 
 
+
+
+
+
 {
   imports =
     [ 
@@ -101,6 +105,10 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    blender
+    wl-color-picker
+    nodePackages.browser-sync
+    python3
     neovim
     git
     kitty
@@ -112,6 +120,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     libsForQt5.filelight
     vlc
     wl-clipboard
+    checkra1n
+
     btop
 # test
     pciutils # lspci
@@ -234,13 +244,14 @@ nixpkgs.config.packageOverrides = pkgs: {
     vesktop
 
     jdk
+    nerdfonts
   ];
 
 
+fonts.packages = with pkgs; [
+        nerdfonts
+];
 
-  fonts.fonts = with pkgs; [
-     nerdfonts # this pulls the nerdfonts from the nixos and makes it available. 
-  ];
 
 # ____                  _      _           
 #/ ___|  ___ _ ____   _(_) ___(_) ___  ___ 
@@ -284,7 +295,15 @@ nixpkgs.config.packageOverrides = pkgs: {
     };
   };
 
-
+environment = {
+  variables = {
+    http_proxy = "http://192.168.49.1:8000";
+    https_proxy = "http://192.168.49.1:8000";
+    ftp_proxy = "http://192.168.49.1:8000";
+    no_proxy = "localhost,127.0.0.1,::1";
+  };
+};
+    
 
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
   services.openssh.passwordAuthentication = true; # // or false to disable password authentication
@@ -332,23 +351,6 @@ nixpkgs.config.packageOverrides = pkgs: {
   };
 
 
-    services.dbus.packages = [ pkgs.miraclecast ];
-
-  # Enable systemd services
-  systemd.services.miracle-wifid = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-wifid";
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = "10";
-  };
-  
-
-  systemd.services.miracle-dhcp = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.miraclecast}/bin/miracle-dhcp --netdev=wlp0s20f3";
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = "10";
-  };
 
 # _____ _                        _ _ 
 #|  ___(_)_ __ _____      ____ _| | |
@@ -369,12 +371,15 @@ networking.firewall = {
 
 # Virtual Machines
 
-virtualisation.libvirtd.enable = true;
+virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = with pkgs; [virtiofsd];
+    };
 programs.virt-manager.enable = true;
 
   
   nixpkgs.config.permittedInsecurePackages = [
- "electron-25.9.0"
+ "electron-27.3.11"
   ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # this is a nixos experimental feature called flakes
