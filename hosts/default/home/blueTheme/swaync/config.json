@@ -61,7 +61,7 @@
         },
         {
           "label": "󰌾",
-          "command": "hyprlock"
+          "command": "sh -c 'hyprlock -c /home/${USER}/bowos/wallpaper/hyprlock.conf'"
         },
         {
           "label":  "",

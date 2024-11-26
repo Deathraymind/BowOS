@@ -1,14 +1,23 @@
 # configuration.nix
 { config, pkgs, inputs, lib, ... }:
 
+
+
+
+
+
+
 {
   imports =
     [ 
       
-    ./stylix.nix
-    /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
+      /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
     ];
+
+
+
+   
 
 # run these two commands
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
@@ -96,23 +105,16 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-
-    gnupg 
-    pinentry
-    direnv
-    cargo-tauri
-    rustup
-
     vscode
     rustup
     blender
     wl-color-picker
     nodePackages.browser-sync
+    python3
     neovim
     git
     kitty
     waybar
-    librepcb
     rofi
     nerdfonts
     ethtool
@@ -121,6 +123,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     vlc
     wl-clipboard
     checkra1n
+    ciscoPacketTracer8
     btop
 # test
     pciutils # lspci
@@ -162,7 +165,7 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     # theme stuff
     nwg-look
-    libsForQt5.qt5ct
+    qt5ct
     qt6ct
     gtk4
     gtk3
@@ -194,6 +197,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     gnome.gnome-terminal
     gnome.gnome-disk-utility
     udisks2
+    cava
     obsidian
     firefox
     whatsapp-for-linux
@@ -209,6 +213,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     lxqt.lxqt-policykit
 
     krita
+    cura
 
     expressvpn
 
@@ -222,6 +227,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     pipewire
     wireplumber
 
+    qbittorrent-qt5
     # Phone Sync
     scrcpy
     v4l2-relayd
@@ -255,11 +261,13 @@ fonts.packages = with pkgs; [
 # ___) |  __/ |   \ V /| | (__| |  __/\__ \
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
-  stylix.enable=true;
-  stylix.image=/home/bowyn/bowos/wallpaper/wallpapers/wp.png;
-  stylix.polarity = "dark";
+  # Screen Sharing
+
+    services.teamviewer.enable = true;
+  
 
   programs.kdeconnect.enable = true; 
+  
   services.udisks2.enable = true; 
   security.polkit.enable = true;
   services.expressvpn.enable = true;
@@ -289,14 +297,14 @@ fonts.packages = with pkgs; [
     };
   };
 
-    #environment = {
-    #variables = {
-    #http_proxy = "http://192.168.49.1:8000";
-    #https_proxy = "http://192.168.49.1:8000";
-    #ftp_proxy = "http://192.168.49.1:8000";
-    #no_proxy = "localhost,127.0.0.1,::1";
-    #};
-    #};
+environment = {
+  variables = {
+    http_proxy = "http://192.168.49.1:8000";
+    https_proxy = "http://192.168.49.1:8000";
+    ftp_proxy = "http://192.168.49.1:8000";
+    no_proxy = "localhost,127.0.0.1,::1";
+  };
+};
     
 
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
@@ -313,6 +321,7 @@ fonts.packages = with pkgs; [
   # Graphics
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     driSupport32Bit = true;
   };
   services.xserver.videoDrivers = ["amdgpu"];

@@ -6,8 +6,7 @@
    
    imports = [
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
-    ./theme.nix
-    ./applications/firefox.nix
+        # ./theme.nix
     ./home/blueTheme/nvim/nvim.nix
   ];
 
@@ -36,8 +35,8 @@
     nixd 
   ];
 
-
-
+# home.nix
+ 
 
 
   # basic configuration of git, please change to your own

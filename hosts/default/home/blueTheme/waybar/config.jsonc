@@ -12,15 +12,15 @@
     "modules-right": [ "backlight", "pulseaudio", "tray", "custom/notification"],
 
     "hyprland/workspaces": {
-      "format": "{icon} {windows}",
-      "format-window-separator": " ",
-      "window-rewrite-default": "",
-      "window-rewrite": {
-        "title<.*youtube.*>": "", 
-        "class<firefox>": "", 
-        "class<firefox> title<.*github.*>": "", 
-        "kitty": "", 
-        "nvim": "󰨞"
+    "format": "{icon} {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+        "title<.*youtube.*>": "",
+        "class<firefox>": "",
+        "class<firefox> title<.*github.*>": "",
+        "kitty": "",
+        "code": "󰨞"
         }
     },
 

@@ -1,29 +1,25 @@
 {
-  description = "NixOS configuration";
-
   inputs = {
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";  # Use the unstable channel from Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";     # NixOS stable repository
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stylix.url = "github:danth/stylix";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";  # Home Manager from GitHub
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/default/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.bowyn = import ./hosts/default/home.nix;  # Load user-specific configuration
-          }
-        ];
-      };
+  outputs = { nixpkgs, home-manager, stylix,  ... }@inputs: {
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        stylix.nixosModules.stylix
+        ./hosts/default/configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.bowyn = import ./hosts/default/home.nix;
+        }
+      ];
     };
   };
 }
