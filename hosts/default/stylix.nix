@@ -5,6 +5,9 @@
 stylix.cursor.package = pkgs.bibata-cursors;
 stylix.cursor.name = "Bibata-Modern-Ice";
 stylix.cursor.size = 32;
-targets.kitty.enable = true;
+stylix.enable=true;
+stylix.image=/home/bowyn/bowos/wallpaper/wallpapers/wp.png;
+stylix.polarity = "dark";
+
 
 }

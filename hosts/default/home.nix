@@ -8,6 +8,7 @@
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
         # ./theme.nix
     ./home/blueTheme/nvim/nvim.nix
+        # ./homeStylix.nix
   ];
 
   home.file = { 
@@ -52,5 +53,9 @@
   # Let home Manager install and manage itself2.
   programs.home-manager.enable = true;
   programs.starship.enable = false;
+  stylix.targets.kitty.enable = true;
+  stylix.enable=true;
+  stylix.image=/home/bowyn/bowos/wallpaper/wallpapers/wp.png;
+  stylix.polarity = "dark";  
 
 }
