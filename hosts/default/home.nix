@@ -46,8 +46,16 @@
     kitty.enable = true;
     home-manager.enable = true;
     starship.enable = false;
-    };
 
+    };
+    gtk = {
+        enable = true;
+        iconTheme = {
+        name = "BeautyLine";
+        package = pkgs.beauty-line-icon-theme;
+      };
+
+        };
 
   # User Configuration
   programs.git = {

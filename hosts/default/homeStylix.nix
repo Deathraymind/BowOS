@@ -29,7 +29,7 @@
   };
 
   icons = {
-    package = pkgs.numix-icon-theme-circle;
-    name = "Numix-Circle";
+    package = pkgs.beauty-line-icon-theme;
+    name = "BeautyLine";
   };
 }
