@@ -4,15 +4,12 @@
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 14px;
-    min-height: 30px;
-
+    min-height: 20px;
 }
 
-
 window#waybar {
-    background: rgba(21, 18, 27, 0);
+    background: transparent; /* if this is going to work make sure to have blur off in hyprland */
     color: #cad3f5;
-
 }
 
 #tooltip {
@@ -21,7 +18,6 @@ window#waybar {
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
-    
 }
 
 #tray {
@@ -33,6 +29,12 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+}
+
+#tray:hover {
+    background-color: #89B4FB;
 }
 
 #custom-gpu-usage {
@@ -46,18 +48,11 @@ window#waybar {
     border-radius: 0px 10px 10px 0px;
 }
 
-#bluetooth {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 8px;
-    border-radius: 0px 10px 10px 0px;
+
+
+#bluetooth:hover {
+    background-color: #89B4FB;
 }
-
-
 
 #battery {
     background: #24273a;
@@ -68,6 +63,9 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    border-right: 2px solid #cad3f5; 
 }
 
 #pulseaudio {
@@ -79,6 +77,14 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
+    transition: background-color 0.3s ease;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+}
+
+#pulseaudio:hover {
+    background-color: #89B4FB;
+    
 }
 
 #backlight {
@@ -90,29 +96,17 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
+    transition: background-color 0.3s ease;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    border-left: 2px solid #cad3f5; 
 }
 
-#custom-updates {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
+#backlight:hover {
+    background-color: #89B4FB;
 }
 
-#network {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
-}
+
 
 #memory {
     background: #24273a;
@@ -123,7 +117,10 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
 }
+
 #cpu {
     background: #24273a;
     opacity: 0.9;
@@ -133,18 +130,12 @@ window#waybar {
     margin-left: 8px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    border-left: 2px solid #cad3f5; 
 }
-#custom-launcher {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 8px;
-    margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
-}
-#clock{
+
+#clock {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
@@ -152,7 +143,10 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 0px 0px 0px 0px;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    
 }
 
 #custom-divider {
@@ -175,28 +169,14 @@ window#waybar {
     margin-left: 0px;
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
+    transition: background-color 0.3s ease;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    border-right: 2px solid #cad3f5; 
 }
 
-#custom-cava {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 10px 10px 10px 10px;
-}
-
-#custom-phone {
-    background: #24273a;
-    opacity: 0.9;
-    padding: 0px 10px;
-    margin-top: 4px;
-    margin-bottom: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+#custom-notification:hover {
+    background-color: #89B4FB;
 }
 
 #custom-launcher {
@@ -208,6 +188,42 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
+    border: solid #cad3f5;
+    border-right: 2px solid #cad3f5; /* Explicitly set the right border */
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    transition: background-color 0.3s ease;
 }
+
+#custom-launcher:hover {
+    background-color: #89B4FB;
+}
+
+#workspaces {
+    background: #24273a;
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 10px 0px 0px 10px;
+    color: #B8C0E2;
+    border-top: 2px solid #cad3f5;
+    border-bottom: 2px solid #cad3f5;
+    border-left: 2px solid #cad3f5; 
+}
+
+#workspaces button label {
+    color: #B8C0E2;
+    font-size: 14px;
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+}
+
+#workspaces button:hover {
+    background-color: #89B4FB;
+}
+
 
 
