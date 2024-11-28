@@ -49,6 +49,8 @@ nixos-enter -- nix-shell -p expect --run '
     expect eof
   "
 
+  echo Unpacking .nar file, This will take a while
+
 
 
   nix-store --import < bowos-packages.nar
