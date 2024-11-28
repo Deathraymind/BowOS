@@ -62,10 +62,9 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 0px 0px 0px;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
-    border-right: 2px solid #cad3f5; 
 }
 
 #pulseaudio {
@@ -76,10 +75,11 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
     transition: background-color 0.3s ease;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
+    border-left: 2px solid #cad3f5;
 }
 
 #pulseaudio:hover {
@@ -95,11 +95,10 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 0px 0px 0px 0px;
     transition: background-color 0.3s ease;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
-    border-left: 2px solid #cad3f5; 
 }
 
 #backlight:hover {
@@ -116,9 +115,10 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 10px 10px 0px;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
+    border-right: 2px solid #cad3f5;
 }
 
 #cpu {
