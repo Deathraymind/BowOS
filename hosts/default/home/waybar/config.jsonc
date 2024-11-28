@@ -7,9 +7,9 @@
     "height": "20",
     "gtk-layer-shell": true,
 
-    "modules-left": [ "cpu", "memory", "battery"],
+    "modules-left": [ "cpu", "battery", "memory" ],
     "modules-center": ["hyprland/workspaces", "clock", "custom/launcher"],
-    "modules-right": [ "backlight", "pulseaudio", "tray", "custom/notification"],
+    "modules-right": [ "pulseaudio", "backlight", "tray", "custom/notification"],
 
     "hyprland/workspaces": {
     "format": "{icon} {windows}",
