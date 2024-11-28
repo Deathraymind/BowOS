@@ -4,12 +4,9 @@
 {
   imports =
     [ 
-      
     ./stylix.nix
-    /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
-      
+    /etc/nixos/hardware-configuration.nix 
     ];
-
 # run these two commands
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
@@ -19,7 +16,6 @@ nixpkgs.config.packageOverrides = pkgs: {
         config = config.nixpkgs.config;
     };
 };
-
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -36,13 +32,8 @@ nixpkgs.config.packageOverrides = pkgs: {
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
  time.timeZone = lib.mkDefault "Asia/Tokyo"; 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. 
 
-  # Configure w network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-# Set your time zone. time.timeZone = "Asia/Tokyo"; Select internationalisation properties. i18n.defaultLocale = "en_US.UTF-8";
-
+  # Set you location
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -79,9 +70,7 @@ nixpkgs.config.packageOverrides = pkgs: {
 #                              |_|      
 
   programs.hyprland = {
-    # Install the packages from nixpkgs
     enable = true;
-    # Whether to enable XWayland
     xwayland.enable = true;
   };
 
@@ -96,13 +85,11 @@ nixpkgs.config.packageOverrides = pkgs: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-
     gnupg 
     pinentry
     direnv
     cargo-tauri
     rustup
-
     vscode
     rustup
     blender
@@ -122,9 +109,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     wl-clipboard
     checkra1n
     btop
-# test
-    pciutils # lspci
-    usbutils # lsusb
+    pciutils 
+    usbutils 
     libva
     lazygit
     # audio
@@ -134,14 +120,11 @@ nixpkgs.config.packageOverrides = pkgs: {
     # network
     networkmanager
     networkmanagerapplet
-
     # bluetooth
     bluez
     blueman
-
     brightnessctl
     playerctl
-    # dunst # this is the notification daemon.
     swaynotificationcenter
 
     # screenshot
@@ -162,11 +145,9 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     # theme stuff
     nwg-look
-
-    hyprland 
     hyprpaper
     fastfetch
-    unstable.hyprlock # The unstable. is pulled from the unstable channel of NixOS
+    unstable.hyprlock 
     pavucontrol 
     pipewire
     steam
@@ -179,11 +160,8 @@ nixpkgs.config.packageOverrides = pkgs: {
     playerctl
     dconf
     glib
-    
-
     # Virtual Machine
     qemu
-
     unstable.r2modman
     flatpak
     prismlauncher
@@ -193,31 +171,16 @@ nixpkgs.config.packageOverrides = pkgs: {
     obsidian
     firefox
     whatsapp-for-linux
-
-    # Pytorch/Skynet
-    # python3
-    # python3
-    # python3Packages.pytorch
-
-    remmina
-
     polkit
     lxqt.lxqt-policykit
-
     krita
-
     expressvpn
-
     kdePackages.kdeconnect-kde
-
     obs-studio
-
     ranger
-
     # Screen Sharing
     pipewire
     wireplumber
-
     # Phone Sync
     scrcpy
     v4l2-relayd
@@ -226,15 +189,12 @@ nixpkgs.config.packageOverrides = pkgs: {
     android-tools
     teamviewer
     woeusb-ng
-
     virtualboxKvm
-
     spicetify-cli
     gcc
     cpufrequtils 
     vencord
     vesktop
-
     jdk
     nerdfonts
   ];
@@ -257,7 +217,7 @@ fonts.packages = with pkgs; [
   security.polkit.enable = true;
   services.expressvpn.enable = true;
   services.flatpak.enable = true;
-  services.openssh.enable = true; # enables the sshd server on the computer
+  services.openssh.enable = true; 
 
 
 # power saving
@@ -267,40 +227,18 @@ fonts.packages = with pkgs; [
       CPU_SCALING_GOVERNOR_ON_BAT="powersave";
       CPU_BOOST_ON_BAT=0;
       CPU_BOOST_ON_AC=1;
-      
-        #CPU_SCALING_GOVERNOR_ON_AC="powersave";
-
-      # The following prevents the battery from charging fully to
-      # preserve lifetime. Run `tlp fullcharge` to temporarily force
-      # full charge.
-      # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-
-      # 100 being the maximum, limit the speed of my CPU to reduce
-      # heat and increase battery usage:
       CPU_MAX_PERF_ON_AC=95;
       CPU_MAX_PERF_ON_BAT=30;
     };
   };
 
-    #environment = {
-    #variables = {
-    #http_proxy = "http://192.168.49.1:8000";
-    #https_proxy = "http://192.168.49.1:8000";
-    #ftp_proxy = "http://192.168.49.1:8000";
-    #no_proxy = "localhost,127.0.0.1,::1";
-    #};
-    #};
-    
-
-  services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
-  services.openssh.passwordAuthentication = true; # /// or false to disable password authentication
-
-  # Steam
+  services.openssh.permitRootLogin = "yes"; 
+  services.openssh.passwordAuthentication = true; 
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true; 
   }; 
  
   # Graphics
@@ -311,11 +249,11 @@ fonts.packages = with pkgs; [
   services.xserver.videoDrivers = ["amdgpu"];
 
   # Enable networking
-  networking.networkmanager.enable = true; # Enables dhcp and ethernet support IMPORTANT
+  networking.networkmanager.enable = true; 
 
   # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.powerOnBoot = true; 
   services.blueman.enable = true;
 
   # Sound
@@ -345,29 +283,24 @@ fonts.packages = with pkgs; [
 #|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
 networking.firewall = {
-  enable = true; # Make sure the firewall is enabled
+  enable = true; 
   
-  allowedTCPPorts = [ 9943 9944 51112 ]; # List of TCP ports to open
-  allowedUDPPorts = [ 9943 9944 51112 ]; # List of UDP ports to open, if needed
-  allowedTCPPortRanges = [  { from = 1714; to = 1764; }]; # List of TCP ports to open
-  allowedUDPPortRanges = [  { from = 1714; to = 1764; }]; # List of UDP ports to open, if needed
+  allowedTCPPorts = [ 9943 9944 51112 ]; 
+  allowedUDPPorts = [ 9943 9944 51112 ]; 
+  allowedTCPPortRanges = [  { from = 1714; to = 1764; }]; 
+  allowedUDPPortRanges = [  { from = 1714; to = 1764; }]; 
  
 };
 
-
 # Virtual Machines
-
+programs.virt-manager.enable = true;
 virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [virtiofsd];
     };
-programs.virt-manager.enable = true;
 
   
-  nixpkgs.config.permittedInsecurePackages = [
- "electron-27.3.11"
-  ];
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # this is a nixos experimental feature called flakes
-  system.stateVersion = "24.05"; # Did you read the comment? tahdah
+nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
+nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+system.stateVersion = "24.05"; 
 }

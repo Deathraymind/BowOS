@@ -1,15 +1,9 @@
 # home.nix
-{ config, pkgs, lib, ... }:
-
-
-{
+{ config, pkgs, lib, ... }: {
    
    imports = [
-     #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
-        # ./theme.nix
     ./home/blueTheme/nvim/nvim.nix
     ./home/blueTheme/waybar/waybar.nix
-        # ./homeStylix.nix
   ];
 
   home.file = { 
@@ -43,27 +37,24 @@
   home.homeDirectory = "/home/bowyn";
   
 
+  # User Packages
   home.packages = with pkgs; [
     nixd
-
   ];
 
- 
+  programs = {
+    kitty.enable = true;
+    home-manager.enable = true;
+    starship.enable = false;
+    };
 
-  # basic configuration of git, please change to your own
+
+  # User Configuration
   programs.git = {
     enable = true;
     userName = "Deathraymind";
     userEmail = "deathraymind@gmail.com";
   };
 
-  # Home manage version
   home.stateVersion = "24.05";
-
-  programs.kitty.enable = true;
-  programs.home-manager.enable = true;
-  programs.starship.enable = false;
-
-
-  # Let home Manager install and manage itself2.
 }
