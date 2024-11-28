@@ -5,7 +5,7 @@
   imports =
     [ 
       
-            # ./stylix.nix
+    ./stylix.nix
     /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
     ];
@@ -252,7 +252,6 @@ fonts.packages = with pkgs; [
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
 
-stylix.image = /home/bowyn/bowos/wallpaper/wallpapers/wp.png;
   programs.kdeconnect.enable = true; 
   services.udisks2.enable = true; 
   security.polkit.enable = true;

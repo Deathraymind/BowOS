@@ -6,11 +6,12 @@
     lua-language-server        # Lua LSP
     nixd
     jdt-language-server
-
+    
     #none_ls
     stylua
     statix
     nixpkgs-fmt
+    nodejs
     ];
 
   programs.neovim = {

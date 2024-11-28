@@ -8,6 +8,7 @@
      #./theme.nix # Calls the files theme.nix which contains the scripts and packages for theming.
         # ./theme.nix
     ./home/blueTheme/nvim/nvim.nix
+    ./home/blueTheme/waybar/waybar.nix
         # ./homeStylix.nix
   ];
 
@@ -22,31 +23,32 @@
     recursive = true; # recusris the entire directory
   };
 
-  home.file."/home/bowyn/.config/" = { # this is where you want the file
-    source = ./home/blueTheme; # this is where you are pulling the file from
-    recursive = true; # recusris the entire directory
+  home.file."/home/bowyn/.config/hypr/" = { 
+    source = ./home/blueTheme/hypr; 
+    recursive = true; 
+  };
+
+  home.file."/home/bowyn/.config/swaync/" = { 
+    source = ./home/blueTheme/swaync; 
+    recursive = true; 
+  };
+
+
+  home.file."/home/bowyn/.config/nvim/" = { 
+    source = ./home/blueTheme/nvim; 
+    recursive = true; 
   };
 
   home.username = "bowyn";
   home.homeDirectory = "/home/bowyn";
   
 
-  # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     nixd
 
   ];
 
-# home.nix
  
-home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME="qt5ct";
-  };
-qt = {
-    enable = true;
-      style.package = pkgs.libsForQt5.breeze-qt5;
-      style.name = "breeze-dark";
-  };
 
   # basic configuration of git, please change to your own
   programs.git = {
@@ -58,20 +60,10 @@ qt = {
   # Home manage version
   home.stateVersion = "24.05";
 
-  # Let home Manager install and manage itself2.
-  stylix.enable = true;
+  programs.kitty.enable = true;
   programs.home-manager.enable = true;
   programs.starship.enable = false;
-  stylix.targets.kitty.enable = true;
-stylix.targets.kde.enable = true;
-  stylix.polarity = "dark";
-  stylix.image = /home/bowyn/bowos/wallpaper/wallpapers/wp.png;
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.fonts = {
-        monospace = {
-            package = pkgs.google-fonts;  # Replace with the correct package for Roboto Mono
-            name = "Roboto Mono";         # Specify the font name
-        };
-  };
+
+  # Let home Manager install and manage itself2.
 }

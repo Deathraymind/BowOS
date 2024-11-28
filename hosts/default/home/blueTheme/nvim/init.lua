@@ -22,5 +22,7 @@ vim.api.nvim_set_keymap('n', '<C-x>', ':lcd %:p:h<CR>:ToggleTerm<CR>', { noremap
 vim.opt.tabstop = 4         -- Number of spaces that a <Tab> counts for
 vim.opt.shiftwidth = 4      -- Number of spaces to use for autoindent
 vim.opt.expandtab = true    -- Use spaces instead of tabs
-
+vim.keymap.set('i', '<A-a>', function()
+  require('copilot.suggestion'):accept()
+end, { desc = 'Accept full Copilot suggestion' })
 
