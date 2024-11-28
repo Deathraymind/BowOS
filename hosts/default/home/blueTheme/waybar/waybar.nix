@@ -15,14 +15,15 @@
     settings = [
       {
         layer = "top";
+        exclusive = true;
         position = "top";
         passthrough = false;
         height = 20;
         gtk-layer-shell = true;
         modules-left = [
           "cpu"
-          "memory"
           "battery"
+          "memory"
         ];
         modules-center = [
           "hyprland/workspaces"
@@ -30,8 +31,8 @@
           "custom/launcher"
         ];
         modules-right = [
-          "backlight"
           "pulseaudio"
+          "backlight"
           "tray"
           "custom/notifications"
         ];
@@ -41,9 +42,6 @@
           format-window-seperator = " ";
           window-rewrite-default = "";
           window-rewrite = {
-            title<.*youtube.*> = "";
-            class<firefox> = "";
-            class<firefox> title<.*github.*> = "";
             kitty = "";
             code = "󰨞";
           };
@@ -56,13 +54,13 @@
         
         cpu = {
           interval = 10;
-          format = "  {usage}%";
+          format = "  {usage}%";
           max-length = 10;
         };
         
         memory = {
           interval = 1;
-          format = "  {used:.01f}G/{total:0.1f}G";
+          format = "  {used:.01f}G/{total:0.1f}G";
         };
         
         backlight = {
@@ -83,13 +81,13 @@
           on-scroll-down = "pamixer -d 5";
           scroll-step = 5;
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
           };
         };
         
@@ -103,7 +101,7 @@
           format-charging = " {capacity}% ";
           format-plugged = " {capacity}% ";
           format-alt = "{time} {icon} ";
-          format-icons = ["" "" "" "" ""];
+          format-icons = ["" "" "" "" ""];
         };
         
         tray = {
@@ -111,13 +109,13 @@
           spacing = 10;
         };
         
-        custom/notifications = {
-          format = "";
-          on-click = "rofi -show run";
+        "custom/notifications" = {
+          format = "";
+          on-click = "swaync-client -t";
         };
         
-        custom/launcher = {
-          format = "";
+        "custom/launcher" = {
+          format = "";
           on-click = "rofi -show run";
         };
       }
@@ -125,8 +123,9 @@
 
     # Theme Waybar
 
-  style = concatStrings = [
+  style = lib.concatStrings [
 ''
+
 * {
     border: none;
     border-radius: 0;
@@ -191,10 +190,9 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 0px 0px 0px;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
-    border-right: 2px solid #cad3f5; 
 }
 
 #pulseaudio {
@@ -205,10 +203,11 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
     transition: background-color 0.3s ease;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
+    border-left: 2px solid #cad3f5;
 }
 
 #pulseaudio:hover {
@@ -224,11 +223,10 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 0px 0px 0px 0px;
     transition: background-color 0.3s ease;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
-    border-left: 2px solid #cad3f5; 
 }
 
 #backlight:hover {
@@ -245,9 +243,10 @@ window#waybar {
     margin-bottom: 1px;
     margin-left: 0px;
     margin-right: 0px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 10px 10px 0px;
     border-top: 2px solid #cad3f5;
     border-bottom: 2px solid #cad3f5;
+    border-right: 2px solid #cad3f5;
 }
 
 #cpu {
@@ -289,7 +288,7 @@ window#waybar {
     border-radius: 0px 0px 0px 0px;
 }
 
-#custom-notification {
+#custom-notifications {
     background: #24273a;
     opacity: 0.9;
     padding: 0px 10px;
@@ -304,7 +303,7 @@ window#waybar {
     border-right: 2px solid #cad3f5; 
 }
 
-#custom-notification:hover {
+#custom-notifications:hover {
     background-color: #89B4FB;
 }
 
@@ -356,14 +355,7 @@ window#waybar {
 
 
 
-
-
-
-
 ''
-  ] 
-    
-
-  
+  ]; 
   }; 
 }
