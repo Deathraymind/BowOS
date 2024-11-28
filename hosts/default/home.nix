@@ -4,6 +4,7 @@
    imports = [
     ./home/blueTheme/nvim/nvim.nix
     ./home/blueTheme/waybar/waybar.nix
+    ./homeStylix.nix
   ];
 
   home.file = { 
@@ -48,15 +49,7 @@
     starship.enable = false;
 
     };
-    gtk = {
-        enable = true;
-        iconTheme = {
-        name = "BeautyLine";
-        package = pkgs.beauty-line-icon-theme;
-      };
-
-        };
-
+  
   # User Configuration
   programs.git = {
     enable = true;
