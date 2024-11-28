@@ -5,7 +5,7 @@
   imports =
     [ 
       
-    ./stylix.nix
+            # ./stylix.nix
     /etc/nixos/hardware-configuration.nix # Include the results of the hardware scan.
       
     ];
@@ -162,10 +162,6 @@ nixpkgs.config.packageOverrides = pkgs: {
 
     # theme stuff
     nwg-look
-    libsForQt5.qt5ct
-    qt6ct
-    gtk4
-    gtk3
 
     hyprland 
     hyprpaper
@@ -255,10 +251,8 @@ fonts.packages = with pkgs; [
 # ___) |  __/ |   \ V /| | (__| |  __/\__ \
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
-  stylix.enable=true;
-  stylix.image=/home/bowyn/bowos/wallpaper/wallpapers/wp.png;
-  stylix.polarity = "dark";
 
+stylix.image = /home/bowyn/bowos/wallpaper/wallpapers/wp.png;
   programs.kdeconnect.enable = true; 
   services.udisks2.enable = true; 
   security.polkit.enable = true;
@@ -300,7 +294,7 @@ fonts.packages = with pkgs; [
     
 
   services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
-  services.openssh.passwordAuthentication = true; # // or false to disable password authentication
+  services.openssh.passwordAuthentication = true; # /// or false to disable password authentication
 
   # Steam
 
