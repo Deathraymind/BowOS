@@ -19,6 +19,10 @@ echo this make take a minute
 # nixos-enter 
 # nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
+nix-store -qR /run/current-system > installed-packages.txt
+nix-store --export $(cat installed-packages.txt) > /mnt/tmp/bowos-packages.nar
+nix-store --import < /mnt/tmp/bowos-packages.nar --store /mnt/nix/store
+
 cp -r /etc/BowOS /mnt
 nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   

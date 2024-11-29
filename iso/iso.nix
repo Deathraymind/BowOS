@@ -4,6 +4,7 @@
   imports = [
          <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     # to build the os run
+    # sudo dd bs=4M if=result/iso/nixos-25.05.19700101.dirty-x86_64-linux.iso of=/dev/sdX status=progress oflag=sync
     #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
     # nix build .#nixosConfigurations.bowos.config.system.build.isoImage --impure
     # to creat a .nar file with all the goofy files use this 
@@ -69,7 +70,7 @@
         nwg-look
         hyprpaper
         fastfetch
-        unstable.hyprlock 
+        hyprlock 
         pavucontrol 
         pipewire
         xorg.xrandr
