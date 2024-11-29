@@ -48,7 +48,6 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
     expect eof
   "
 
-  echo Unpacking .nar file, This will take a while
 
 
 
@@ -59,8 +58,9 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   rm -r .git 
   echo building configuration
   export NIXPKGS_ALLOW_INSECURE=1
-  sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-  sudo nix-channel --update"
+  nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+  nix-channel --update"
+  NIX_CONFIG="experimental-features = nix-command flakes"
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
