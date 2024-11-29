@@ -27,7 +27,7 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   export BOWOS_USER=bowyn
   export BOWOS_PASSWORD=6255
   # Create the user
-  useradd -m "$BOWOS_USER"
+  useradd -m "$BOWOS_USER 
 
 
   expect -c "
@@ -59,6 +59,8 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   rm -r .git 
   echo building configuration
   export NIXPKGS_ALLOW_INSECURE=1
+  sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+  sudo nix-channel --update"
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
