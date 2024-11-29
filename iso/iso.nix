@@ -43,6 +43,28 @@
 
     ];
 
+      environment.etc."issue".text = ''
+\e[34m
+.--------------------------------------------.
+|██████╗  ██████╗ ██╗    ██╗ ██████╗ ███████╗|
+|██╔══██╗██╔═══██╗██║    ██║██╔═══██╗██╔════╝|
+|██████╔╝██║   ██║██║ █╗ ██║██║   ██║███████╗|
+|██╔══██╗██║   ██║██║███╗██║██║   ██║╚════██║|
+|██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
+|╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
+'--------------------------------------------'
+Welcome to BowOS
+\e[0m
+
+\e[34mSteps to install:\e[0m
+\e[34m1. Set a root password:\e[0m
+   \e[34msudo passwd root\e[0m
+\e[34m2. Navigate to the /etc directory:\e[0m
+   \e[34mcd /etc\e[0m
+\e[34m3. Run the installation script:\e[0m
+   \e[34mbash install-bowos.sh\e[0m
+'';
+
 
   boot.loader.grub = lib.mkForce {
     enable = true;
