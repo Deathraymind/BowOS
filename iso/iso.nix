@@ -5,6 +5,7 @@
          <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     # to build the os run
     #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
+    # nix build .#nixosConfigurations.bowos.config.system.build.isoImage --impure
     # to creat a .nar file with all the goofy files use this 
     # nix-store -qR /run/current-system > installed-packages.txt
     # sed -i '/dbus/d' installed-packages.txt 
@@ -104,6 +105,7 @@ Welcome to BowOS
 
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-
 };
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
 }

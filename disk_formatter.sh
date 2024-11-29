@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# Redirect all output to a log file
+exec > >(tee -i /mnt/disk_formatter.log)
+exec 2>&1
+
 # Call the Python Textual UI to format the disk (Add the actual command here)
 # python3 format_disk.py
 
@@ -8,35 +14,20 @@ nixos-install --no-root-passwd
 echo copying packages
 echo this make take a minute
 
-# Check if BowOS directory exists
-if [ -d /etc/BowOS ]; then
-    cp -r /etc/BowOS /mnt
-else
-    echo "BowOS directory not found. Skipping copy."
-fi
-
-# Check if the .nar file exists before copying
-if [ -f /etc/bowos-packages.nar ]; then
-    cp -L /etc/bowos-packages.nar /mnt
-    echo "bowos-packages.nar file copied successfully."
-else
-    echo "bowos-packages.nar not found. Skipping copy."
-fi
-
-# Add these lines 
+# add these lines 
 # cp bowos-packages.nar /mnt 
 # nixos-enter 
 # nix-store --import < bowos-packages.nar
-
 # Enter NixOS environment and run further setup
 nixos-enter -- nix-shell -p expect --run '
+
   # Set the password for the new user and root using expect
   
   export BOWOS_USER=bowyn
   export BOWOS_PASSWORD=6255
-  
   # Create the user
   useradd -m "$BOWOS_USER"
+
 
   expect -c "
     spawn passwd $BOWOS_USER
@@ -56,19 +47,16 @@ nixos-enter -- nix-shell -p expect --run '
     expect eof
   "
 
-  echo Unpacking .nar file. This will take a while.
+  echo Unpacking .nar file, This will take a while
 
-  # Check if the .nar file exists before importing
-  if [ -f /mnt/bowos-packages.nar ]; then
-      nix-store --import < /mnt/bowos-packages.nar
-  else
-      echo "bowos-packages.nar not found. Skipping import."
-  fi
+
+
+  
   
   # Rebuild the system with the new configurations
   cd BowOS
   rm -r .git 
-  echo Building configuration
+  echo building configuration
   export NIXPKGS_ALLOW_INSECURE=1
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
