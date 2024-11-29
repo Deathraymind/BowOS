@@ -2,7 +2,7 @@
 
 {
   imports = [
-    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+         <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     # to build the os run
     #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
     # to creat a .nar file with all the goofy files use this 
@@ -83,12 +83,27 @@ Welcome to BowOS
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     environment.etc."install_bowos.sh".source = ./install_bowos.sh;
-    environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
-    system.build.isoImage.isoName = "bowos-x86-v1.0.1";
-    
+    # environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
+    # system.build.isoImage.isoName = lib.mkForce "bowos-x86-v1.0.1"; 
 
 
     services.openssh.enable = true; # enables the sshd server on the computer 
     services.openssh.permitRootLogin = "yes";  # // or "no" if you want to disable root login
     services.openssh.passwordAuthentication = true; # // or false to disable password authentication
+
+
+
+      stylix = {
+    enable = true;
+    
+    targets.console.enable = true;
+    image = pkgs.fetchurl {
+      url = "https://wallpapers-clan.com/wp-content/uploads/2024/02/jujutsu-kaisen-sukuna-anime-desktop-wallpaper-preview.jpg";
+      sha256 = "sha256-bEBcdjXbUBZdbgxIz2pBzOi+wp47m/siB+1XI7hOUHY=";
+    }; 
+
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+
+};
 }
