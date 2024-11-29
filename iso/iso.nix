@@ -23,26 +23,78 @@
 
     environment.systemPackages = with pkgs; [
       # Include all your packages here
-      neovim
-      git
-      kitty
-      ethtool
-      pciutils
-      usbutils
-      pamixer
-      networkmanager
-      networkmanagerapplet
-      brightnessctl
-      imagemagick
-      ffmpegthumbs
-      nwg-look
-      pipewire
-      htop
-      dconf
-      glib
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       python3
       python3Packages.textual
+      wl-color-picker
+        neovim
+        git
+        kitty
+        waybar
+        rofi
+        ethtool
+        gnome.nautilus
+        vlc
+        wl-clipboard
+        libva
+        lazygit
+        # audio
+        pipewire
+        pamixer
+        # network
+        networkmanager
+        networkmanagerapplet
+        # bluetooth
+        bluez
+        blueman
+        brightnessctl
+        playerctl
+        swaynotificationcenter
+
+        # screenshot
+        grim
+        slurp
+        swappy
+        cliphist
+        hyprpicker
+
+        # dependencies
+        polkit-kde-agent
+        xdg-desktop-portal-hyprland
+        jq
+        imagemagick
+        ffmpegthumbs
+
+        # theme stuff
+        nwg-look
+        hyprpaper
+        fastfetch
+        unstable.hyprlock 
+        pavucontrol 
+        pipewire
+        xorg.xrandr
+        home-manager
+        htop
+        playerctl
+        dconf
+        glib
+        # Virtual Machine
+        qemu
+        gnome.gnome-disk-utility
+        udisks2
+        firefox
+        polkit
+        lxqt.lxqt-policykit
+        ranger
+        # Screen Sharing
+        pipewire
+        wireplumber
+        # Phone Sync
+        scrcpy
+        v4l2-relayd
+        v4l-utils
+        android-tools
+        cpufrequtils 
 
 
     ];
