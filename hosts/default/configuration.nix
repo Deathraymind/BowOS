@@ -22,6 +22,21 @@ nixpkgs.config.packageOverrides = pkgs: {
     };
 };
 
+
+    # this text is 3d-ASSCI
+  environment.etc."issue".text = ''
+\e[34m
+.--------------------------------------------.
+|██████╗  ██████╗ ██╗    ██╗ ██████╗ ███████╗|
+|██╔══██╗██╔═══██╗██║    ██║██╔═══██╗██╔════╝|
+|██████╔╝██║   ██║██║ █╗ ██║██║   ██║███████╗|
+|██╔══██╗██║   ██║██║███╗██║██║   ██║╚════██║|
+|██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
+|╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
+'--------------------------------------------'
+Welcome to BowOS \e[0m
+\n \l
+'';
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -88,38 +103,21 @@ users.users.${username} = {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    gnupg 
-    pinentry
-    direnv
-    cargo-tauri
-    rustup
-    vscode
-    rustup
-    blender
     wl-color-picker
-    nodePackages.browser-sync
     neovim
     git
     kitty
     waybar
-    librepcb
     rofi
-    nerdfonts
     ethtool
     gnome.nautilus
-    libsForQt5.filelight
     vlc
     wl-clipboard
-    checkra1n
-    btop
-    pciutils 
-    usbutils 
     libva
     lazygit
     # audio
     pipewire
     pamixer
-    logseq
     # network
     networkmanager
     networkmanagerapplet
@@ -140,11 +138,9 @@ users.users.${username} = {
     # dependencies
     polkit-kde-agent
     xdg-desktop-portal-hyprland
-    parallel
     jq
     imagemagick
     ffmpegthumbs
-    kde-cli-tools
 
     # theme stuff
     nwg-look
@@ -153,11 +149,7 @@ users.users.${username} = {
     unstable.hyprlock 
     pavucontrol 
     pipewire
-    steam
     xorg.xrandr
-    obs-studio
-    appimage-run
-    flatpak
     home-manager
     htop
     playerctl
@@ -165,21 +157,11 @@ users.users.${username} = {
     glib
     # Virtual Machine
     qemu
-    unstable.r2modman
-    flatpak
-    prismlauncher
-    gnome.gnome-terminal
     gnome.gnome-disk-utility
     udisks2
-    obsidian
     firefox
-    whatsapp-for-linux
     polkit
     lxqt.lxqt-policykit
-    krita
-    expressvpn
-    kdePackages.kdeconnect-kde
-    obs-studio
     ranger
     # Screen Sharing
     pipewire
@@ -188,24 +170,11 @@ users.users.${username} = {
     scrcpy
     v4l2-relayd
     v4l-utils
-    localsend
     android-tools
-    teamviewer
-    woeusb-ng
-    virtualboxKvm
-    spicetify-cli
-    gcc
     cpufrequtils 
-    vencord
-    vesktop
-    jdk
-    nerdfonts
   ];
 
 
-fonts.packages = with pkgs; [
-        nerdfonts
-];
 
 
 # ____                  _      _           
@@ -215,11 +184,8 @@ fonts.packages = with pkgs; [
 #|____/ \___|_|    \_/ |_|\___|_|\___||___/
 
 
-  programs.kdeconnect.enable = true; 
   services.udisks2.enable = true; 
   security.polkit.enable = true;
-  services.expressvpn.enable = true;
-  services.flatpak.enable = true;
   services.openssh.enable = true; 
 
 
@@ -238,19 +204,14 @@ fonts.packages = with pkgs; [
   services.openssh.permitRootLogin = "yes"; 
   services.openssh.passwordAuthentication = true; 
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; 
-    dedicatedServer.openFirewall = true; 
-  }; 
  
   # Graphics
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
   };
-  services.xserver.videoDrivers = ["amdgpu"];
-
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = false;
   # Enable networking
   networking.networkmanager.enable = true; 
 
@@ -286,6 +247,8 @@ fonts.packages = with pkgs; [
 #|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
 networking.firewall = {
+    
+    
   enable = true; 
   
   allowedTCPPorts = [ 9943 9944 51112 ]; 
