@@ -25,27 +25,27 @@ nixos-enter -- nix-shell -p expect --run '
 
   # Set the password for the new user and root using expect
   
-  export NIX_USER=bowyn
-  export NIX_PASSWORD=6255
+  export BOWOS_USER=bowyn
+  export BOWOS_PASSWORD=6255
   # Create the user
-  useradd -m "$NIX_USER"
+  useradd -m "$BOWOS_USER"
 
 
   expect -c "
-    spawn passwd $NIX_USER
+    spawn passwd $BOWOS_USER
     expect \"New password:\"
-    send \"$NIX_PASSWORD\r\"
+    send \"$BOWOS_PASSWORD\r\"
     expect \"Retype new password:\"
-    send \"$NIX_PASSWORD\r\"
+    send \"$BOWOS_PASSWORD\r\"
     expect eof
   "
 
   expect -c "
     spawn passwd root
     expect \"New password:\"
-    send \"$NIX_PASSWORD\r\"
+    send \"$BOWOS_PASSWORD\r\"
     expect \"Retype new password:\"
-    send \"$NIX_PASSWORD\r\"
+    send \"$BOWOS_PASSWORD\r\"
     expect eof
   "
 

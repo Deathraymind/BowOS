@@ -13,7 +13,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 
     let
-      username = builtins.getEnv "NIX_USER";
+      username = builtins.getEnv "BOWOS_USER";
     in
     {
     nixosConfigurations = {

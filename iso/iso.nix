@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -44,13 +44,21 @@
     ];
 
 
-
+  boot.loader.grub = lib.mkForce {
+    enable = true;
+    device = "nodev"; # Required for ISO image builds
+    extraConfig = ''
+      set menu_color_normal=white/black
+      set menu_color_highlight=black/white
+      echo "Custom Banner: Welcome to the BowOS Installer"
+    '';
+  };
 
 
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-    environment.etc."install_bowos.sh".source = /home/bowyn/BowOSv0.01/iso/install_bowos.sh;
-    environment.etc."bowos-packages.nar".source = /home/bowyn/BowOSv0.01/iso/bowos-packages.nar;
+    environment.etc."install_bowos.sh".source = ./install_bowos.sh;
+    environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
 
     
 

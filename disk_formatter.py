@@ -100,9 +100,9 @@ class DiskFormatterApp(App):
             await self.run_command(f"mount -o umask=007 /dev/disk/by-label/boot /mnt/boot")
             
             # Run the disk_formatter.sh script and capture its output in real-time
-            await self.run_command(f"export NIX_USER={self.query_one('#username_input', Input).value}")
-            await self.run_command(f"sed -i 's/export NIX_USER=.*/export NIX_USER={self.query_one('#username_input', Input).value}/' disk_formatter.sh")
-            await self.run_command(f"sed -i 's/export NIX_PASSWORD=.*/export NIX_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh") 
+            await self.run_command(f"export BOWOS_USER={self.query_one('#username_input', Input).value}")
+            await self.run_command(f"sed -i 's/export BOWOS_USER=.*/export BOWOS_USER={self.query_one('#username_input', Input).value}/' disk_formatter.sh")
+            await self.run_command(f"sed -i 's/export BOWOS_PASSWORD=.*/export BOWOS_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh") 
             process = await asyncio.create_subprocess_shell(
                 'bash ./disk_formatter.sh',
                 stdout=asyncio.subprocess.PIPE,
