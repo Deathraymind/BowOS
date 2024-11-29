@@ -19,6 +19,7 @@ echo this make take a minute
 # nixos-enter 
 # nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
+cp -r /etc/BowOS /mnt
 nixos-enter -- nix-shell -p expect --run '
 
   # Set the password for the new user and root using expect
@@ -51,7 +52,7 @@ nixos-enter -- nix-shell -p expect --run '
 
 
 
-  
+     
   
   # Rebuild the system with the new configurations
   cd BowOS
