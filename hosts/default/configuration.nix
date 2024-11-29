@@ -1,6 +1,11 @@
 # configuration.nix
 { config, pkgs, inputs, lib, ... }:
 
+let
+  username = builtins.getEnv "bowos-user";
+in
+
+
 {
   imports =
     [ 
@@ -20,7 +25,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader.systemd-boot.enable = true;
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
@@ -31,7 +36,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
  time.timeZone = lib.mkDefault "Asia/Tokyo"; 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "bowos"; # Define your hostname.
 
   # Set you location
   i18n.extraLocaleSettings = {
@@ -53,11 +58,10 @@ nixpkgs.config.packageOverrides = pkgs: {
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bowyn = {
+users.users.${username} = {
     isNormalUser = true;
-    description = "bowyn";
+    description = "${username}";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [];
   };
 
 
