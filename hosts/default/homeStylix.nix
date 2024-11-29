@@ -8,7 +8,7 @@
     polarity = "dark";
     targets = {
       kitty.enable = true;
-      kde.enable = true;
+      kde.enable = true; # Enable KDE Plasma
     };
 
     fonts = {
