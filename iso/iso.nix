@@ -26,6 +26,7 @@
       # Include all your packages here
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       python3
+      rsync
       python3Packages.textual
       wl-color-picker
         neovim
