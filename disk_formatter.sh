@@ -21,15 +21,15 @@ echo this make take a minute
 # Enter NixOS environment and run further setup
 cp -r /etc/BowOS /mnt
 nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
-
-  # Set the password for the new user and root using expect
   
+  # Set the username and password
   export BOWOS_USER=bowyn
   export BOWOS_PASSWORD=6255
+
   # Create the user
-  useradd -m "$BOWOS_USER 
+  useradd -m "$BOWOS_USER"
 
-
+  # Set the password for the new user using expect
   expect -c "
     spawn passwd $BOWOS_USER
     expect \"New password:\"
@@ -39,6 +39,7 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
     expect eof
   "
 
+  # Set the password for root using expect
   expect -c "
     spawn passwd root
     expect \"New password:\"
@@ -48,19 +49,18 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
     expect eof
   "
 
-
-
-
-     
-  
   # Rebuild the system with the new configurations
-  cd BowOS
-  rm -r .git 
-  echo building configuration
+  cd BowOS || exit 1
+  rm -rf .git
+  echo "Building configuration..."
   export NIXPKGS_ALLOW_INSECURE=1
   nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-  nix-channel --update"
-  NIX_CONFIG="experimental-features = nix-command flakes"
+  nix-channel --update
+
+  # Set NIX_CONFIG for flakes
+  export NIX_CONFIG="experimental-features = nix-command flakes"
+  
+  # Rebuild NixOS
   nixos-rebuild boot --install-bootloader --impure --flake .
 '
 
