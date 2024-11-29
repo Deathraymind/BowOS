@@ -20,7 +20,7 @@ echo this make take a minute
 # nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
 cp -r /etc/BowOS /mnt
-nixos-enter -- nix-shell -p expect --run '
+nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
 
   # Set the password for the new user and root using expect
   

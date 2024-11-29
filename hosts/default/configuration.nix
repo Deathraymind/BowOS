@@ -50,7 +50,7 @@ Welcome to BowOS \e[0m
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
  time.timeZone = lib.mkDefault "Asia/Tokyo"; 
-  networking.hostName = "bowos"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Set you location
   i18n.extraLocaleSettings = {
