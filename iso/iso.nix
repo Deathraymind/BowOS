@@ -19,20 +19,6 @@
   ];
 
 
-inputs = {
-    stylix.url = "github:danth/stylix";
-  };
-
-      outputs = { nixpkgs, stylix, ... }: {
-    nixosConfigurations = {
-      "stylix-system" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          stylix.nixosModules.stylix
-        ];
-      };
-    };
-  };
 
     environment.systemPackages = with pkgs; [
       # Include all your packages here
