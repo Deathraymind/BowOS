@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }: 
 
 let
-  username = builtins.getEnv "bowos-user";
+  username = builtins.getEnv "BOWOS_USER";
 in
 
 {

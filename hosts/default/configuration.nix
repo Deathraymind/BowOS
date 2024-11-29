@@ -2,7 +2,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  username = builtins.getEnv "bowos-user";
+  username = builtins.getEnv "BOWOS_USER";
 in
 
 
@@ -25,7 +25,6 @@ nixpkgs.config.packageOverrides = pkgs: {
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
