@@ -1,3 +1,6 @@
+let
+  username = builtins.getEnv "NIX_USER";
+in
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,7 +12,7 @@
   };
 
   outputs = { nixpkgs, home-manager, stylix,  ... }@inputs: {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."bowos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         stylix.nixosModules.stylix
@@ -17,7 +20,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.bowyn = import ./hosts/default/home.nix;
+          home-manager.users.${username} = import ./hosts/default/home.nix;
         }
       ];
     };
