@@ -1,6 +1,4 @@
-let
-  username = builtins.getEnv "NIX_USER";
-in
+
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -11,7 +9,11 @@ in
     };
   };
 
-  outputs = { nixpkgs, home-manager, stylix,  ... }@inputs: {
+  outputs = { nixpkgs, home-manager, stylix,  ... }@inputs: 
+    let
+      username = builtins.getEnv "BOWOS_USER";
+    in
+    {
     nixosConfigurations."bowos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
