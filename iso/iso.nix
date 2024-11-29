@@ -6,7 +6,8 @@
     # to build the os run
     #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
     # to creat a .nar file with all the goofy files use this 
-    # nix-store -qR /run/current-system > installed-packages.txt 
+    # nix-store -qR /run/current-system > installed-packages.txt
+    # sed -i '/dbus/d' installed-packages.txt 
     # nix-store --export $(cat installed-packages.txt) > bowos-packages.nar
     # scp root@192.168.122.53:/mnt/all-installed-packages.nar /home/bowyn/BowOSv0.01/iso
     # Provide an initial copy of the NixOS channel so that the user
@@ -16,6 +17,22 @@
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
     <nixpkgs/nixos/modules/system/etc/etc.nix>
   ];
+
+
+inputs = {
+    stylix.url = "github:danth/stylix";
+  };
+
+      outputs = { nixpkgs, stylix, ... }: {
+    nixosConfigurations = {
+      "stylix-system" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          stylix.nixosModules.stylix
+        ];
+      };
+    };
+  };
 
     environment.systemPackages = with pkgs; [
       # Include all your packages here
@@ -81,7 +98,7 @@ Welcome to BowOS
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     environment.etc."install_bowos.sh".source = ./install_bowos.sh;
     environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
-
+    system.build.isoImage.isoName = "bowos-x86-v1.0.1";
     
 
 
