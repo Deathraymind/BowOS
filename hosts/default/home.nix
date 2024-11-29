@@ -1,5 +1,12 @@
 # home.nix
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: 
+
+let
+  username = builtins.getEnv "bowos-user";
+in
+
+{
+
    
    imports = [
     ./home/blueTheme/nvim/nvim.nix
@@ -8,7 +15,7 @@
   ];
 
   home.file = { 
-       "/home/bowyn/.profile".source = ./home/.profile; 
+       "/home/${username}/.profile".source = ./home/.profile; 
        "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json; 
        "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
   };
@@ -18,24 +25,24 @@
     recursive = true; # recusris the entire directory
   };
 
-  home.file."/home/bowyn/.config/hypr/" = { 
+  home.file."/home/${username}/.config/hypr/" = { 
     source = ./home/blueTheme/hypr; 
     recursive = true; 
   };
 
-  home.file."/home/bowyn/.config/swaync/" = { 
+  home.file."/home/${username}/.config/swaync/" = { 
     source = ./home/blueTheme/swaync; 
     recursive = true; 
   };
 
 
-  home.file."/home/bowyn/.config/nvim/" = { 
+  home.file."/home/${username}/.config/nvim/" = { 
     source = ./home/blueTheme/nvim; 
     recursive = true; 
   };
 
-  home.username = "bowyn";
-  home.homeDirectory = "/home/bowyn";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
   
 
   # User Packages
@@ -53,8 +60,8 @@
   # User Configuration
   programs.git = {
     enable = true;
-    userName = "Deathraymind";
-    userEmail = "deathraymind@gmail.com";
+    userName = "relaceme";
+    userEmail = "bowos@example.com";
   };
 
   home.stateVersion = "24.05";
