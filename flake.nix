@@ -14,7 +14,7 @@
       username = builtins.getEnv "BOWOS_USER";
     in
     {
-    nixosConfigurations."bowos" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         stylix.nixosModules.stylix
