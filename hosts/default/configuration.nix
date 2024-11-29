@@ -88,32 +88,17 @@ users.users.${username} = {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    gnupg 
-    pinentry
-    direnv
-    cargo-tauri
-    rustup
-    vscode
-    rustup
-    blender
     wl-color-picker
     nodePackages.browser-sync
     neovim
     git
     kitty
     waybar
-    librepcb
     rofi
-    nerdfonts
     ethtool
     gnome.nautilus
-    libsForQt5.filelight
     vlc
     wl-clipboard
-    checkra1n
-    btop
-    pciutils 
-    usbutils 
     libva
     lazygit
     # audio
@@ -140,7 +125,6 @@ users.users.${username} = {
     # dependencies
     polkit-kde-agent
     xdg-desktop-portal-hyprland
-    parallel
     jq
     imagemagick
     ffmpegthumbs
@@ -155,9 +139,7 @@ users.users.${username} = {
     pipewire
     steam
     xorg.xrandr
-    obs-studio
     appimage-run
-    flatpak
     home-manager
     htop
     playerctl
@@ -165,19 +147,13 @@ users.users.${username} = {
     glib
     # Virtual Machine
     qemu
-    unstable.r2modman
-    flatpak
     prismlauncher
-    gnome.gnome-terminal
     gnome.gnome-disk-utility
     udisks2
-    obsidian
     firefox
-    whatsapp-for-linux
     polkit
     lxqt.lxqt-policykit
     krita
-    expressvpn
     kdePackages.kdeconnect-kde
     obs-studio
     ranger
@@ -188,16 +164,9 @@ users.users.${username} = {
     scrcpy
     v4l2-relayd
     v4l-utils
-    localsend
     android-tools
-    teamviewer
-    woeusb-ng
-    virtualboxKvm
-    spicetify-cli
     gcc
     cpufrequtils 
-    vencord
-    vesktop
     jdk
     nerdfonts
   ];
