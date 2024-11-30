@@ -19,6 +19,7 @@ echo this make take a minute
 # nixos-enter 
 # nix-store --import < bowos-packages.nar
 # Enter NixOS environment and run further setup
+mkdir -p /mnt/tmp
 nix-store -qR /run/current-system > installed-packages.txt
 nix-store --export $(cat installed-packages.txt) > /mnt/tmp/bowos-packages.nar
 
