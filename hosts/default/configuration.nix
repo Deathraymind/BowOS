@@ -22,9 +22,28 @@ nixpkgs.config.packageOverrides = pkgs: {
     };
 };
 
-    boot.loader.grub.configurationName = "BowOS";
+  boot = {
+    # Disable systemd-boot
+    loader.systemd-boot.enable = false;
+    
+    # Enable GRUB
+    loader.grub = {
+      enable = true;
+      efiSupport = true;
+      devices = [ "nodev" ];
+      
+      # Try removing previous EFI-related settings
+    };
+    
+    # Modify EFI settings
+    loader.efi = {
+      canTouchEfiVariables = false;
+    };
+  };  
 
-    # this text is 3d-ASSCI
+
+
+# this text is 3d-ASSCI
   environment.etc."issue".text = ''
 \e[34m
 .--------------------------------------------.
@@ -39,8 +58,7 @@ Welcome to BowOS \e[0m
 \n \l
 '';
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    # boot.loader.efi.canTouchEfiVariables = true;
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
