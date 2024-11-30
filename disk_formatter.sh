@@ -21,7 +21,6 @@ echo this make take a minute
 # Enter NixOS environment and run further setup
 nix-store -qR /run/current-system > installed-packages.txt
 nix-store --export $(cat installed-packages.txt) > /mnt/tmp/bowos-packages.nar
-nix-store --import < /mnt/tmp/bowos-packages.nar --store /mnt/nix/store
 
 cp -r /etc/BowOS /mnt
 nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
@@ -60,6 +59,10 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   export NIXPKGS_ALLOW_INSECURE=1
   nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
   nix-channel --update
+
+  echo unpacking packages
+
+  nix-store --import < /tmp/bowos-packages.nar
 
   # Set NIX_CONFIG for flakes
   export NIX_CONFIG="experimental-features = nix-command flakes"
