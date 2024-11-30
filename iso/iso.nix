@@ -21,7 +21,8 @@
   ];
 
 
-boot.loader.grub.enable = true;  
+boot.loader.grub.enable = lib.mkForce true; 
+boot.loader.grub.devices = lib.mkForce [ "nodev" ];
     environment.systemPackages = with pkgs; [
       # Include all your packages here
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
