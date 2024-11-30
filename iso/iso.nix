@@ -138,9 +138,7 @@ Welcome to BowOS
 
 
 
-    boot.loader.grub.splashImage = null;
 
- # Enable syslinux bootloader for BIOS systems
 
 
 
