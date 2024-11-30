@@ -26,6 +26,16 @@
       # Include all your packages here
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       python3
+      nixd
+        # For nvim 
+    lua-language-server        
+    nixd
+    jdt-language-server
+    stylua
+    statix
+    nixpkgs-fmt
+    nodejs
+
       rsync
       python3Packages.textual
       wl-color-picker
@@ -125,20 +135,22 @@ Welcome to BowOS
 '';
 
 
-  boot.loader.grub = lib.mkForce {
+      boot.loader.grub = lib.mkForce {
     enable = true;
     device = "nodev"; # Required for ISO image builds
-    extraConfig = ''
-      set menu_color_normal=white/black
-      set menu_color_highlight=black/white
-      echo "Custom Banner: Welcome to the BowOS Installer"
-    '';
+    theme = pkgs.fetchFromGitHub {
+      owner = "dracula";
+      repo = "grub";
+      rev = "0e721d99dbf0d5d6c4fd489b88248365b7a60d12";  # or a specific commit hash for reproducibility
+      sha256 = "sha256-SBAXGJbNYdr89FSlqzgkiW/c23yTHYvNxxU8F1hMfXI=";
+    };
   };
 
 
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     environment.etc."install_bowos.sh".source = ./install_bowos.sh;
+    isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
     # environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
     # system.build.isoImage.isoName = lib.mkForce "bowos-x86-v1.0.1"; 
 
