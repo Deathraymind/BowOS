@@ -238,5 +238,6 @@ virtualisation.libvirtd = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 };
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    system.stateVersion = "24.05";
 }

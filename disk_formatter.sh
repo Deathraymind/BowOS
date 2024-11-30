@@ -9,6 +9,7 @@ exec 2>&1
 
 # After the disk is formatted, continue with the NixOS installation
 nixos-generate-config --root /mnt
+cp -f configuration.nix /mnt/etc/nixos
 nixos-install --no-root-passwd
 
 echo copying packages
