@@ -22,6 +22,7 @@ nixpkgs.config.packageOverrides = pkgs: {
     };
 };
 
+    boot.loader.grub.configurationName = "BowOS";
 
     # this text is 3d-ASSCI
   environment.etc."issue".text = ''

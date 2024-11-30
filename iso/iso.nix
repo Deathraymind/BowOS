@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
-         <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+   <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
     # to build the os run
     # sudo dd bs=4M if=result/iso/nixos-25.05.19700101.dirty-x86_64-linux.iso of=/dev/sdX status=progress oflag=sync
     #  nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=./iso.nix
@@ -128,26 +128,26 @@ Welcome to BowOS
 \e[34mSteps to install:\e[0m
 \e[34m1. Set a root password:\e[0m
    \e[34msudo passwd root\e[0m
-\e[34m2. Navigate to the /etc directory:\e[0m
+\e[34m2. switch to root:\e[0m
+   \e[34msu root\e[0m
+\e[34m3. Navigate to the /etc directory:\e[0m
    \e[34mcd /etc\e[0m
-\e[34m3. Run the installation script:\e[0m
+\e[34m4. Run the installation script:\e[0m
    \e[34mbash install-bowos.sh\e[0m
 '';
 
 
-      boot.loader.grub = lib.mkForce {
-    enable = true;
-    device = "nodev"; # Required for ISO image builds
-    theme = pkgs.fetchFromGitHub {
-      owner = "dracula";
-      repo = "grub";
-      rev = "0e721d99dbf0d5d6c4fd489b88248365b7a60d12";  # or a specific commit hash for reproducibility
-      sha256 = "sha256-SBAXGJbNYdr89FSlqzgkiW/c23yTHYvNxxU8F1hMfXI=";
-    };
-  };
+
+    boot.loader.grub.splashImage = null;
+
+ # Enable syslinux bootloader for BIOS systems
 
 
-    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/fonts/nerdfonts/shas.nix for the types of fonts
+
+
+
+
+
     isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     environment.etc."install_bowos.sh".source = ./install_bowos.sh;
     isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
