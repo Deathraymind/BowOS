@@ -21,7 +21,7 @@
   ];
 
 
-
+boot.loader.grub.enable = true;  
     environment.systemPackages = with pkgs; [
       # Include all your packages here
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
