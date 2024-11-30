@@ -7,6 +7,6 @@
     ];
 boot.loader.grub.device = "nodev";
 boot.loader.grub.enable = true;
-syste.stateVersion = "24.05";
+system.stateVersion = "24.05";
 
 }
