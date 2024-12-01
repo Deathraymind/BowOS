@@ -71,6 +71,5 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   
   # Rebuild NixOS
   nixos-rebuild boot --install-bootloader --impure --flake .#bowos
-  nixos-rebuild switch --impure --flake .#bowos
 '
 
