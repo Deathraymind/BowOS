@@ -22,24 +22,24 @@ nixpkgs.config.packageOverrides = pkgs: {
     };
 };
 
-  boot = {
-    # Disable systemd-boot
-    loader.systemd-boot.enable = false;
-    
-    # Enable GRUB
-    loader.grub = {
+
+
+boot = {
+  loader = {
+    grub = {
       enable = true;
       efiSupport = true;
       devices = [ "nodev" ];
-      
-      # Try removing previous EFI-related settings
+      # If you're using UEFI, specify the efi installation directory
+      efiInstallDir = "/boot/EFI";
     };
     
-    # Modify EFI settings
-    loader.efi = {
-      canTouchEfiVariables = false;
+    efi = {
+      canTouchEfiVariables = true;  # Changed from false
+      # Optional: specify the EFI system partition
+      # efiSysMountPoint = "/boot/efi";
     };
-  };  
+  };
 
 
 
