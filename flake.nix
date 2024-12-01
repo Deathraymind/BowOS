@@ -14,11 +14,14 @@
       username = builtins.getEnv "BOWOS_USER";
     in
     {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."bowos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         stylix.nixosModules.stylix
         ./hosts/default/configuration.nix
+        {
+        networking.hostName = "bowos";
+        }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

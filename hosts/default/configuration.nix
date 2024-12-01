@@ -23,25 +23,39 @@ nixpkgs.config.packageOverrides = pkgs: {
 };
 
 
+system.activationScripts.update-grub-menu = {
+  text = ''
+    echo "Updating GRUB menu entry name..."
 
-boot = {
-  loader = {
-    grub = {
-      enable = true;
-      efiSupport = true;
-      devices = [ "nodev" ];
-      # If you're using UEFI, specify the efi installation directory
-      efiInstallDir = "/boot/EFI";
-    };
-    
-    efi = {
-      canTouchEfiVariables = true;  # Changed from false
-      # Optional: specify the EFI system partition
-      # efiSysMountPoint = "/boot/efi";
-    };
+    GRUB_CFG="/boot/grub/grub.cfg"
+    BACKUP_GRUB_CFG="/boot/grub/grub.cfg.bak"
+    SEARCH_STR="\"NixOS"
+    REPLACE_STR="\"BowOS"
+
+    if [ -f "$GRUB_CFG" ]; then
+        cp "$GRUB_CFG" "$BACKUP_GRUB_CFG"
+        ${pkgs.gnused}/bin/sed -i "s/$SEARCH_STR/$REPLACE_STR/g" "$GRUB_CFG"
+    else
+        echo "Error: GRUB configuration file not found."
+    fi
+  '';
+};
+
+boot.loader = {
+  grub = {
+    enable = true;
+    efiSupport = true;
+    devices = [ "nodev" ]; 
+    configurationName = "BowOS";
+    fontSize = 16;
+    useOSProber = true;
   };
-
-
+  efi = {
+    canTouchEfiVariables = true;
+    # Optional: specify EFI mount point if non-standard
+    # efiSysMountPoint = "/boot/efi";
+  };
+};
 
 # this text is 3d-ASSCI
   environment.etc."issue".text = ''
@@ -69,7 +83,6 @@ Welcome to BowOS \e[0m
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
  time.timeZone = lib.mkDefault "Asia/Tokyo"; 
-  networking.hostName = "nixos"; # Define your hostname.
 
   # Set you location
   i18n.extraLocaleSettings = {

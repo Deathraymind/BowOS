@@ -70,6 +70,6 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   export NIX_CONFIG="experimental-features = nix-command flakes"
   
   # Rebuild NixOS
-  nixos-rebuild boot --install-bootloader --impure --flake .
+  nixos-rebuild boot --install-bootloader --impure --flake .#bowos
 '
 
