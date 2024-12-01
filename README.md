@@ -4,7 +4,12 @@
    - Download the BowOS ISO [here](#).
 
 2. **Flash the ISO**
-   - Use the `dd` command or Balena Etcher to flash the ISO to a USB stick.  
+   - Use the `dd` command
+   ```
+   sudo dd bs=4M if=bowos-x86_64-linux.iso of=/dev/sda status=progress oflag=sync
+   ```
+   - Replace sda with your usb drive use lsblk to see the usb drive. 
+   - or Balena Etcher to flash the ISO to a USB stick.  
      - Download Balena Etcher from [https://etcher.balena.io/](https://etcher.balena.io/).
 
 3. **Boot from USB**
