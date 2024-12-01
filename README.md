@@ -1,5 +1,9 @@
 # BowOS Installation Guide
 
+![image](https://github.com/user-attachments/assets/04a76591-0e72-49a1-8c80-d49fee72631e)
+
+
+
 1. **Download the ISO**
    - Download the BowOS ISO [here](#).
 
