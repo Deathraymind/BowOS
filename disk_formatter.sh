@@ -59,8 +59,6 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   rm -rf .git
   echo "Building configuration..."
   export NIXPKGS_ALLOW_INSECURE=1
-  nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-  nix-channel --update
 
   echo unpacking packages
 

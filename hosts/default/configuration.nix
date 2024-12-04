@@ -12,11 +12,6 @@ in
     ./stylix.nix
     /etc/nixos/hardware-configuration.nix 
     ];
-# run these two commands
-# sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-# sudo nix-channel --update
-# append unstable. to the package you want to pull from the unstable channel
-
 
 system.activationScripts.update-grub-menu = {
   text = ''
@@ -42,7 +37,7 @@ boot.loader = {
     efiSupport = true;
     devices = [ "nodev" ]; 
     configurationName = "BowOS";
-    fontSize = 16;
+    fontSize = 26;
     useOSProber = true;
   };
   efi = {
@@ -66,8 +61,6 @@ boot.loader = {
 Welcome to BowOS \e[0m
 \n \l
 '';
-  # Bootloader
-    # boot.loader.efi.canTouchEfiVariables = true;
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
