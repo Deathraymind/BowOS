@@ -226,7 +226,7 @@ programs.steam = {
     };
   };
 
-  services.openssh.permitRootLogin = "yes"; 
+  services.openssh.permitRootLogin = "no"; 
   services.openssh.passwordAuthentication = true; 
 
  
