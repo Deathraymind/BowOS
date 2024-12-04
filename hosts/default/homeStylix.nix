@@ -13,22 +13,8 @@
       kitty.enable = true;
     };
 
-    fonts = {
-      monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      # You can also set other font types if needed
-      sansSerif = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font";
-      };
-      serif = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-        name = "JetBrainsMono Nerd Font";
-      };
-    };
-  };
+          # You can also set other font types if needed
+           };
  gtk = {
         enable = true;
         iconTheme = {

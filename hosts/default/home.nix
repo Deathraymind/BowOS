@@ -54,7 +54,8 @@ in
     kitty.enable = true;
     home-manager.enable = true;
     starship.enable = false;
-
+    rofi.enable = true;
+    
     };
   
   # User Configuration
