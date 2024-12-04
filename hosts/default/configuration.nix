@@ -16,11 +16,6 @@ in
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
 # append unstable. to the package you want to pull from the unstable channel
-nixpkgs.config.packageOverrides = pkgs: {
-    unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-    };
-};
 
 
 system.activationScripts.update-grub-menu = {
@@ -178,7 +173,7 @@ users.users.${username} = {
     nwg-look
     hyprpaper
     fastfetch
-    unstable.hyprlock 
+    hyprlock 
     pavucontrol 
     pipewire
     xorg.xrandr
@@ -247,9 +242,7 @@ programs.steam = {
     enable = true;
     driSupport32Bit = true;
   };
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia.open = false;
-  # Enable networking
+   # Enable networking
   networking.networkmanager.enable = true; 
 
   # Bluetooth
