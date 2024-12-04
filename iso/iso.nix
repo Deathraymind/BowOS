@@ -146,7 +146,7 @@ Welcome to BowOS
 
 
 
-    isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+    # isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     environment.etc."install_bowos.sh".source = ./install_bowos.sh;
     isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
     # environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
