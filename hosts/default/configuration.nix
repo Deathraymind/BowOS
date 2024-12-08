@@ -47,6 +47,8 @@ boot.loader = {
   };
 };
 
+ boot.loader.systemd-boot.enable = false;
+
 # this text is 3d-ASSCI
   environment.etc."issue".text = ''
 \e[34m
@@ -64,6 +66,25 @@ Welcome to BowOS \e[0m
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
+  services.xserver.videoDrivers = [ "vmware" ];
+virtualisation.vmware.host.enable = true;
+virtualisation.vmware.guest.enable = true;
+boot.kernelPackages = pkgs.linuxPackages;
+
+
+qt.style = "adwaita-dark";
+qt.enable = true;
+qt.platformTheme = "gtk2";
+nixpkgs.config.qt5 = {
+  enable = true;
+  platformTheme = "qt5ct"; 
+    style = {
+      package = pkgs.utterly-nord-plasma;
+      name = "Utterly Nord Plasma";
+    };
+};
+
+
 
   boot.extraModprobeConfig = ''
   options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
@@ -95,7 +116,7 @@ Welcome to BowOS \e[0m
 users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" ];
   };
 
 
@@ -112,6 +133,7 @@ users.users.${username} = {
     xwayland.enable = true;
   };
 
+
 #__            _                         
 #|  _ \ __ _  ___| | ____ _  __ _  ___  ___ 
 #| |_) / _` |/ __| |/ / _` |/ _` |/ _ \/ __|
@@ -123,6 +145,12 @@ users.users.${username} = {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugins
+    qt5.qtbase
+    adwaita-qt
+    vmware-workstation 
     wl-color-picker
     neovim
     git
@@ -192,6 +220,8 @@ users.users.${username} = {
     v4l-utils
     android-tools
     cpufrequtils 
+        libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
   ];
 
 
@@ -287,9 +317,10 @@ virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [virtiofsd];
     };
+virtualisation.virtualbox.host.enable = true;
+users.extraGroups.vboxusers.members = [ "bowyn" ];
 
-  
 nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
 nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
-system.stateVersion = "24.05"; 
+system.stateVersion = "24.11"; 
 }
