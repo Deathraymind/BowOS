@@ -74,15 +74,12 @@ boot.kernelPackages = pkgs.linuxPackages;
 
 qt.style = "adwaita-dark";
 qt.enable = true;
-qt.platformTheme = "gtk2";
-nixpkgs.config.qt5 = {
-  enable = true;
-  platformTheme = "qt5ct"; 
-    style = {
-      package = pkgs.utterly-nord-plasma;
-      name = "Utterly Nord Plasma";
-    };
+
+environment.variables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
 };
+
+
 
 
 
