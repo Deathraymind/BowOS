@@ -21,10 +21,6 @@ in
        "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
   };
 
-  home.file."/usr/share/rofi" = { # this is where you want the file
-    source = ./home/blueTheme/rofi; # this is where you are pulling the file from
-    recursive = true; # recusris the entire directory
-  };
 
   home.file."/home/${username}/.config/hypr/" = { 
     source = ./home/blueTheme/hypr; 
@@ -55,8 +51,6 @@ in
     kitty.enable = true;
     home-manager.enable = true;
     starship.enable = false;
-    rofi.enable = true;
-    
     };
   
   # User Configuration

@@ -1,215 +1,295 @@
-{ pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  programs = {
-    rofi = {
-      enable = true;
-      package = pkgs.rofi-wayland;
-      extraConfig = {
-        modi = "drun,filebrowser,run";
-        show-icons = true;
-        icon-theme = "Papirus";
-        location = 0;
-        font = "JetBrainsMono Nerd Font Mono 12";
-        drun-display-format = "{icon} {name}";
-        display-drun = " Apps";
-        display-run = " Run";
-        display-filebrowser = " File";
-      };
-      theme =
-        let
-          inherit (config.lib.formats.rasi) mkLiteral;
-        in
-        {
-          "*" = {
-            bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
-            foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
-            active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
-            text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
-            text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
-            border-color = mkLiteral "#${config.stylix.base16Scheme.base0F}";
-            urgent = mkLiteral "#${config.stylix.base16Scheme.base0E}";
-          };
-          "window" = {
-            width = mkLiteral "50%";
-            transparency = "real";
-            orientation = mkLiteral "vertical";
-            cursor = mkLiteral "default";
-            spacing = mkLiteral "0px";
-            border = mkLiteral "2px";
-            border-color = "@border-color";
-            border-radius = mkLiteral "20px";
-            background-color = mkLiteral "@bg";
-          };
-          "mainbox" = {
-            padding = mkLiteral "15px";
-            enabled = true;
-            orientation = mkLiteral "vertical";
-            children = map mkLiteral [
-              "inputbar"
-              "listbox"
-            ];
-            background-color = mkLiteral "transparent";
-          };
-          "inputbar" = {
-            enabled = true;
-            padding = mkLiteral "10px 10px 200px 10px";
-            margin = mkLiteral "10px";
-            background-color = mkLiteral "transparent";
-            border-radius = "25px";
-            orientation = mkLiteral "horizontal";
-            children = map mkLiteral [
-              "entry"
-              "dummy"
-              "mode-switcher"
-            ];
-            background-image = mkLiteral ''url("~/Pictures/Wallpapers/beautifulmountainscape.jpg", width)'';
-          };
-          "entry" = {
-            enabled = true;
-            expand = false;
-            width = mkLiteral "20%";
-            padding = mkLiteral "10px";
-            border-radius = mkLiteral "12px";
-            background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@text-selected";
-            cursor = mkLiteral "text";
-            placeholder = "🖥️ Search ";
-            placeholder-color = mkLiteral "inherit";
-          };
-          "listbox" = {
-            spacing = mkLiteral "10px";
-            padding = mkLiteral "10px";
-            background-color = mkLiteral "transparent";
-            orientation = mkLiteral "vertical";
-            children = map mkLiteral [
-              "message"
-              "listview"
-            ];
-          };
-          "listview" = {
-            enabled = true;
-            columns = 2;
-            lines = 6;
-            cycle = true;
-            dynamic = true;
-            scrollbar = false;
-            layout = mkLiteral "vertical";
-            reverse = false;
-            fixed-height = false;
-            fixed-columns = true;
-            spacing = mkLiteral "10px";
-            background-color = mkLiteral "transparent";
-            border = mkLiteral "0px";
-          };
-          "dummy" = {
-            expand = true;
-            background-color = mkLiteral "transparent";
-          };
-          "mode-switcher" = {
-            enabled = true;
-            spacing = mkLiteral "10px";
-            background-color = mkLiteral "transparent";
-          };
-          "button" = {
-            width = mkLiteral "5%";
-            padding = mkLiteral "12px";
-            border-radius = mkLiteral "12px";
-            background-color = mkLiteral "@text-selected";
-            text-color = mkLiteral "@text-color";
-            cursor = mkLiteral "pointer";
-          };
-          "button selected" = {
-            background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@text-selected";
-          };
-          "scrollbar" = {
-            width = mkLiteral "4px";
-            border = 0;
-            handle-color = mkLiteral "@border-color";
-            handle-width = mkLiteral "8px";
-            padding = 0;
-          };
-          "element" = {
-            enabled = true;
-            spacing = mkLiteral "10px";
-            padding = mkLiteral "10px";
-            border-radius = mkLiteral "12px";
-            background-color = mkLiteral "transparent";
-            cursor = mkLiteral "pointer";
-          };
-          "element normal.normal" = {
-            background-color = mkLiteral "inherit";
-            text-color = mkLiteral "inherit";
-          };
-          "element normal.urgent" = {
-            background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "@foreground";
-          };
-          "element normal.active" = {
-            background-color = mkLiteral "@active";
-            text-color = mkLiteral "@foreground";
-          };
-          "element selected.normal" = {
-            background-color = mkLiteral "@selected";
-            text-color = mkLiteral "@text-selected";
-          };
-          "element selected.urgent" = {
-            background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "@text-selected";
-          };
-          "element selected.active" = {
-            background-color = mkLiteral "@urgent";
-            text-color = mkLiteral "@text-selected";
-          };
-          "element alternate.normal" = {
-            background-color = mkLiteral "transparent";
-            text-color = mkLiteral "inherit";
-          };
-          "element alternate.urgent" = {
-            background-color = mkLiteral "transparent";
-            text-color = mkLiteral "inherit";
-          };
-          "element alternate.active" = {
-            background-color = mkLiteral "transparent";
-            text-color = mkLiteral "inherit";
-          };
-          "element-icon" = {
-            background-color = mkLiteral "transparent";
-            text-color = mkLiteral "inherit";
-            size = mkLiteral "36px";
-            cursor = mkLiteral "inherit";
-          };
-          "element-text" = {
-            background-color = mkLiteral "transparent";
-            font = "JetBrainsMono Nerd Font Mono 12";
-            text-color = mkLiteral "inherit";
-            cursor = mkLiteral "inherit";
-            vertical-align = mkLiteral "0.5";
-            horizontal-align = mkLiteral "0.0";
-          };
-          "message" = {
-            background-color = mkLiteral "transparent";
-            border = mkLiteral "0px";
-          };
-          "textbox" = {
-            padding = mkLiteral "12px";
-            border-radius = mkLiteral "10px";
-            background-color = mkLiteral "@bg-alt";
-            text-color = mkLiteral "@bg";
-            vertical-align = mkLiteral "0.5";
-            horizontal-align = mkLiteral "0.0";
-          };
-          "error-message" = {
-            padding = mkLiteral "12px";
-            border-radius = mkLiteral "20px";
-            background-color = mkLiteral "@bg-alt";
-            text-color = mkLiteral "@bg";
-          };
-        };
-    };
+with lib;
+
+let
+
+  cfg = config.programs.rofi;
+
+  mkValueString = value:
+    if isBool value then
+      if value then "true" else "false"
+    else if isInt value then
+      toString value
+    else if (value._type or "") == "literal" then
+      value.value
+    else if isString value then
+      ''"${value}"''
+    else if isList value then
+      "[ ${strings.concatStringsSep "," (map mkValueString value)} ]"
+    else
+      abort "Unhandled value type ${builtins.typeOf value}";
+
+  mkKeyValue = { sep ? ": ", end ? ";" }:
+    name: value:
+    "${name}${sep}${mkValueString value}${end}";
+
+  mkRasiSection = name: value:
+    if isAttrs value then
+      let
+        toRasiKeyValue = generators.toKeyValue { mkKeyValue = mkKeyValue { }; };
+        # Remove null values so the resulting config does not have empty lines
+        configStr = toRasiKeyValue (filterAttrs (_: v: v != null) value);
+      in ''
+        ${name} {
+        ${configStr}}
+      ''
+    else
+      (mkKeyValue {
+        sep = " ";
+        end = "";
+      } name value) + "\n";
+
+  toRasi = attrs:
+    concatStringsSep "\n" (concatMap (mapAttrsToList mkRasiSection) [
+      (filterAttrs (n: _: n == "@theme") attrs)
+      (filterAttrs (n: _: n == "@import") attrs)
+      (removeAttrs attrs [ "@theme" "@import" ])
+    ]);
+
+  locationsMap = {
+    center = 0;
+    top-left = 1;
+    top = 2;
+    top-right = 3;
+    right = 4;
+    bottom-right = 5;
+    bottom = 6;
+    bottom-left = 7;
+    left = 8;
   };
-}
 
+  primitive = with types; (oneOf [ str int bool rasiLiteral ]);
+
+  # Either a `section { foo: "bar"; }` or a `@import/@theme "some-text"`
+  configType = with types;
+    (either (attrsOf (either primitive (listOf primitive))) str);
+
+  rasiLiteral = types.submodule {
+    options = {
+      _type = mkOption {
+        type = types.enum [ "literal" ];
+        internal = true;
+      };
+
+      value = mkOption {
+        type = types.str;
+        internal = true;
+      };
+    };
+  } // {
+    description = "Rasi literal string";
+  };
+
+  themeType = with types; attrsOf configType;
+
+  themeName = if (cfg.theme == null) then
+    null
+  else if (isString cfg.theme) then
+    cfg.theme
+  else if (isAttrs cfg.theme) then
+    "custom"
+  else
+    removeSuffix ".rasi" (baseNameOf cfg.theme);
+
+  themePath = if (isString cfg.theme) then
+    null
+  else if (isAttrs cfg.theme) then
+    "custom"
+  else
+    cfg.theme;
+
+in {
+  options.programs.rofi = {
+    enable = mkEnableOption
+      "Rofi: A window switcher, application launcher and dmenu replacement";
+
+    package = mkOption {
+      default = pkgs.rofi;
+      type = types.package;
+      description = ''
+        Package providing the {command}`rofi` binary.
+      '';
+      example = literalExpression ''
+        pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
+      '';
+    };
+
+    finalPackage = mkOption {
+      type = types.package;
+      readOnly = true;
+      description = ''
+        Resulting customized rofi package.
+      '';
+    };
+
+    plugins = mkOption {
+      default = [ ];
+      type = types.listOf types.package;
+      description = ''
+        List of rofi plugins to be installed.
+      '';
+      example = literalExpression "[ pkgs.rofi-calc ]";
+    };
+
+    font = mkOption {
+      default = null;
+      type = types.nullOr types.str;
+      example = "Droid Sans Mono 14";
+      description = "Font to use.";
+    };
+
+    terminal = mkOption {
+      default = null;
+      type = types.nullOr types.str;
+      description = ''
+        Path to the terminal which will be used to run console applications
+      '';
+      example = "\${pkgs.gnome.gnome_terminal}/bin/gnome-terminal";
+    };
+
+    cycle = mkOption {
+      default = null;
+      type = types.nullOr types.bool;
+      description = "Whether to cycle through the results list.";
+    };
+
+    location = mkOption {
+      default = "center";
+      type = types.enum (attrNames locationsMap);
+      description = "The location rofi appears on the screen.";
+    };
+
+    xoffset = mkOption {
+      default = 0;
+      type = types.int;
+      description = ''
+        Offset in the x-axis in pixels relative to the chosen location.
+      '';
+    };
+
+    yoffset = mkOption {
+      default = 0;
+      type = types.int;
+      description = ''
+        Offset in the y-axis in pixels relative to the chosen location.
+      '';
+    };
+
+    theme = mkOption {
+      default = null;
+      type = with types; nullOr (oneOf [ str path themeType ]);
+      example = literalExpression ''
+        let
+          # Use `mkLiteral` for string-like values that should show without
+          # quotes, e.g.:
+          # {
+          #   foo = "abc"; => foo: "abc";
+          #   bar = mkLiteral "abc"; => bar: abc;
+          # };
+          inherit (config.lib.formats.rasi) mkLiteral;
+        in {
+          "*" = {
+            background-color = mkLiteral "#000000";
+            foreground-color = mkLiteral "rgba ( 250, 251, 252, 100 % )";
+            border-color = mkLiteral "#FFFFFF";
+            width = 512;
+          };
+
+          "#inputbar" = {
+            children = map mkLiteral [ "prompt" "entry" ];
+          };
+
+          "#textbox-prompt-colon" = {
+            expand = false;
+            str = ":";
+            margin = mkLiteral "0px 0.3em 0em 0em";
+            text-color = mkLiteral "@foreground-color";
+          };
+        }
+      '';
+      description = ''
+        Name of theme or path to theme file in rasi format or attribute set with
+        theme configuration. Available named themes can be viewed using the
+        {command}`rofi-theme-selector` tool.
+      '';
+    };
+
+    configPath = mkOption {
+      default = "${config.xdg.configHome}/rofi/config.rasi";
+      defaultText = "$XDG_CONFIG_HOME/rofi/config.rasi";
+      type = types.str;
+      description = "Path where to put generated configuration file.";
+    };
+
+    extraConfig = mkOption {
+      default = { };
+      example = literalExpression ''
+        {
+          modi = "drun,emoji,ssh";
+          kb-primary-paste = "Control+V,Shift+Insert";
+          kb-secondary-paste = "Control+v,Insert";
+        }
+      '';
+      type = configType;
+      description = "Additional configuration to add.";
+    };
+
+  };
+
+  imports = let
+    mkRemovedOptionRofi = option:
+      (mkRemovedOptionModule [ "programs" "rofi" option ]
+        "Please use a Rofi theme instead.");
+  in map mkRemovedOptionRofi [
+    "width"
+    "lines"
+    "borderWidth"
+    "rowHeight"
+    "padding"
+    "separator"
+    "scrollbar"
+    "fullscreen"
+    "colors"
+  ];
+
+  config = mkIf cfg.enable {
+    assertions =
+      [ (hm.assertions.assertPlatform "programs.rofi" pkgs platforms.linux) ];
+
+    lib.formats.rasi.mkLiteral = value: {
+      _type = "literal";
+      inherit value;
+    };
+
+    programs.rofi.finalPackage = let
+      rofiWithPlugins = cfg.package.override
+        (old: { plugins = (old.plugins or [ ]) ++ cfg.plugins; });
+    in if builtins.hasAttr "override" cfg.package && cfg.plugins != [ ] then
+      rofiWithPlugins
+    else
+      cfg.package;
+
+    home.packages = [ cfg.finalPackage ];
+
+    home.file."${cfg.configPath}".text = toRasi {
+      configuration = ({
+        font = cfg.font;
+        terminal = cfg.terminal;
+        cycle = cfg.cycle;
+        location = (getAttr cfg.location locationsMap);
+        xoffset = cfg.xoffset;
+        yoffset = cfg.yoffset;
+      } // cfg.extraConfig);
+      # @theme must go after configuration but attrs are output in alphabetical order ('@' first)
+    } + (optionalString (themeName != null) (toRasi { "@theme" = themeName; }));
+
+    xdg.dataFile = mkIf (themePath != null) (if themePath == "custom" then {
+      "rofi/themes/${themeName}.rasi".text = toRasi cfg.theme;
+    } else {
+      "rofi/themes/${themeName}.rasi".source = themePath;
+    });
+  };
+
+  meta.maintainers = with maintainers; [ thiagokokada ];
+}
