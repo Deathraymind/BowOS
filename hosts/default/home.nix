@@ -11,7 +11,7 @@ in
    imports = [
     ./home/blueTheme/nvim/nvim.nix
     ./home/blueTheme/waybar/waybar.nix
-    ./home/blueTheme/rofi/rofi.nix
+        ./home/blueTheme/rofi/rofi.nix
     ./homeStylix.nix
   ];
 
