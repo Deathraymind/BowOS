@@ -12,6 +12,7 @@ in
     ./home/blueTheme/nvim/nvim.nix
     ./home/blueTheme/waybar/waybar.nix
         ./home/blueTheme/rofi/rofi.nix
+        ./home/blueTheme/fastfetch/fastfetch.nix
     ./homeStylix.nix
   ];
 
