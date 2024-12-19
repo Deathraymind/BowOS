@@ -11,10 +11,10 @@
       };
 
       logo = {
-        source = ./nixos.png;
+        source = ./bowos.png;
         type = "kitty-direct";
-        height = 15;
-        width = 30;
+        height = 18;
+        width = 50;
         padding = {
           top = 3;
           left = 3;
@@ -50,7 +50,7 @@
           }
           {
               type = "custom";
-              format = " OS -> ZaneyOS 2.2";
+              format = " OS -> BowOS 1.2";
           }
           {
               type = "kernel";
