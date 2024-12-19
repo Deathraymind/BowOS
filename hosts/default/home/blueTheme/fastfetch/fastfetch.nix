@@ -6,7 +6,7 @@
       display = {
         color = {
           keys = "35";
-          output = "90";
+          output = "34";
         };
       };
 
