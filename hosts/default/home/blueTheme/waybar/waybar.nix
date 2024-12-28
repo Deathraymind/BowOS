@@ -142,14 +142,14 @@ window#waybar {
 
 #tooltip {
     opacity: 0.9;
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
 }
 
 #tray {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -157,8 +157,8 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
 #tray:hover {
@@ -166,7 +166,7 @@ window#waybar {
 }
 
 #custom-gpu-usage {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -183,7 +183,7 @@ window#waybar {
 }
 
 #battery {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -191,12 +191,12 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
 #pulseaudio {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -205,9 +205,9 @@ window#waybar {
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
-    border-left: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-left: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
 #pulseaudio:hover {
@@ -216,7 +216,7 @@ window#waybar {
 }
 
 #backlight {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -225,8 +225,8 @@ window#waybar {
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
 #backlight:hover {
@@ -236,7 +236,7 @@ window#waybar {
 
 
 #memory {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -244,13 +244,13 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
-    border-right: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-right: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
 #cpu {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -258,13 +258,13 @@ window#waybar {
     margin-left: 8px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
-    border-left: 2px solid #cad3f5; 
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-left: 2px solid #${config.stylix.base16Scheme.base0D}; 
 }
 
 #clock {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -272,13 +272,13 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
     
 }
 
 #custom-divider {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -289,7 +289,7 @@ window#waybar {
 }
 
 #custom-notifications {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -298,9 +298,9 @@ window#waybar {
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
-    border-right: 2px solid #cad3f5; 
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-right: 2px solid #${config.stylix.base16Scheme.base0D}; 
 }
 
 #custom-notifications:hover {
@@ -308,7 +308,7 @@ window#waybar {
 }
 
 #custom-launcher {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -316,10 +316,10 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
-    border: solid #cad3f5;
-    border-right: 2px solid #cad3f5; /* Explicitly set the right border */
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
+    border: solid #${config.stylix.base16Scheme.base0D};
+    border-right: 2px solid #${config.stylix.base16Scheme.base0D}; /* Explicitly set the right border */
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
     transition: background-color 0.3s ease;
 }
 
@@ -328,7 +328,7 @@ window#waybar {
 }
 
 #workspaces {
-    background: #24273a;
+    background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -337,9 +337,9 @@ window#waybar {
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
     color: #B8C0E2;
-    border-top: 2px solid #cad3f5;
-    border-bottom: 2px solid #cad3f5;
-    border-left: 2px solid #cad3f5; 
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-left: 2px solid #${config.stylix.base16Scheme.base0D}; 
 }
 
 #workspaces button label {

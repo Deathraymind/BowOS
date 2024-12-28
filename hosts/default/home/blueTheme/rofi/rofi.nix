@@ -9,7 +9,7 @@
         modi = "drun,filebrowser,run";
         show-icons = true;
         icon-theme = "Papirus";
-        location = 0;
+        location = 2;
         font = "JetBrainsMono Nerd Font Mono 12";
         drun-display-format = "{icon} {name}";
         display-drun = " Apps";
@@ -55,7 +55,6 @@
           };
           "inputbar" = {
             enabled = true;
-            padding = mkLiteral "10px 10px 200px 10px";
             margin = mkLiteral "10px";
             background-color = mkLiteral "transparent";
             border-radius = "25px";
@@ -65,7 +64,6 @@
               "dummy"
               "mode-switcher"
             ];
-            background-image = mkLiteral ''url("~/Pictures/Wallpapers/beautifulmountainscape.jpg", width)'';
           };
           "entry" = {
             enabled = true;
@@ -92,7 +90,7 @@
           "listview" = {
             enabled = true;
             columns = 2;
-            lines = 6;
+            lines = 2;
             cycle = true;
             dynamic = true;
             scrollbar = false;
