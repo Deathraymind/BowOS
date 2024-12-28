@@ -142,6 +142,8 @@ users.users.${username} = {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    gcc
+    logseq
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugins
