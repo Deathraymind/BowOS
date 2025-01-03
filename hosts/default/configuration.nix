@@ -113,7 +113,7 @@ environment.variables = {
 users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" ];
   };
 
 
@@ -128,7 +128,6 @@ users.users.${username} = {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
 
@@ -313,10 +312,16 @@ networking.firewall = {
 
 # Virtual Machines
 programs.virt-manager.enable = true;
+
 virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [virtiofsd];
-    };
+};
+
+systemd.services.libvirtd-config.script = lib.mkAfter ''
+    rm /var/lib/libvirt/qemu/networks/autostart/default.xml
+  '';
+
 virtualisation.virtualbox.host.enable = true;
 users.extraGroups.vboxusers.members = [ "bowyn" ];
 

@@ -1,5 +1,5 @@
 # home.nix
-{ config, pkgs, lib, inputs, ... }: 
+{  pkgs,   ... }: 
 
 let
   username = builtins.getEnv "BOWOS_USER";
