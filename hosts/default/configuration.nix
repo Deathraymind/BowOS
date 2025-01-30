@@ -130,8 +130,6 @@ users.users.${username} = {
   };
 
 
-    nixpkgs.config.rocmSupport = true;
-    services.ollama.rocmOverrideGfx = "10.3.1";
 
 
 #__            _                         
@@ -232,10 +230,6 @@ users.users.${username} = {
     libsForQt5.qt5ct
 
     # Rocm stuff 
-    rocmPackages.rpp
-    rocmPackages.clr
-    rocmPackages.rccl
-    rocmPackages.rocm-smi
   ];
 
 
@@ -286,9 +280,6 @@ programs.kdeconnect = {
     driSupport32Bit = true;
   };
 
-  hardware.graphics.extraPackages = [
-    pkgs.rocmPackages.clr.icd
-  ];
 home-manager.backupFileExtension = "backup";
 
 
