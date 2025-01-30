@@ -5,7 +5,7 @@
 
 
 1. **Download the ISO**
-   - Download the BowOS ISO [here](#).
+   - Download the BowOS ISO [here](https://bowos.deathraymind.net/).
 
 2. **Flash the ISO**
    - Use the `dd` command
