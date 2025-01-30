@@ -195,6 +195,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1647297614,
+        "narHash": "sha256-ulGq3W5XsrBMU/u5k9d4oPy65pQTkunR4HKKtTq0RwY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "73ad5f9e147c0d2a2061f1d4bd91e05078dc0b58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1731531548,
         "narHash": "sha256-sz8/v17enkYmfpgeeuyzniGJU0QQBfmAjlemAUYhfy8=",
         "owner": "NixOS",
@@ -209,10 +225,29 @@
         "type": "github"
       }
     },
+    "rocm": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1687959333,
+        "narHash": "sha256-NqM5vMtpznX/Ws4Ca7LDFKFSX6srFd82aaFIZXwssg4=",
+        "owner": "nixos-rocm",
+        "repo": "nixos-rocm",
+        "rev": "242305cac651e136928ddae922a4edec723ddf59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos-rocm",
+        "repo": "nixos-rocm",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "rocm": "rocm",
         "stylix": "stylix"
       }
     },
@@ -226,7 +261,7 @@
         "flake-utils": "flake-utils",
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "systems": "systems",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",

@@ -12,7 +12,8 @@ in
     ./stylix.nix
     /etc/nixos/hardware-configuration.nix 
     ];
-
+  programs.zsh.enable = true;
+users.defaultUserShell = pkgs.zsh;
 system.activationScripts.update-grub-menu = {
   text = ''
     echo "Updating GRUB menu entry name..."
@@ -30,6 +31,7 @@ system.activationScripts.update-grub-menu = {
     fi
   '';
 };
+
 
 boot.loader = {
   grub = {
@@ -113,7 +115,7 @@ environment.variables = {
 users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" ];
   };
 
 
@@ -129,6 +131,10 @@ users.users.${username} = {
     enable = true;
     xwayland.enable = true;
   };
+
+
+    nixpkgs.config.rocmSupport = true;
+    services.ollama.rocmOverrideGfx = "10.3.1";
 
 
 #__            _                         
@@ -153,7 +159,6 @@ users.users.${username} = {
     wl-color-picker
     neovim
     git
-    kitty
     waybar
     rofi
     ethtool
@@ -162,6 +167,12 @@ users.users.${username} = {
     wl-clipboard
     libva
     lazygit
+    # Terminal
+    zsh
+    starship
+    fzf
+    kitty
+    alacritty
     # audio
     pipewire
     pamixer
@@ -181,6 +192,8 @@ users.users.${username} = {
     swappy
     cliphist
     hyprpicker
+
+    ydotool
 
     # dependencies
     polkit-kde-agent
@@ -221,6 +234,12 @@ users.users.${username} = {
     cpufrequtils 
         libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+
+    # Rocm stuff 
+    rocmPackages.rpp
+    rocmPackages.clr
+    rocmPackages.rccl
+    rocmPackages.rocm-smi
   ];
 
 
@@ -238,9 +257,15 @@ programs.steam = {
   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 };
 
+  virtualisation.docker.enable = true;
   services.udisks2.enable = true; 
   security.polkit.enable = true;
-  services.openssh.enable = true; 
+  services.openssh.enable = true;
+  programs.kdeconnect.enable = true;
+
+programs.kdeconnect = {
+  package = pkgs.gnomeExtensions.gsconnect;
+};
 
 
 # power saving
@@ -264,6 +289,14 @@ programs.steam = {
     enable = true;
     driSupport32Bit = true;
   };
+
+  hardware.graphics.extraPackages = [
+    pkgs.rocmPackages.clr.icd
+  ];
+home-manager.backupFileExtension = "backup";
+
+
+
    # Enable networking
   networking.networkmanager.enable = true; 
 
@@ -317,10 +350,6 @@ virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [virtiofsd];
 };
-
-systemd.services.libvirtd-config.script = lib.mkAfter ''
-    rm /var/lib/libvirt/qemu/networks/autostart/default.xml
-  '';
 
 virtualisation.virtualbox.host.enable = true;
 users.extraGroups.vboxusers.members = [ "bowyn" ];

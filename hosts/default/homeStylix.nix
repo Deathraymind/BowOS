@@ -12,6 +12,7 @@
     polarity = "dark";
     targets = {
       kitty.enable = true;
+      alacritty.enable = true;
     };
 
           # You can also set other font types if needed

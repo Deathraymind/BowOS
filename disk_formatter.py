@@ -76,11 +76,17 @@ class DiskFormatterApp(App):
     async def format_disk(self, disk: str):
         """Format the disk and create partitions."""
         try:
+            # Determine if the disk is an NVMe drive
+            is_nvme = "nvme" in disk
+
+            # Define the partition suffix
+            partition_suffix = "p" if is_nvme else ""
+
             await self.append_output(f"Unmounting {disk}...")
             await self.run_command(f"sudo umount -l {disk}")
-            await self.run_command(f"sudo umount -l {disk}1")
-            await self.run_command(f"sudo umount -l {disk}2")
-            await self.run_command(f"sudo umount -l {disk}3")
+            await self.run_command(f"sudo umount -l {disk}{partition_suffix}1")
+            await self.run_command(f"sudo umount -l {disk}{partition_suffix}2")
+            await self.run_command(f"sudo umount -l {disk}{partition_suffix}3")
 
             await self.append_output("Creating partitions...")
             await self.run_command(f"parted --script {disk} -- mklabel gpt")
@@ -90,25 +96,24 @@ class DiskFormatterApp(App):
             await self.run_command(f"parted --script {disk} -- set 3 esp on")
 
             await self.append_output("Formatting partitions...")
-            await self.run_command(f"mkfs.ext4 -F -L nixos {disk}1")
-            await self.run_command(f"mkswap -L swap {disk}2")
-            await self.run_command(f"mkfs.fat -F 32 -n boot {disk}3")
+            await self.run_command(f"mkfs.ext4 -F -L nixos {disk}{partition_suffix}1")
+            await self.run_command(f"mkswap -L swap {disk}{partition_suffix}2")
+            await self.run_command(f"mkfs.fat -F 32 -n boot {disk}{partition_suffix}3")
 
             await self.append_output("Mounting filesystems...")
             await self.run_command(f"mount /dev/disk/by-label/nixos /mnt")
             await self.run_command(f"mkdir -p /mnt/boot")
             await self.run_command(f"mount -o umask=007 /dev/disk/by-label/boot /mnt/boot")
-            
+
             # Run the disk_formatter.sh script and capture its output in real-time
             await self.run_command(f"export BOWOS_USER={self.query_one('#username_input', Input).value}")
             await self.run_command(f"sed -i 's/export BOWOS_USER=.*/export BOWOS_USER={self.query_one('#username_input', Input).value}/' disk_formatter.sh")
-            await self.run_command(f"sed -i 's/export BOWOS_PASSWORD=.*/export BOWOS_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh") 
+            await self.run_command(f"sed -i 's/export BOWOS_PASSWORD=.*/export BOWOS_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh")
             process = await asyncio.create_subprocess_shell(
                 'bash ./disk_formatter.sh',
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )
-
 
             while True:
                 line = await process.stdout.readline()

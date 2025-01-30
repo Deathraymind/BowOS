@@ -12,21 +12,19 @@ nixos-generate-config --root /mnt
 # cp -f configuration.nix /mnt/etc/nixos
 nixos-install --no-root-passwd
 
-echo copying packages
-echo this make take a minute
+echo "Copying packages..."
+echo "This may take a minute..."
 
-# add these lines 
-# cp bowos-packages.nar /mnt 
-# nixos-enter 
-# nix-store --import < bowos-packages.nar
-# Enter NixOS environment and run further setup
+# Export installed packages to a Nix archive
 mkdir -p /mnt/tmp
 nix-store -qR /run/current-system > installed-packages.txt
 nix-store --export $(cat installed-packages.txt) > /mnt/tmp/bowos-packages.nar
 
+# Copy BowOS configuration to the new system
 cp -r /etc/BowOS /mnt
+
+# Enter NixOS environment and run further setup
 nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
-  
   # Set the username and password
   export BOWOS_USER=bowyn
   export BOWOS_PASSWORD=6255
@@ -60,8 +58,7 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   echo "Building configuration..."
   export NIXPKGS_ALLOW_INSECURE=1
 
-  echo unpacking packages
-
+  echo "Unpacking packages..."
   nix-store --import < /tmp/bowos-packages.nar
 
   # Set NIX_CONFIG for flakes
@@ -69,5 +66,10 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   
   # Rebuild NixOS
   nixos-rebuild boot --install-bootloader --impure --flake .#bowos
+
+  echo "BowOS is done flashing. You are free to reboot. The system will reboot shortly."
 '
 
+# Reboot the system after exiting the chroot environment
+echo "Rebooting the system..."
+reboot
