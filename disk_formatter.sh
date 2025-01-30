@@ -62,7 +62,7 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   nix-store --import < /tmp/bowos-packages.nar
 
   # Set NIX_CONFIG for flakes
-  sudo export NIX_CONFIG="experimental-features = nix-command flakes"
+  export NIX_CONFIG="experimental-features = nix-command flakes"
  
   export BOWOS_USER=bowyn
   # Rebuild NixOS
