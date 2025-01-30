@@ -26,8 +26,8 @@ cp -r /etc/BowOS /mnt
 # Enter NixOS environment and run further setup
 nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   # Set the username and password
-  export BOWOS_USER='"$BOWOS_USER"'
-  export BOWOS_PASSWORD='"$BOWOS_PASSWORD"'
+  export BOWOS_USER=bowyn
+  export BOWOS_PASSWORD=6255
 
   # Create the user
   useradd -m "$BOWOS_USER"
@@ -62,10 +62,10 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   nix-store --import < /tmp/bowos-packages.nar
 
   # Set NIX_CONFIG for flakes
-  export NIX_CONFIG="experimental-features = nix-command flakes"
+  sudo export NIX_CONFIG="experimental-features = nix-command flakes"
   
-  # Rebuild NixOS with the specified user
-  nixos-rebuild boot --install-bootloader --impure --flake .#"$BOWOS_USER"
+  # Rebuild NixOS
+  BOWOS_USER=bowyn sudo -E nixos-rebuild boot --install-bootloader --impure --flake .#amd
 
   echo "BowOS is done flashing. You are free to reboot. The system will reboot shortly."
 '
