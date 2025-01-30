@@ -20,7 +20,7 @@
     <nixpkgs/nixos/modules/system/etc/etc.nix>
   ];
 
- isoImage.squashfsCompression = "gzip -Xcompression-level 0";
+ isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
     environment.systemPackages = with pkgs; [
       # Include all your packages here
