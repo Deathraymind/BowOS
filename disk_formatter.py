@@ -73,72 +73,70 @@ class DiskFormatterApp(App):
         output_view = self.query_one("#output_view", Static)
         output_view.update("\n".join(self.last_lines))
 
-    async def format_disk(self, disk: str):
-        """Format the disk and create partitions."""
-        try:
-            # Determine if the disk is an NVMe drive
-            is_nvme = "nvme" in disk
+  async def format_disk(self, disk: str):
+    """Format the disk and create partitions."""
+    try:
+        # Determine if the disk is an NVMe drive
+        is_nvme = "nvme" in disk
 
-            # Define the partition suffix
-            partition_suffix = "p" if is_nvme else ""
+        # Define the partition suffix
+        partition_suffix = "p" if is_nvme else ""
 
-            await self.append_output(f"Unmounting {disk}...")
-            await self.run_command(f"sudo umount -l {disk}")
-            await self.run_command(f"sudo umount -l {disk}{partition_suffix}1")
-            await self.run_command(f"sudo umount -l {disk}{partition_suffix}2")
-            await self.run_command(f"sudo umount -l {disk}{partition_suffix}3")
+        await self.append_output(f"Unmounting {disk}...")
+        await self.run_command(f"sudo umount -l {disk}")
+        await self.run_command(f"sudo umount -l {disk}{partition_suffix}1")
+        await self.run_command(f"sudo umount -l {disk}{partition_suffix}2")
+        await self.run_command(f"sudo umount -l {disk}{partition_suffix}3")
 
-            await self.append_output("Creating partitions...")
-            await self.run_command(f"parted --script {disk} -- mklabel gpt")
-            await self.run_command(f"parted --script {disk} -- mkpart root ext4 512MiB -8GB")
-            await self.run_command(f"parted --script {disk} -- mkpart swap linux-swap -8GB 100%")
-            await self.run_command(f"parted --script {disk} -- mkpart ESP fat32 1MiB 512MiB")
-            await self.run_command(f"parted --script {disk} -- set 3 esp on")
+        await self.append_output("Creating partitions...")
+        await self.run_command(f"parted --script {disk} -- mklabel gpt")
+        await self.run_command(f"parted --script {disk} -- mkpart root ext4 512MiB -8GB")
+        await self.run_command(f"parted --script {disk} -- mkpart swap linux-swap -8GB 100%")
+        await self.run_command(f"parted --script {disk} -- mkpart ESP fat32 1MiB 512MiB")
+        await self.run_command(f"parted --script {disk} -- set 3 esp on")
 
-            await self.append_output("Formatting partitions...")
-            await self.run_command(f"mkfs.ext4 -F -L nixos {disk}{partition_suffix}1")
-            await self.run_command(f"mkswap -L swap {disk}{partition_suffix}2")
-            await self.run_command(f"mkfs.fat -F 32 -n boot {disk}{partition_suffix}3")
+        await self.append_output("Formatting partitions...")
+        await self.run_command(f"mkfs.ext4 -F -L nixos {disk}{partition_suffix}1")
+        await self.run_command(f"mkswap -L swap {disk}{partition_suffix}2")
+        await self.run_command(f"mkfs.fat -F 32 -n boot {disk}{partition_suffix}3")
 
-            await self.append_output("Mounting filesystems...")
-            await self.run_command(f"mount /dev/disk/by-label/nixos /mnt")
-            await self.run_command(f"mkdir -p /mnt/boot")
-            await self.run_command(f"mount -o umask=007 /dev/disk/by-label/boot /mnt/boot")
+        await self.append_output("Mounting filesystems...")
+        await self.run_command(f"mount /dev/disk/by-label/nixos /mnt")
+        await self.run_command(f"mkdir -p /mnt/boot")
+        await self.run_command(f"mount -o umask=007 /dev/disk/by-label/boot /mnt/boot")
 
-            # Run the disk_formatter.sh script and capture its output in real-time
-            await self.run_command(f"export BOWOS_USER={self.query_one('#username_input', Input).value}")
-            await self.run_command(f"sed -i 's/export BOWOS_USER=.*/export BOWOS_USER={self.query_one('#username_input', Input).value}/' disk_formatter.sh")
-            await self.run_command(f"sed -i 's/export BOWOS_PASSWORD=.*/export BOWOS_PASSWORD={self.query_one('#password_input', Input).value}/' disk_formatter.sh")
-            process = await asyncio.create_subprocess_shell(
-                'bash ./disk_formatter.sh',
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE
-            )
+        # Run the disk_formatter.sh script and capture its output in real-time
+        await self.run_command(f"export BOWOS_USER={self.query_one('#username_input', Input).value}")
+        await self.run_command(f"export BOWOS_PASSWORD={self.query_one('#password_input', Input).value}")
+        process = await asyncio.create_subprocess_shell(
+            'bash ./disk_formatter.sh',
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
 
-            while True:
-                line = await process.stdout.readline()
-                if not line:
-                    break
-                await self.append_output(line.decode().strip())
+        while True:
+            line = await process.stdout.readline()
+            if not line:
+                break
+            await self.append_output(line.decode().strip())
 
-            while True:
-                line = await process.stderr.readline()
-                if not line:
-                    break
-                await self.append_output(line.decode().strip())
+        while True:
+            line = await process.stderr.readline()
+            if not line:
+                break
+            await self.append_output(line.decode().strip())
 
-            await process.wait()
+        await process.wait()
 
-            # Read the log file and append its contents to the output view
-            with open('/mnt/disk_formatter.log', 'r') as log_file:
-                for line in log_file:
-                    await self.append_output(line.strip())
+        # Read the log file and append its contents to the output view
+        with open('/mnt/disk_formatter.log', 'r') as log_file:
+            for line in log_file:
+                await self.append_output(line.strip())
 
-            self.query_one("#status_label", Label).update("Disk formatted and mounted successfully!")
-        except Exception as e:
-            await self.append_output(f"An error occurred: {e}")
-            self.query_one("#status_label", Label).update(f"Error: {e}")
-
+        self.query_one("#status_label", Label).update("Disk formatted and mounted successfully!")
+    except Exception as e:
+        await self.append_output(f"An error occurred: {e}")
+        self.query_one("#status_label", Label).update(f"Error: {e}") 
 if __name__ == "__main__":
     app = DiskFormatterApp()
     app.run()
