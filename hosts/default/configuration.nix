@@ -68,9 +68,6 @@ Welcome to BowOS \e[0m
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq"];
-  services.xserver.videoDrivers = [ "vmware" ];
-virtualisation.vmware.host.enable = true;
-virtualisation.vmware.guest.enable = true;
 boot.kernelPackages = pkgs.linuxPackages;
 
 
@@ -155,7 +152,6 @@ users.users.${username} = {
     libsForQt5.qtstyleplugins
     qt5.qtbase
     adwaita-qt
-    vmware-workstation 
     wl-color-picker
     neovim
     git
