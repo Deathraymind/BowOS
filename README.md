@@ -47,6 +47,10 @@
 6. **Select and Format the Disk**
    - WARNING: The selected drive will be **completely wiped**.
    - Identify the disk to format, e.g., `/dev/sda`. Ensure you select the correct drive as there’s no way to undo this step.
+   - Identify the disk to format, e.g., `/dev/nvme0n1`. Ensure you select the correct drive as there’s no way to undo this step.
+  
+     ![image](https://github.com/user-attachments/assets/bb8c1b8e-984c-4ab9-b6bf-a736acf7990d)
+
 
    - Use the **Tab** key to move between fields in the installer. Enter your username and password as prompted.
 
