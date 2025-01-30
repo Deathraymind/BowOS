@@ -65,7 +65,7 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
   export NIX_CONFIG="experimental-features = nix-command flakes"
   
   # Rebuild NixOS
-  nixos-rebuild boot --install-bootloader --impure --flake .#bowos
+  nixos-rebuild boot --install-bootloader --impure --flake .#amd
 
   echo "BowOS is done flashing. You are free to reboot. The system will reboot shortly."
 '
