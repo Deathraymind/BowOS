@@ -69,4 +69,11 @@
 - **Recommendation:** If using BowOS to learn NixOS, read the official NixOS documentation and customize the code as needed.
 - Tools will be released in the future to make NixOS more accessible as the project evolves.
 
+### Custom build notes
+Bowos is a NixOS fork, all documentation should be very helpfull. And the config files are located in the ~/BowOS user direcotry to rebuild yourself navigate to this dirctory and run the command 
+
+```bash
+BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake .#amd
+```
+
 **IMPORTANT:** Use `lsblk` to list drives and ensure you select the correct one before proceeding.
