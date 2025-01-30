@@ -72,4 +72,8 @@ nixos-enter -- nix-shell -p expect --extra-experimental-features flakes --run '
 
 # Reboot the system after exiting the chroot environment
 echo "Rebooting the system..."
-reboot
+for i in {10..1}; do
+  echo "$i..."
+  sleep 1  # 1-second delay
+done
+echo "I lied dummy reboot the system urself pfff"
