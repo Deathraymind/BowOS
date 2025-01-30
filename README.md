@@ -1,6 +1,7 @@
 # BowOS Installation Guide
 
-![image](https://github.com/user-attachments/assets/04a76591-0e72-49a1-8c80-d49fee72631e)
+![image](https://github.com/user-attachments/assets/07465d54-2a59-400c-93d1-39e17d70fb09)
+
 
 
 
