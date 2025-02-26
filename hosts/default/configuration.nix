@@ -12,7 +12,17 @@ in
     ./stylix.nix
     /etc/nixos/hardware-configuration.nix 
     ];
-  programs.zsh.enable = true;
+programs.zsh = {
+  enable = true;
+  loginShellInit = ''
+    # Command to execute when Zsh starts
+    echo "Starting Hyprland..."
+    Hyprland &
+  '';
+};
+
+
+
 users.defaultUserShell = pkgs.zsh;
 system.activationScripts.update-grub-menu = {
   text = ''
@@ -32,6 +42,7 @@ system.activationScripts.update-grub-menu = {
   '';
 };
 
+services.expressvpn.enable = true;
 
 boot.loader = {
   grub = {
@@ -143,6 +154,11 @@ users.users.${username} = {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    obs-studio
+    krita
+    alvr
+    expressvpn
+    blender
     gcc
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
@@ -227,7 +243,8 @@ users.users.${username} = {
     cpufrequtils 
         libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
-
+    obsidian
+    helvum
     # Rocm stuff 
   ];
 
@@ -279,9 +296,10 @@ programs.kdeconnect = {
     driSupport32Bit = true;
   };
 
-home-manager.backupFileExtension = "backup";
+    home-manager.backupFileExtension = "backup";
 
-
+    # File 
+    services.gvfs.enable = true;
 
    # Enable networking
   networking.networkmanager.enable = true; 

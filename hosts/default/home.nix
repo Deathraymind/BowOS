@@ -37,6 +37,34 @@ in
     nixd
   ];
   # Program configurations
+
+
+programs.starship = {
+    enable = true;
+    enableZshIntegration= true; # Enable for Bash (or enableZshIntegration for Zsh, etc.)
+    settings = {
+format = ''
+[┌───────────────────>](bold green)
+[│](bold green)$directory$rust$package
+[└─>](bold green) '';
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10;
+
+# Disable the blank line at the start of the prompt
+add_newline = false;
+
+# Set 'foo' as custom color palette
+palette = "foo";
+
+# Define custom colors
+# Overwrite existing color
+blue = "21";
+# Define new color
+mustard = "#af8700";
+
+        };
+    };
   programs = {
     kitty.enable = true;
     alacritty.enable = true;
@@ -46,62 +74,7 @@ in
       userName = "Deathraymind";
       userEmail = "deathraymind@gmail.com";
     };
-            # bash = {
-            #enable = true;
-            #enableCompletion = true;
-            #profileExtra = ''
-            #if [ "$(tty)" = "/dev/tty1" ]; then
-            #exec Hyprland &> /dev/null
-            #fi
-            #'';
-        #};
-    starship = {
-      enable = true;
-      enableBashIntegration = true;
-      settings = {
-        add_newline = true;
-        
-        character = {
-          success_symbol = "[➜](bold green)";
-          error_symbol = "[✗](bold red)";
-        };
-        directory = {
-          truncation_length = 3;
-          truncate_to_repo = true;
-          style = "bold cyan";
-        };
-        git_branch = {
-          symbol = " ";
-          style = "bold purple";
-        };
-        git_status = {
-          style = "bold red";
-          ahead = "⇡";
-          behind = "⇣";
-          diverged = "⇕";
-          modified = "!";
-        };
-        cmd_duration = {
-          min_time = 500;
-          format = "took [$duration](bold yellow)";
-        };
-        nix_shell = {
-          symbol = " ";
-          format = "via [$symbol$state( \($name\))](bold blue) ";
-        };
-        battery = {
-          full_symbol = " ";
-          charging_symbol = " ";
-          discharging_symbol = " ";
-        };
-        time = {
-          disabled = false;
-          format = "[$time]($style) ";
-          style = "bold yellow";
-        };
-      };
     };
-  };
   # State version
   home.stateVersion = "24.11";
 }
