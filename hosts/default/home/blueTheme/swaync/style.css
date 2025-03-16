@@ -1,12 +1,12 @@
-@define-color cc-bg rgba(26, 27, 38, 0.60);
+@define-color cc-bg rgb(26, 27, 38); /* Changed from rgba(26, 27, 38, 0.60) to remove transparency */
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
 @define-color noti-bg rgb(17, 17, 27);
-@define-color noti-bg-darker rgba(43, 43, 57, 0.80);
+@define-color noti-bg-darker rgb(43, 43, 57); /* Changed from rgba(43, 43, 57, 0.80) to remove transparency */
 @define-color noti-bg-hover rgb(27, 27, 43);
-@define-color noti-bg-focus rgba(27, 27, 27, 0.6);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-@define-color text-color rgba(169, 177, 214, 1);
+@define-color noti-bg-focus rgb(27, 27, 27); /* Changed from rgba(27, 27, 27, 0.6) to remove transparency */
+@define-color noti-close-bg rgb(255, 255, 255); /* Changed from rgba(255, 255, 255, 0.1) to make opaque */
+@define-color noti-close-bg-hover rgb(255, 255, 255); /* Changed from rgba(255, 255, 255, 0.15) to make opaque */
+@define-color text-color rgb(169, 177, 214); /* Changed from rgba(169, 177, 214, 1) to rgb format */
 @define-color text-color-disabled rgb(150, 150, 150);
 @define-color bg-selected rgb(0, 128, 255);
 
@@ -16,7 +16,7 @@
 
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
-  opacity: 0.80;
+  opacity: 1;
   background: @noti-bg-darker;
 }
 
@@ -131,7 +131,7 @@
   font-size: 16px;
   font-weight: 700;
   background: transparent;
-  color: rgba(158, 206, 106, 1);
+  color: rgb(158, 206, 106); /* Changed from rgba(158, 206, 106, 1) to rgb format */
   text-shadow: none;
 }
 
@@ -163,14 +163,11 @@
 }
 
 .control-center-list-placeholder {
-  opacity: 0.5;
+  opacity: 1; /* Changed from 0.5 to make fully opaque */
 }
 
 .floating-notifications {
-  background: transparent;
 }
-
-
 
 .widget-title {
   color: #7aa2f7;
@@ -275,7 +272,7 @@
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-  background: rgba(122, 162, 247, 1);
+  background: rgb(122, 162, 247); /* Changed from rgba(122, 162, 247, 1) to rgb format */
   color: @cc-bg;
 }
 

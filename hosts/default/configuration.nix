@@ -268,6 +268,7 @@ programs.steam = {
   security.polkit.enable = true;
   services.openssh.enable = true;
   programs.kdeconnect.enable = true;
+  services.flatpak.enable = true;
 
 programs.kdeconnect = {
   package = pkgs.gnomeExtensions.gsconnect;
