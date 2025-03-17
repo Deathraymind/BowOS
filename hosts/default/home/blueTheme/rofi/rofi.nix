@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 {
-  programs = lib.mkForce{
+  programs = lib.mkForce {
     rofi = {
       enable = true;
       package = pkgs.rofi-wayland;

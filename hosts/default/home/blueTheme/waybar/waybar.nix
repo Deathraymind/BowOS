@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  host,
-  config,
-  ...
+{ pkgs
+, lib
+, host
+, config
+, ...
 }:
 
 
@@ -36,7 +35,7 @@
           "tray"
           "custom/notifications"
         ];
-        
+
         "hyprland/workspaces" = {
           format = "{icon} {windows}";
           format-window-seperator = " ";
@@ -46,32 +45,32 @@
             code = "󰨞";
           };
         };
-        
-        clock = { 
+
+        clock = {
           format = "{:%a, %e %b, %I:%M %p}";
           on-click = "firefox https://calendar.google.com";
         };
-        
+
         cpu = {
           interval = 10;
           format = "  {usage}%";
           max-length = 10;
         };
-        
+
         memory = {
           interval = 1;
           format = "  {used:.01f}G/{total:0.1f}G";
         };
-        
+
         backlight = {
           device = "intel_backlight";
           format = "{icon} {percent}%";
-          format-icons = ["󰃞" "󰃟" "󰃠"];
+          format-icons = [ "󰃞" "󰃟" "󰃠" ];
           on-scroll-up = "brightnessctl set 5%+";
           on-scroll-down = "brightnessctl set 5%-";
           min-length = 6;
         };
-        
+
         pulseaudio = {
           format = "{icon} {volume}%";
           tooltip = false;
@@ -87,10 +86,10 @@
             phone = "";
             portable = "";
             car = "";
-            default = ["" "" ""];
+            default = [ "" "" "" ];
           };
         };
-        
+
         battery = {
           states = {
             good = 95;
@@ -101,19 +100,19 @@
           format-charging = " {capacity}% ";
           format-plugged = " {capacity}% ";
           format-alt = "{time} {icon} ";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [ "" "" "" "" "" ];
         };
-        
+
         tray = {
           icon-size = 24;
           spacing = 10;
         };
-        
+
         "custom/notifications" = {
           format = "";
           on-click = "swaync-client -t";
         };
-        
+
         "custom/launcher" = {
           format = "";
           on-click = "rofi -show run";
@@ -123,8 +122,8 @@
 
     # Theme Waybar
 
-  style = lib.concatStrings [
-''
+    style = lib.concatStrings [
+      ''
 
 * {
     border: none;
@@ -356,6 +355,6 @@ window#waybar {
 
 
 ''
-  ]; 
-  }; 
+    ];
+  };
 }

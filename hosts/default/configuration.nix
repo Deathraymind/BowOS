@@ -8,97 +8,97 @@ in
 
 {
   imports =
-    [ 
-    ./stylix.nix
-    /etc/nixos/hardware-configuration.nix 
+    [
+      ./stylix.nix
+      /etc/nixos/hardware-configuration.nix
     ];
-programs.zsh = {
-  enable = true;
-  loginShellInit = ''
-    # Command to execute when Zsh starts
-    echo "Starting Hyprland..."
-    Hyprland &
-  '';
-};
-
-
-
-users.defaultUserShell = pkgs.zsh;
-system.activationScripts.update-grub-menu = {
-  text = ''
-    echo "Updating GRUB menu entry name..."
-
-    GRUB_CFG="/boot/grub/grub.cfg"
-    BACKUP_GRUB_CFG="/boot/grub/grub.cfg.bak"
-    SEARCH_STR="\"NixOS"
-    REPLACE_STR="\"BowOS"
-
-    if [ -f "$GRUB_CFG" ]; then
-        cp "$GRUB_CFG" "$BACKUP_GRUB_CFG"
-        ${pkgs.gnused}/bin/sed -i "s/$SEARCH_STR/$REPLACE_STR/g" "$GRUB_CFG"
-    else
-        echo "Error: GRUB configuration file not found."
-    fi
-  '';
-};
-
-services.expressvpn.enable = true;
-
-boot.loader = {
-  grub = {
+  programs.zsh = {
     enable = true;
-    efiSupport = true;
-    devices = [ "nodev" ]; 
-    configurationName = "BowOS";
-    fontSize = 26;
-    useOSProber = true;
+    loginShellInit = ''
+      # Command to execute when Zsh starts
+      echo "Starting Hyprland..."
+      Hyprland &
+    '';
   };
-  efi = {
-    canTouchEfiVariables = true;
-    # Optional: specify EFI mount point if non-standard
-    # efiSysMountPoint = "/boot/efi";
+
+
+
+  users.defaultUserShell = pkgs.zsh;
+  system.activationScripts.update-grub-menu = {
+    text = ''
+      echo "Updating GRUB menu entry name..."
+
+      GRUB_CFG="/boot/grub/grub.cfg"
+      BACKUP_GRUB_CFG="/boot/grub/grub.cfg.bak"
+      SEARCH_STR="\"NixOS"
+      REPLACE_STR="\"BowOS"
+
+      if [ -f "$GRUB_CFG" ]; then
+          cp "$GRUB_CFG" "$BACKUP_GRUB_CFG"
+          ${pkgs.gnused}/bin/sed -i "s/$SEARCH_STR/$REPLACE_STR/g" "$GRUB_CFG"
+      else
+          echo "Error: GRUB configuration file not found."
+      fi
+    '';
   };
-};
 
- boot.loader.systemd-boot.enable = false;
+  services.expressvpn.enable = true;
 
-# this text is 3d-ASSCI
+  boot.loader = {
+    grub = {
+      enable = true;
+      efiSupport = true;
+      devices = [ "nodev" ];
+      configurationName = "BowOS";
+      fontSize = 26;
+      useOSProber = true;
+    };
+    efi = {
+      canTouchEfiVariables = true;
+      # Optional: specify EFI mount point if non-standard
+      # efiSysMountPoint = "/boot/efi";
+    };
+  };
+
+  boot.loader.systemd-boot.enable = false;
+
+  # this text is 3d-ASSCI
   environment.etc."issue".text = ''
-\e[34m
-.--------------------------------------------.
-|██████╗  ██████╗ ██╗    ██╗ ██████╗ ███████╗|
-|██╔══██╗██╔═══██╗██║    ██║██╔═══██╗██╔════╝|
-|██████╔╝██║   ██║██║ █╗ ██║██║   ██║███████╗|
-|██╔══██╗██║   ██║██║███╗██║██║   ██║╚════██║|
-|██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
-|╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
-'--------------------------------------------'
-Welcome to BowOS \e[0m
-\n \l
-'';
+    \e[34m
+    .--------------------------------------------.
+    |██████╗  ██████╗ ██╗    ██╗ ██████╗ ███████╗|
+    |██╔══██╗██╔═══██╗██║    ██║██╔═══██╗██╔════╝|
+    |██████╔╝██║   ██║██║ █╗ ██║██║   ██║███████╗|
+    |██╔══██╗██║   ██║██║███╗██║██║   ██║╚════██║|
+    |██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
+    |╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
+    '--------------------------------------------'
+    Welcome to BowOS \e[0m
+    \n \l
+  '';
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq"];
-boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
+  boot.kernelPackages = pkgs.linuxPackages;
 
 
-qt.style = "adwaita-dark";
-qt.enable = true;
+  qt.style = "adwaita-dark";
+  qt.enable = true;
 
-environment.variables = {
+  environment.variables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
-};
+  };
 
 
 
 
 
   boot.extraModprobeConfig = ''
-  options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
+    options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
   '';
   # Run this command to run the virtual camera
   # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
- time.timeZone = lib.mkDefault "Asia/Tokyo"; 
+  time.timeZone = lib.mkDefault "Asia/Tokyo";
 
   # Set you location
   i18n.extraLocaleSettings = {
@@ -120,7 +120,7 @@ environment.variables = {
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-users.users.${username} = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" ];
@@ -128,12 +128,12 @@ users.users.${username} = {
 
 
 
-# ____            _    _              
-#|  _ \  ___  ___| | _| |_ ___  _ __  
-#| | | |/ _ \/ __| |/ / __/ _ \| '_ \ 
-#| |_| |  __/\__ \   <| || (_) | |_) |
-#|____/ \___||___/_|\_\\__\___/| .__/ 
-#                              |_|      
+  # ____            _    _              
+  #|  _ \  ___  ___| | _| |_ ___  _ __  
+  #| | | |/ _ \/ __| |/ / __/ _ \| '_ \ 
+  #| |_| |  __/\__ \   <| || (_) | |_) |
+  #|____/ \___||___/_|\_\\__\___/| .__/ 
+  #                              |_|      
 
   programs.hyprland = {
     enable = true;
@@ -143,12 +143,12 @@ users.users.${username} = {
 
 
 
-#__            _                         
-#|  _ \ __ _  ___| | ____ _  __ _  ___  ___ 
-#| |_) / _` |/ __| |/ / _` |/ _` |/ _ \/ __|
-#|  __/ (_| | (__|   < (_| | (_| |  __/\__ \
-#|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
-#                           |___/           
+  #__            _                         
+  #|  _ \ __ _  ___| | ____ _  __ _  ___  ___ 
+  #| |_) / _` |/ __| |/ / _` |/ _` |/ _ \/ __|
+  #|  __/ (_| | (__|   < (_| | (_| |  __/\__ \
+  #|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
+  #                           |___/           
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -215,8 +215,8 @@ users.users.${username} = {
     nwg-look
     hyprpaper
     fastfetch
-    hyprlock 
-    pavucontrol 
+    hyprlock
+    pavucontrol
     pipewire
     xorg.xrandr
     home-manager
@@ -240,8 +240,8 @@ users.users.${username} = {
     v4l2-relayd
     v4l-utils
     android-tools
-    cpufrequtils 
-        libsForQt5.qtstyleplugin-kvantum
+    cpufrequtils
+    libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     obsidian
     helvum
@@ -251,63 +251,63 @@ users.users.${username} = {
 
 
 
-# ____                  _      _           
-#/ ___|  ___ _ ____   _(_) ___(_) ___  ___ 
-#\___ \ / _ \ '__\ \ / / |/ __| |/ _ \/ __|
-# ___) |  __/ |   \ V /| | (__| |  __/\__ \
-#|____/ \___|_|    \_/ |_|\___|_|\___||___/
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-};
+  # ____                  _      _           
+  #/ ___|  ___ _ ____   _(_) ___(_) ___  ___ 
+  #\___ \ / _ \ '__\ \ / / |/ __| |/ _ \/ __|
+  # ___) |  __/ |   \ V /| | (__| |  __/\__ \
+  #|____/ \___|_|    \_/ |_|\___|_|\___||___/
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   virtualisation.docker.enable = true;
-  services.udisks2.enable = true; 
+  services.udisks2.enable = true;
   security.polkit.enable = true;
   services.openssh.enable = true;
   programs.kdeconnect.enable = true;
   services.flatpak.enable = true;
 
-programs.kdeconnect = {
-  package = pkgs.gnomeExtensions.gsconnect;
-};
+  programs.kdeconnect = {
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
 
-# power saving
+  # power saving
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-      CPU_BOOST_ON_BAT=0;
-      CPU_BOOST_ON_AC=1;
-      CPU_MAX_PERF_ON_AC=95;
-      CPU_MAX_PERF_ON_BAT=30;
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_BOOST_ON_BAT = 0;
+      CPU_BOOST_ON_AC = 1;
+      CPU_MAX_PERF_ON_AC = 95;
+      CPU_MAX_PERF_ON_BAT = 30;
     };
   };
 
-  services.openssh.permitRootLogin = "no"; 
-  services.openssh.passwordAuthentication = true; 
+  services.openssh.permitRootLogin = "no";
+  services.openssh.passwordAuthentication = true;
 
- 
+
   # Graphics
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
   };
 
-    home-manager.backupFileExtension = "backup";
+  home-manager.backupFileExtension = "backup";
 
-    # File 
-    services.gvfs.enable = true;
+  # File 
+  services.gvfs.enable = true;
 
-   # Enable networking
-  networking.networkmanager.enable = true; 
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Bluetooth
-  hardware.bluetooth.enable = true; 
-  hardware.bluetooth.powerOnBoot = true; 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
   # Sound
@@ -319,7 +319,7 @@ programs.kdeconnect = {
     jack.enable = false;
   };
 
-    xdg.portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
@@ -330,36 +330,36 @@ programs.kdeconnect = {
 
 
 
-# _____ _                        _ _ 
-#|  ___(_)_ __ _____      ____ _| | |
-#| |_  | | '__/ _ \ \ /\ / / _` | | |
-#|  _| | | | |  __/\ V  V / (_| | | |
-#|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
+  # _____ _                        _ _ 
+  #|  ___(_)_ __ _____      ____ _| | |
+  #| |_  | | '__/ _ \ \ /\ / / _` | | |
+  #|  _| | | | |  __/\ V  V / (_| | | |
+  #|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
-networking.firewall = {
-    
-    
-  enable = true; 
-  
-  allowedTCPPorts = [ 9943 9944 51112 ]; 
-  allowedUDPPorts = [ 9943 9944 51112 ]; 
-  allowedTCPPortRanges = [  { from = 1714; to = 1764; }]; 
-  allowedUDPPortRanges = [  { from = 1714; to = 1764; }]; 
- 
-};
+  networking.firewall = {
 
-# Virtual Machines
-programs.virt-manager.enable = true;
 
-virtualisation.libvirtd = {
     enable = true;
-    qemu.vhostUserPackages = with pkgs; [virtiofsd];
-};
 
-virtualisation.virtualbox.host.enable = true;
-users.extraGroups.vboxusers.members = [ "bowyn" ];
+    allowedTCPPorts = [ 9943 9944 51112 ];
+    allowedUDPPorts = [ 9943 9944 51112 ];
+    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+    allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 
-nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
-nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
-system.stateVersion = "24.11"; 
+  };
+
+  # Virtual Machines
+  programs.virt-manager.enable = true;
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  };
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "bowyn" ];
+
+  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  system.stateVersion = "24.11";
 }
