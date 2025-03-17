@@ -17,10 +17,10 @@ in
   home.file = {
     "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;
     "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
-    "/home/${username}/.config/hypr/" = { 
-      source = ./home/blueTheme/hypr; 
-      recursive = true; 
-    };
+            #"/home/${username}/.config/hypr/" = { 
+            #source = ./home/blueTheme/hypr; 
+            #recursive = true; 
+        #};
     "/home/${username}/.config/swaync/" = { 
       source = ./home/blueTheme/swaync; 
       recursive = true; 
@@ -68,7 +68,6 @@ mustard = "#af8700";
     };
   programs = {
     kitty.enable = true;
-    hyprland.enable = true;
     alacritty.enable = true;
     home-manager.enable = true;
     git = {

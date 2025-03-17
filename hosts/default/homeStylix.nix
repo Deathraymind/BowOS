@@ -38,7 +38,7 @@ stylix.base16Scheme.base09 = "fab387"; # peach
 stylix.base16Scheme.base0A = "f9e2af"; # yellow
 stylix.base16Scheme.base0B = "a6e3a1"; # green
 stylix.base16Scheme.base0C = "94e2d5"; # teal
-stylix.base16Scheme.base0D = "89b4fa"; # blue
+stylix.base16Scheme.base0D = "7434eb"; # blue
 stylix.base16Scheme.base0E = "cba6f7"; # mauve
 stylix.base16Scheme.base0F = "f2cdcd"; # flamingo
 

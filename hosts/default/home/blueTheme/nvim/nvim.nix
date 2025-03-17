@@ -12,6 +12,7 @@
     statix
     nixpkgs-fmt
     nodejs
+    ripgrep
     ];
 
   programs.neovim = {
