@@ -10,6 +10,7 @@ in
     ./home/blueTheme/waybar/waybar.nix
     ./home/blueTheme/rofi/rofi.nix
     ./home/blueTheme/fastfetch/fastfetch.nix
+    ./home/blueTheme/hypr/hyprland.nix
     ./homeStylix.nix
   ];
   # File management
@@ -67,6 +68,7 @@ mustard = "#af8700";
     };
   programs = {
     kitty.enable = true;
+    hyprland.enable = true;
     alacritty.enable = true;
     home-manager.enable = true;
     git = {
