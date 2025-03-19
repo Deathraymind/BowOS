@@ -2,6 +2,16 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      exec-once = [
+        "mkdir -p ~/Pictures/screenshots"
+        "waybar"
+        "blueman-applet"
+        "nm-applet"
+        "lxqt-policykit-agent"
+        "swaync"
+        "/usr/lib/kdeconnectd"
+        "hyprpaper -c /home/$USER/bowos/wallpaper/hyprpaper.conf"
+      ];
       # Basic window manipulation
       bind = [
         "SUPER, Q, killactive,"
@@ -112,6 +122,9 @@
         ", xf86audiolowervolume, exec, wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-"
         ", xf86audiomute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
       ];
+      gestures = {
+        workspace_swipe = true; 
+      };
       general = {
         gaps_in = 4;
         gaps_out = 8;

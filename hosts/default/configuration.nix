@@ -198,6 +198,7 @@ in
     # screenshot
     grim
     slurp
+    arduino-ide
     swappy
     cliphist
     hyprpicker
