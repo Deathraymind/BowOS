@@ -12,19 +12,20 @@ in
     ./home/blueTheme/fastfetch/fastfetch.nix
     ./home/blueTheme/hypr/hyprland.nix
     ./homeStylix.nix
+    ./home/blueTheme/swaync/swaync.nix
   ];
   # File management
   home.file = {
-    "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;
-    "/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
+        # "/run/current-system/sw/etc/xdg/swaync/config.json".source = ./home/blueTheme/swaync/config.json;
+        #"/run/current-system/sw/etc/xdg/swaync/style.css".source = ./home/blueTheme/swaync/style.css;
     #"/home/${username}/.config/hypr/" = { 
     #source = ./home/blueTheme/hypr; 
     #recursive = true; 
     #};
-    "/home/${username}/.config/swaync/" = {
-      source = ./home/blueTheme/swaync;
-      recursive = true;
-    };
+            # "/home/${username}/.config/swaync/" = {
+            #source = ./home/blueTheme/swaync;
+            #recursive = true;
+        #};
     "/home/${username}/.config/nvim/" = {
       source = ./home/blueTheme/nvim;
       recursive = true;
