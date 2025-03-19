@@ -13,5 +13,13 @@
             notification-body-image-height = 100;
             notification-body-image-width = 200;
         };
+        style = ''
+        notification {
+            background: @cc-bg;
+            border: 2px solid #34548a;
+            border-radius: 15px;
+            margin: 3px -2px 3px 0px;
+        } 
+        '';
     };
 }
