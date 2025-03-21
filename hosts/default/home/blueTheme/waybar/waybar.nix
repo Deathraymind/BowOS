@@ -157,7 +157,7 @@ window#waybar {
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
     border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D}
 }
 
 #tray:hover {

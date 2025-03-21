@@ -1,3 +1,9 @@
+{ pkgs
+, lib
+, config
+, ...
+}: 
+
 {
     services.swaync = {
         enable = true;
@@ -14,12 +20,18 @@
             notification-body-image-width = 200;
         };
         style = ''
-        notification {
-            background: @cc-bg;
-            border: 2px solid #34548a;
+        .notification {
+            background: #${config.stylix.base16Scheme.base00};
+            border: 5px solid #${config.stylix.base16Scheme.base0D};
             border-radius: 15px;
             margin: 3px -2px 3px 0px;
-        } 
+        }
+        .control-center {
+            backgrounda: #${config.stylix.base16Scheme.base0D};
+            border: 2px solid #;
+            border-radius: 15px;
+            opacity: 1;
+        }
         '';
     };
 }
