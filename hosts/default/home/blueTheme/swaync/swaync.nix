@@ -11,16 +11,19 @@
             positionX = "right";
             positionY = "top";
             fit-to-screen = false;
-            control-center-margin-top = 10;
+            control-center-margin-top = 8;
             # control-center-margin-bottom = 10;
-            control-center-margin-right = 10;
+            control-center-margin-right = 8;
             notification-icon-size = 64;
-            control-center-width = 300;
-            control-center-height = 300;
+            control-center-width = 350;
+            control-center-height = 450;
             notification-body-image-height = 100;
             notification-body-image-width = 200;
             widgets = ["dnd" "buttons-grid"];
             widget-config = {
+                dnd = {
+                    text = "Focus Mode";
+                };
                 buttons-grid = {
                     actions = [
                       {
@@ -63,8 +66,8 @@
 
         .widget-dnd {
           background: @noti-bg-darker;
-          padding: 5px 10px;
-          margin: 5px 10px;
+          padding: 5px 5px 5px 5px;
+          margin: 8px 8px 8px 8px;
           border-radius: 15px;
           font-size: medium;
           color: #${config.stylix.base16Scheme.base0D};
@@ -93,9 +96,8 @@
         /* buttons grid */
 
         .widget-buttons-grid {
-          font-size: x-large;
-          padding: 5px;
-          margin: 5px 10px 10px 10px;
+          margin: 0px 8px 8px 8px;
+          padding: 5px 5px 5px 5px;
           border-radius: 15px;
           background: @noti-bg-darker;
         }
@@ -104,18 +106,21 @@
           margin: 3px;
           background: @cc-bg;
           border-radius: 15px;
-          color: @text-color;
+          color: #000000;
+          padding: 60px;
         }
 
         .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-          background: #${config.stylix.base16Scheme.base0D}; /* Changed from rgba(122, 162, 247, 1) to rgb format */
+          background: #${config.stylix.base16Scheme.base0D};
         }
-               /* Style for the first button */
+        
+        /* Style for the first button */
         .widget-buttons-grid > flowbox > flowboxchild:nth-child(1) > button {
             margin: 3px;
             background: #${config.stylix.base16Scheme.base08}; /* Red background */
             border-radius: 15px;
-            color: #ffffff; /* White text */
+            color: #000000;
+
         }
         .widget-buttons-grid>flowbox>flowboxchild:nth-child(1)>button:hover {
           background: #${config.stylix.base16Scheme.base0D}; 
@@ -137,7 +142,7 @@
             margin: 3px;
             background: #${config.stylix.base16Scheme.base0A}; /* Blue background */
             border-radius: 15px;
-            color: #ffffff; /* White text */
+            color: #000000; 
         }
         .widget-buttons-grid>flowbox>flowboxchild:nth-child(3)>button:hover {
           background: #${config.stylix.base16Scheme.base0D};           
