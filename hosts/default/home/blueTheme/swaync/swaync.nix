@@ -99,6 +99,7 @@
           margin: 0px 8px 8px 8px;
           padding: 5px 5px 5px 5px;
           border-radius: 15px;
+          margin-left: 200;  
           background: @noti-bg-darker;
         }
 
@@ -107,7 +108,7 @@
           background: @cc-bg;
           border-radius: 15px;
           color: #000000;
-          padding: 60px;
+          padding: 30px;
         }
 
         .widget-buttons-grid>flowbox>flowboxchild>button:hover {
