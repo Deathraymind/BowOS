@@ -1,0 +1,127 @@
+{
+    "layer": "top",
+    "position": "top",
+    //"mode": "dock",
+    "exclusive": "true",
+    "passthrough": "false",
+    "height": "20",
+    "gtk-layer-shell": true,
+
+    "modules-left": [ "cpu", "memory", "battery"],
+    "modules-center": ["hyprland/workspaces", "clock", "custom/launcher"],
+    "modules-right": [ "backlight", "pulseaudio", "tray", "custom/notification"],
+
+    "hyprland/workspaces": {
+    "format": "{icon} {windows}",
+    "format-window-separator": " ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+        "title<.*youtube.*>": "",
+        "class<firefox>": "",
+        "class<firefox> title<.*github.*>": "",
+        "kitty": "",
+        "code": "󰨞"
+        }
+    },
+
+    "clock": {
+        "format": " {:%a, %e %b, %I:%M %p }",
+        "on-click" : "firefox https://calendar.google.com"
+    },
+ 
+
+
+    "cpu": {
+        "interval": 10,
+        "format" : "  {usage}%",
+        "max-length": 10
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "  {used:.01f}G/{total:0.1f}G" 
+    },
+
+    "network": {
+        "interval": 1,
+        //"interface": "wlp2s0",
+        "format": "{ifname}",
+        "format-wifi": " {essid} ({signalStrength}%) ",
+        "format-ethernet": " {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "exec": "kitty -e nmcli dev wifi "
+    },
+
+
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "min-length": 6
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " Muted",
+        "on-click": "pavucontrol -t 3",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}% ",
+        "format-charging": " {capacity}% ",
+        "format-plugged": " {capacity}% ",
+        "format-alt": "{time} {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+               },
+	
+
+ 
+
+    "custom/divider": {
+        "format": "|"
+    },
+
+
+
+    "custom/notification": {
+        "format": "",
+        "on-click": "swaync-client -t"          
+    },
+
+    "custom/launcher": {
+        "format": "",
+        "on-click": "rofi -show run"
+    }
+    
+}
