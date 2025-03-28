@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/PUT-YOUR-DEVICE-ID-HERE"; # More portable
+        device = "/dev/disk/by-id/PUT-YOUR-DEVICE-ID-HERE"; # More portabl e
         content = {
           type = "gpt";
           partitions = {
