@@ -3,13 +3,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stylix.url = "github:danth/stylix";
     rocm.url = "github:nixos-rocm/nixos-rocm";
+    disko.url = "github:nix-community/disko/latest"; # For Installer
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, rocm, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, rocm, disko, ... }@inputs:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       username = builtins.getEnv "BOWOS_USER";
@@ -47,6 +48,67 @@
             }
             stylix.nixosModules.stylix
             ./hosts/default/configuration.nix
+
+
+
+            {
+              networking.hostName = "bowos";
+              disko.devices = {
+          disk = {
+            main = {
+              # When using disko-install, we will overwrite this value from the commandline
+              device = "/dev/disk/by-id/some-disk-id";
+              type = "disk";
+              content = {
+                type = "gpt";
+                partitions = {
+                  MBR = {
+                    type = "EF02"; # for grub MBR
+                    size = "1M";
+                    priority = 1; # Needs to be first partition
+                  };
+                  ESP = {
+                    type = "EF00";
+                    size = "500M";
+                    content = {
+                      type = "filesystem";
+                      format = "vfat";
+                      mountpoint = "/boot";
+                      mountOptions = [ "umask=0077" ];
+                    };
+                  };
+                  root = {
+                    size = "100%";
+                    content = {
+                      type = "filesystem";
+                      format = "ext4";
+                      mountpoint = "/";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${username} = import ./hosts/default/home.nix;
+            }
+          ];
+        };
+
+        install = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            {
+              services.xserver.videoDrivers = [ "amdgpu" ];
+            }
+            stylix.nixosModules.stylix
+            ./hosts/default/configuration.nix
+            disko.nixosModules.disko
             {
               networking.hostName = "bowos";
             }
@@ -58,6 +120,7 @@
             }
           ];
         };
+
 
         kvm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
