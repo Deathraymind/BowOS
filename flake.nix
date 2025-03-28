@@ -72,7 +72,7 @@
             stylix.nixosModules.stylix
             ./hosts/default/configuration.nix
             disko.nixosModules.disko
-            .disko.nix
+            ./disko.nix
             {
               networking.hostName = "bowos";
             }
