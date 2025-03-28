@@ -7,7 +7,7 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/some-disk-id";# More portable
+        device = "/dev/${disk}";# More portable
         content = {
           type = "gpt";
           partitions = {
@@ -21,7 +21,7 @@ in
               };
             };
             swap = {
-              size = "4G";
+              size = "${swapSize}G";
               content = {
                 type = "swap";
               };
