@@ -48,7 +48,7 @@
             }
             stylix.nixosModules.stylix
             ./hosts/default/configuration.nix
-            ./etc/nixos/hardware-configuration.nix
+            /mnt/etc/nixos/hardware-configuration.nix
 
 
             {
