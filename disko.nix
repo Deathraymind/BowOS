@@ -10,7 +10,7 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/${disk}"; # More portabl e
+        device = "/dev/disk/by-id/some-disk-id";# More portabl e
         content = {
           type = "gpt";
           partitions = {
@@ -24,7 +24,7 @@ in
               };
             };
             swap = {
-              size = "${swapSize}G";
+              size = "4G";
               content = {
                 type = "swap";
               };
