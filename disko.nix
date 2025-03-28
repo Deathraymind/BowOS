@@ -2,7 +2,9 @@ let
     disk = builtins.getEnv "BOWOS_DISK"; # Without /dev/
     swapSize = builtins.getEnv "BOWOS_SWAPSIZE"; # Just the size in gigs like 4 is = 4G
     # run this command 
-    # BOWOS_SWAPSIZE=4 BOWOS_USER=bowyn BOWOS_DISK=vda sudo -E nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:nix-community/disko -- --mode disko -f .#amd disko.nix --arg device /dev/vda 
+    # BOWOS_SWAPSIZE=4 BOWOS_USER=bowyn BOWOS_DISK=vda sudo -E nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:nix-community/disko -- --mode disko -f .#amd disko.nix --arg device /dev/vda
+    # nixos-install
+    # BOWOS_USER=bowyn sudo -E nixos-install --flake .#amd --no-root-passwd --impure 
 in
 {
   disko.devices = {
