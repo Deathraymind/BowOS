@@ -10,6 +10,7 @@ in
   imports =
     [
       ./stylix.nix
+      ./etc/nixos/hardware-configuration.nix
     ];
   programs.zsh = {
     enable = true;
