@@ -4,8 +4,8 @@
 let
   username = builtins.getEnv "BOWOS_USER";
 in
-
-
+    # Use this command to rebuild the system :)
+    # BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake .#kvm
 {
   imports =
     [
@@ -15,9 +15,7 @@ in
   programs.zsh = {
     enable = true;
     loginShellInit = ''
-      # Command to execute when Zsh starts
-      echo "Starting Hyprland..."
-      Hyprland &
+      Hyprland & 
     '';
   };
 

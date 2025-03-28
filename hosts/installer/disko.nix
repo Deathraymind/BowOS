@@ -1,9 +1,16 @@
+let
+    disk = builtins.getEnv "BOWOS_DISK"; # Without /dev/
+    swapSize = builtins.getEnv "BOWOS_SWAPSIZE"; # Just the size in gigs like 4 is = 4G
+
+in
+
 {
+   
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-id/PUT-YOUR-DEVICE-ID-HERE"; # More portabl e
+        device = "/dev/${disk}"; # More portabl e
         content = {
           type = "gpt";
           partitions = {
@@ -17,7 +24,7 @@
               };
             };
             swap = {
-              size = "4G";
+              size = "${swapSize}G";
               content = {
                 type = "swap";
               };
