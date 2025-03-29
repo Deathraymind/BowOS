@@ -42,12 +42,31 @@ fi
 
 nixos-generate-config --root /mnt
 
-if [[ "$BOOT_TYPE" == "efi" ]]; then
-    BOOT_DRIVE="nodev"
+# Copy preferences directory
+cp -r preferences /mnt/etc/nixos
+
+# Update grub configuration based on boot type
+if [ "$BOOT_DRIVE" == "nodev" ]; then
+    # For initial install
+    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix
+    sed -i '20i boot.loader.grub.device = "nodev";' /mnt/etc/nixos/configuration.nix
+
+    # For constant preference
+    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i '20i boot.loader.grub.device = "nodev";' /mnt/etc/nixos/preferences/configuration-preferences.nix
 else
-    BOOT_DRIVE="$BOWOS_DRIVE"
-    sudo -E bash bios-disk.sh
+    # For initial install
+    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix
+    sed -i "20i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\";" /mnt/etc/nixos/configuration.nix
+
+    # For constant preference
+    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i "5i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\";" /mnt/etc/nixos/preferences/configuration-preferences.nix
 fi
+
+# Copy all the files from /mnt/etc/nixos to /etc/nixos
 cp -r /mnt/etc/nixos/* /etc/nixos/
+
+# Install NixOS
 sudo -E nixos-install --flake .#amd --no-root-passwd --impure
 
