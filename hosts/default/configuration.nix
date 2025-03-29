@@ -56,7 +56,7 @@ in
     efi = {
       canTouchEfiVariables = true;
       # Optional: specify EFI mount point if non-standard
-      # efiSysMountPoint = "/boot/efi";
+      efiSysMountPoint = "/boot/efi";
     };
   };
 
