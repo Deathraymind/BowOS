@@ -47,16 +47,16 @@ in
   boot.loader = {
     grub = {
       enable = true;
-      efiSupport = true;
-      devices = [ "nodev" ];
+      # efiSupport = true;
+      # devices = [ "nodev" ];
       configurationName = "BowOS";
       fontSize = 26;
       useOSProber = true;
     };
     efi = {
-      canTouchEfiVariables = true;
+      # canTouchEfiVariables = true;
       # Optional: specify EFI mount point if non-standard
-      efiSysMountPoint = "/boot/efi";
+      # efiSysMountPoint = "/boot/efi";
     };
   };
 
