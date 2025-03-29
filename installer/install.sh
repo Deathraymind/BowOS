@@ -1,5 +1,7 @@
 #!/bin/bash
 # Purpose: This is a terminal script installer for BowOS, an alternative to the Rust GUI installer.
+echo "System drives:"
+lsblk
 
 echo "What drive do you want to install on? (Enter the name only, e.g., for /dev/sda, just type sda)"
 read BOWOS_DRIVE
@@ -17,8 +19,6 @@ fi
 echo "What do you want the username to be?"
 read BOWOS_USER
 
-echo "System drives:"
-lsblk
 
 echo "What swap size do you want? (Recommended: equal to your RAM in GB. Default is 4GB)"
 read -p "Enter swap size (in GB, e.g., 4): " BOWOS_SWAPSIZE
@@ -48,7 +48,7 @@ else
     sudo -E bash bios-disk.sh
 fi
 
-nixos-generate-config --root /mnt --no-root-passwd
+
 cd ..
 sudo -E nixos-install --flake .#amd --no-root-passwd --impure
 
