@@ -48,9 +48,6 @@ else
     BOOT_DRIVE="$BOWOS_DRIVE"
     sudo -E bash bios-disk.sh
 fi
-
-cp -r /mnt/etc/nixos /etc/nixos
-
-cd ..
+cp -r /mnt/etc/nixos/* /etc/nixos/
 sudo -E nixos-install --flake .#amd --no-root-passwd --impure
 

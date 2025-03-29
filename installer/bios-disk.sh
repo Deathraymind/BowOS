@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy preferences directory
-cp -r preferences /mnt/etc/nixos/
+cp -r preferences /mnt/etc/nixos
 
 # Check if BOWOS_DISK is "nodev"
 if [ "$BOOT_DRIVE" == "nodev" ]; then
