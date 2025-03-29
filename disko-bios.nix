@@ -1,6 +1,12 @@
 let
-    disk = builtins.getEnv "BOWOS_DISK"; # Without /dev/
-    swapSize = builtins.getEnv "BOWOS_SWAPSIZE"; # Just the size in gigs like 4 is = 4G
+  disk = builtins.getEnv "BOWOS_DISK"; # Without /dev/
+  swapSize = builtins.getEnv "BOWOS_SWAPSIZE"; # Just the size in gigs like 4 is = 4G
+  # Usage:
+  # BOWOS_SWAPSIZE=4 BOWOS_USER=bowyn BOWOS_DISK=vda sudo -E nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:nix-community/disko -- --mode disko disko-bios.nix
+  # Then:
+  # nixos-generate-config --root /mnt
+  # nixos-install
+  # BOWOS_USER=bowyn sudo -E nixos-install --flake .#amd --no-root-passwd --impure 
 in
 {
   disko.devices = {
@@ -9,12 +15,17 @@ in
         type = "disk";
         device = "/dev/${disk}";
         content = {
-          type = "msdos"; # Changed from gpt to msdos for BIOS
+          type = "gpt";
           partitions = {
             boot = {
               size = "1M";
-              type = "primary";
-              flags = ["boot"];
+              type = "EF02"; # BIOS boot partition for GRUB with GPT
+              content = {
+                type = "null"; # No filesystem needed for the BIOS boot partition
+              };
+            };
+            boot_mount = {
+              size = "512M";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -23,14 +34,12 @@ in
             };
             swap = {
               size = "${swapSize}G";
-              type = "primary";
               content = {
                 type = "swap";
               };
             };
             root = {
               size = "100%";
-              type = "primary";
               content = {
                 type = "filesystem";
                 format = "ext4";
