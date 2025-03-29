@@ -257,109 +257,109 @@ in
   #\___ \ / _ \ '__\ \ / / |/ __| |/ _ \/ __|
   # ___) |  __/ |   \ V /| | (__| |  __/\__ \
   #|____/ \___|_|    \_/ |_|\___|_|\___||___/
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+  #programs.steam = {
+  #  enable = true;
+  #  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  #};
 
-  virtualisation.docker.enable = true;
-  services.udisks2.enable = true;
-  security.polkit.enable = true;
-  services.openssh.enable = true;
-  programs.kdeconnect.enable = true;
-  services.flatpak.enable = true;
-  services.dbus.enable = true;
+  #virtualisation.docker.enable = true;
+  #services.udisks2.enable = true;
+  #security.polkit.enable = true;
+  #services.openssh.enable = true;
+  #programs.kdeconnect.enable = true;
+  #services.flatpak.enable = true;
+  #services.dbus.enable = true;
 
-  programs.kdeconnect = {
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
-
-
-  # power saving
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_BOOST_ON_BAT = 0;
-      CPU_BOOST_ON_AC = 1;
-      CPU_MAX_PERF_ON_AC = 95;
-      CPU_MAX_PERF_ON_BAT = 30;
-    };
-  };
-
-  services.openssh.permitRootLogin = "no";
-  services.openssh.passwordAuthentication = true;
+  #programs.kdeconnect = {
+  #  package = pkgs.gnomeExtensions.gsconnect;
+  #};
 
 
-  # Graphics
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-  };
+  ## power saving
+  #services.tlp = {
+  #  enable = true;
+  #  settings = {
+  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #    CPU_BOOST_ON_BAT = 0;
+  #    CPU_BOOST_ON_AC = 1;
+  #    CPU_MAX_PERF_ON_AC = 95;
+  #    CPU_MAX_PERF_ON_BAT = 30;
+  #  };
+  #};
 
-  home-manager.backupFileExtension = "backup";
-
-  # File 
-  services.gvfs.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-
-  # Sound
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = false;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
-    ];
-  };
+  #services.openssh.permitRootLogin = "no";
+  #services.openssh.passwordAuthentication = true;
 
 
+  ## Graphics
+  #hardware.opengl = {
+  #  enable = true;
+  #  driSupport32Bit = true;
+  #};
 
-  # _____ _                        _ _ 
-  #|  ___(_)_ __ _____      ____ _| | |
-  #| |_  | | '__/ _ \ \ /\ / / _` | | |
-  #|  _| | | | |  __/\ V  V / (_| | | |
-  #|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
+  #home-manager.backupFileExtension = "backup";
 
-  networking.firewall = {
+  ## File 
+  #services.gvfs.enable = true;
+
+  ## Enable networking
+  #networking.networkmanager.enable = true;
+
+  ## Bluetooth
+  #hardware.bluetooth.enable = true;
+  #hardware.bluetooth.powerOnBoot = true;
+  #services.blueman.enable = true;
+
+  ## Sound
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
+  #  jack.enable = false;
+  #};
+
+  #xdg.portal = {
+  #  enable = true;
+  #  extraPortals = with pkgs; [
+  #    xdg-desktop-portal-gtk
+  #    xdg-desktop-portal-wlr
+  #    xdg-desktop-portal-hyprland
+  #  ];
+  #};
 
 
-    enable = true;
 
-    allowedTCPPorts = [ 9943 9944 51112 ];
-    allowedUDPPorts = [ 9943 9944 51112 ];
-    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
-    allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
+  ## _____ _                        _ _ 
+  ##|  ___(_)_ __ _____      ____ _| | |
+  ##| |_  | | '__/ _ \ \ /\ / / _` | | |
+  ##|  _| | | | |  __/\ V  V / (_| | | |
+  ##|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
-  };
+  #networking.firewall = {
 
-  # Virtual Machines
-  programs.virt-manager.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-  };
+  #  enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "bowyn" ];
+  #  allowedTCPPorts = [ 9943 9944 51112 ];
+  #  allowedUDPPorts = [ 9943 9944 51112 ];
+  #  allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+  #  allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
+
+  #};
+
+  ## Virtual Machines
+  #programs.virt-manager.enable = true;
+
+  #virtualisation.libvirtd = {
+  #  enable = true;
+  #  qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  #};
+
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "bowyn" ];
 
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
