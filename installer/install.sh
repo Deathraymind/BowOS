@@ -59,8 +59,8 @@ if [ "$BOOT_DRIVE" == "nodev" ]; then
 
     # For constant preference
     sed -i '/boot.loader.grub.device/d' /etc/nixos/preferences/configuration-preferences.nix
-    sed -i '20i boot.loader.grub.device = "nodev";' /etc/nixos/preferences/configuration-preferences.nix
-    sed -i '20i boot.loader.grub.efiSupport = true;' /etc/nixos/preferences/configuration-preferences.nix
+    sed -i '3i boot.loader.grub.device = "nodev";' /etc/nixos/preferences/configuration-preferences.nix
+    sed -i '4i boot.loader.grub.efiSupport = true;' /etc/nixos/preferences/configuration-preferences.nix
 else
     # For initial install
     sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix

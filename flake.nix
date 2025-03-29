@@ -48,7 +48,6 @@
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
-            /mnt/etc/nixos/hardware-configuration.nix
 
 
             {
@@ -71,8 +70,6 @@
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
-            disko.nixosModules.disko
-            ./disko.nix
             {
               networking.hostName = "bowos";
             }
