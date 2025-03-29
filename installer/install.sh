@@ -49,6 +49,8 @@ else
     sudo -E bash bios-disk.sh
 fi
 
+cp -r /mnt/etc/nixos /etc/nixos
+
 cd ..
 sudo -E nixos-install --flake .#amd --no-root-passwd --impure
 
