@@ -68,5 +68,5 @@ fi
 cp -r /mnt/etc/nixos/* /etc/nixos/
 
 # Install NixOS
-sudo -E nixos-install --flake .#amd --no-root-passwd --impure
+BOWOS_USER="$BOWOS_USER" sudo -E nixos-install --flake .#amd --no-root-passwd --impure
 
