@@ -4,7 +4,7 @@
 cp -r preferences /mnt/etc/nixos/
 
 # Check if BOWOS_DISK is "nodev"
-if [ "$BOWOS_DISK" == "nodev" ]; then
+if [ "$BOOT_DRIVE" == "nodev" ]; then
     # For initial install
     sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix
     sed -i '20i boot.loader.grub.device = "nodev"' /mnt/etc/nixos/configuration.nix
@@ -15,10 +15,10 @@ if [ "$BOWOS_DISK" == "nodev" ]; then
 else
     # For initial install
     sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix
-    sed -i "20i boot.loader.grub.device = \"/dev/$BOWOS_DISK\"" /mnt/etc/nixos/configuration.nix
+    sed -i "20i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\"" /mnt/etc/nixos/configuration.nix
 
     # For constant preference
     sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
-    sed -i "20i boot.loader.grub.device = \"/dev/$BOWOS_DISK\"" /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i "5i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\"" /mnt/etc/nixos/preferences/configuration-preferences.nix
 fi
 
