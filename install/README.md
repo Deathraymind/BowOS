@@ -12,7 +12,9 @@ BOWOS_SWAPSIZE=4 BOWOS_USER=bowyn BOWOS_DISK=vda sudo -E nix run --extra-experim
 
 then
 nixos-generate-config --root /mnt
-BOWOS_DISK=vda sudo -E bash bios-disk.sh 
+use BOWOS_DISK=nodev here for efi systems
+BOWOS_DISK=vda sudo -E bash bios-disk.sh
+
 
 nixos-generate-config --root /mnt --no-root-passwd
 cd ..
