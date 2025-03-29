@@ -43,6 +43,9 @@ else
     exit 1
 fi
 
+rm -r /etc/nixos 
+nixos-generate-config
+
 nixos-generate-config --root /mnt
 
 # Copy preferences directory
@@ -53,7 +56,7 @@ if [ "$BOOT_DRIVE" == "nodev" ]; then
     # For initial install
      sed -i '/boot.loader.grub.device/d' /etc/nixos/preferences/configuration-preferences.nix
      sed -i '/boot.loader.grub.efiSupport/d' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '/boot.loader.efi.canTouchEfiVariables/d' /etc/nixos/preferences/configuration-preferences.nix
+     sed -i '/boot.loader.efi.canTouchfiVariables/d' /etc/nixos/preferences/configuration-preferences.nix
 
      sed -i '5i boot.loader.grub.device = "nodev";' /etc/nixos/preferences/configuration-preferences.nix
      sed -i '6i boot.loader.grub.efiSupport = true;' /etc/nixos/preferences/configuration-preferences.nix
