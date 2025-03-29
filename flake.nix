@@ -26,7 +26,7 @@
               hardware.nvidia.open = false;
             }
             stylix.nixosModules.stylix
-            ./hosts/default/configuration.nix
+            ./configs/configuration.nix
             {
               networking.hostName = "bowos";
             }
@@ -34,7 +34,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./hosts/default/home.nix;
+              home-manager.users.${username} = import ./configs/home.nix;
             }
           ];
         };
@@ -47,7 +47,7 @@
               services.xserver.videoDrivers = [ "amdgpu" ];
             }
             stylix.nixosModules.stylix
-            ./hosts/default/configuration.nix
+            ./configs/configuration.nix
             /mnt/etc/nixos/hardware-configuration.nix
 
 
@@ -58,7 +58,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./hosts/default/home.nix;
+              home-manager.users.${username} = import ./configs/home.nix;
             }
           ];
         };
@@ -70,7 +70,7 @@
               services.xserver.videoDrivers = [ "amdgpu" ];
             }
             stylix.nixosModules.stylix
-            ./hosts/default/configuration.nix
+            ./configs/configuration.nix
             disko.nixosModules.disko
             ./disko.nix
             {
@@ -80,7 +80,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./hosts/default/home.nix;
+              home-manager.users.${username} = import ./configs/home.nix;
             }
           ];
         };
@@ -114,7 +114,7 @@
               services.xserver.videoDrivers = [ "amdgpu" ];
             }
             stylix.nixosModules.stylix
-            ./hosts/default/configuration.nix
+            ./configs/configuration.nix
             {
               networking.hostName = "bowos";
             }
@@ -122,7 +122,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./hosts/default/home.nix;
+              home-manager.users.${username} = import ./configs/home.nix;
             }
           ];
         };
