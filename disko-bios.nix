@@ -3,10 +3,6 @@ let
   swapSize = builtins.getEnv "BOWOS_SWAPSIZE"; # Just the size in gigs like 4 is = 4G
   # Usage:
   # BOWOS_SWAPSIZE=4 BOWOS_USER=bowyn BOWOS_DISK=vda sudo -E nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:nix-community/disko -- --mode disko disko-bios.nix
-  # Then:
-  # nixos-generate-config --root /mnt
-  # nixos-install
-  # BOWOS_USER=bowyn sudo -E nixos-install --flake .#amd --no-root-passwd --impure 
 in
 {
   disko.devices = {
@@ -20,9 +16,7 @@ in
             boot = {
               size = "1M";
               type = "EF02"; # BIOS boot partition for GRUB with GPT
-              content = {
-                type = "null"; # No filesystem needed for the BIOS boot partition
-              };
+              # No content field for BIOS boot partition
             };
             boot_mount = {
               size = "512M";
@@ -52,3 +46,4 @@ in
     };
   };
 }
+
