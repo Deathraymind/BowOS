@@ -154,98 +154,98 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    obs-studio
-    krita
-    alvr
-    expressvpn
-    blender
-    gcc
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugins
-    qt5.qtbase
-    adwaita-qt
-    wl-color-picker
-    neovim
-    git
-    waybar
-    rofi
-    ethtool
-    gnome.nautilus
-    vlc
-    wl-clipboard
-    libva
-    lazygit
-    # Terminal
-    zsh
-    starship
-    fzf
-    kitty
-    alacritty
-    # audio
-    pipewire
-    pamixer
-    # network
-    networkmanager
-    networkmanagerapplet
-    # bluetooth
-    bluez
-    blueman
-    brightnessctl
-    playerctl
-    swaynotificationcenter
+  #  obs-studio
+  #  krita
+  #  alvr
+  #  expressvpn
+  #  blender
+  #  gcc
+  #  libsForQt5.qtstyleplugin-kvantum
+  #  libsForQt5.qt5ct
+  #  libsForQt5.qtstyleplugins
+  #  qt5.qtbase
+  #  adwaita-qt
+  #  wl-color-picker
+  #  neovim
+  #  git
+  #  waybar
+  #  rofi
+  #  ethtool
+  #  gnome.nautilus
+  #  vlc
+  #  wl-clipboard
+  #  libva
+  #  lazygit
+  #  # Terminal
+  #  zsh
+  #  starship
+  #  fzf
+  #  kitty
+  #  alacritty
+  #  # audio
+  #  pipewire
+  #  pamixer
+  #  # network
+  #  networkmanager
+  #  networkmanagerapplet
+  #  # bluetooth
+  #  bluez
+  #  blueman
+  #  brightnessctl
+  #  playerctl
+  #  swaynotificationcenter
 
-    # screenshot
-    grim
-    slurp
-    arduino-ide
-    swappy
-    cliphist
-    hyprpicker
+  #  # screenshot
+  #  grim
+  #  slurp
+  #  arduino-ide
+  #  swappy
+  #  cliphist
+  #  hyprpicker
 
-    ydotool
+  #  ydotool
 
-    # dependencies
-    polkit-kde-agent
-    xdg-desktop-portal-hyprland
-    jq
-    imagemagick
-    ffmpegthumbs
+  #  # dependencies
+  #  polkit-kde-agent
+  #  xdg-desktop-portal-hyprland
+  #  jq
+  #  imagemagick
+  #  ffmpegthumbs
 
-    # theme stuff
-    nwg-look
-    hyprpaper
-    fastfetch
-    hyprlock
-    pavucontrol
-    pipewire
-    xorg.xrandr
-    home-manager
-    htop
-    playerctl
-    dconf
-    glib
-    # Virtual Machine
-    qemu
-    gnome.gnome-disk-utility
-    udisks2
-    firefox
-    polkit
-    lxqt.lxqt-policykit
-    ranger
-    # Screen Sharing
-    pipewire
-    wireplumber
-    # Phone Sync
-    scrcpy
-    v4l2-relayd
-    v4l-utils
-    android-tools
-    cpufrequtils
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
-    obsidian
-    helvum
+  #  # theme stuff
+  #  nwg-look
+  #  hyprpaper
+  #  fastfetch
+  #  hyprlock
+  #  pavucontrol
+  #  pipewire
+  #  xorg.xrandr
+  #  home-manager
+  #  htop
+  #  playerctl
+  #  dconf
+  #  glib
+  #  # Virtual Machine
+  #  qemu
+  #  gnome.gnome-disk-utility
+  #  udisks2
+  #  firefox
+  #  polkit
+  #  lxqt.lxqt-policykit
+  #  ranger
+  #  # Screen Sharing
+  #  pipewire
+  #  wireplumber
+  #  # Phone Sync
+  #  scrcpy
+  #  v4l2-relayd
+  #  v4l-utils
+  #  android-tools
+  #  cpufrequtils
+  #  libsForQt5.qtstyleplugin-kvantum
+  #  libsForQt5.qt5ct
+  #  obsidian
+  #  helvum
     # Rocm stuff 
   ];
 
