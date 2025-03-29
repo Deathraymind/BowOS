@@ -13,6 +13,7 @@ expect -c "
 "
 
 # Set the password for root using expect
+echo $BOWOS_PASSWORD
 expect -c "
   spawn passwd root
   expect \"New password:\"
