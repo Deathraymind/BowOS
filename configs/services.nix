@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, lib, ...}:
 {
 services = {
 udisks2.enable = true;
@@ -7,7 +7,7 @@ dbus.enable = true;
 # SSH
 openssh.enable = true;
 openssh.passwordAuthentication = true;
-openssh.permitRootLogin = "no";
+openssh.permitRootLogin = lib.mkForce "no";
 
 gvfs.enable = true;
 blueman.enable = true;

@@ -71,8 +71,15 @@
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
+            # ISO Building 
+            <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+            <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+            <nixpkgs/nixos/modules/system/etc/etc.nix>
+
             {
               networking.hostName = "bowos";
+              isoImage.squashfsCompression = "gzip -Xcompression-level 4";
+
             }
             home-manager.nixosModules.home-manager
             {
