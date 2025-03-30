@@ -35,8 +35,6 @@ read -p "Enter swap size (in GB, e.g., 4): " BOWOS_SWAPSIZE
 BOWOS_SWAPSIZE=${BOWOS_SWAPSIZE:-4} # Default to 4 if input is empty
 
 # Clone the BowOS repository and move into the installer directory.
-git clone https://github.com/deathraymind/bowos 
-cd bowos/installer || exit
 
 # Depending on the boot type (BIOS vs EFI), run the corresponding Disko command.
 if [[ "$BOOT_TYPE" == "bios" ]]; then
