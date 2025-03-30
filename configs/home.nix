@@ -59,7 +59,6 @@ in
   };
   programs = {
     kitty.enable = true;
-    alacritty.enable = true;
     home-manager.enable = true;
     git = {
       enable = true;

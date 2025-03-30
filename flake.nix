@@ -2,31 +2,31 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stylix.url = "github:danth/stylix";
-    rocm.url = "github:nixos-rocm/nixos-rocm";
-    disko.url = "github:nix-community/disko/latest"; # For Installer
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, rocm, disko, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       username = builtins.getEnv "BOWOS_USER";
     in
     {
       nixosConfigurations = {
+        
+        # NVIDIA Configuration
         nvidia = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             {
-              # NVIDIA configuration
               services.xserver.videoDrivers = [ "nvidia" ];
               hardware.nvidia.open = false;
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
+            ./configs/applications.nix
             {
               networking.hostName = "bowos";
             }
@@ -39,17 +39,16 @@
           ];
         };
 
+        # AMD Configuration
         amd = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             {
-              # AMD configuration
               services.xserver.videoDrivers = [ "amdgpu" ];
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
-
-
+            ./configs/applications.nix
             {
               networking.hostName = "bowos";
             }
@@ -62,6 +61,7 @@
           ];
         };
 
+        # Installer Configuration
         install = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -82,13 +82,11 @@
           ];
         };
 
-
+        # KVM Configuration
         kvm = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             {
-
-              # KVM configuration
               boot.kernelParams = [
                 "intel_iommu=on"
                 "vfio-pci.ids=1002:699f,1002:aae0"
@@ -112,6 +110,7 @@
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
+            ./configs/applications.nix
             {
               networking.hostName = "bowos";
             }

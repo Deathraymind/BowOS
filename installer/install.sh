@@ -90,7 +90,7 @@ cp -r /mnt/etc/nixos/preferences /etc/nixos
 
 # Install NixOS using your flake configuration.
 # --no-root-passwd indicates that no root password is being set during install.
-BOWOS_USER="$BOWOS_USER" sudo -E nixos-install --flake .#amd --no-root-passwd --impure
+BOWOS_USER="$BOWOS_USER" sudo -E nixos-install --flake .#install --no-root-passwd --impure
 
 # Enter the new system to set the user and root passwords.
 # This uses nixos-enter and an expect script (inside a nix-shell) to automate password setting.
