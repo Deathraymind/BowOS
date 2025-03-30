@@ -54,16 +54,8 @@ cp -r preferences /etc/nixos
 # Update grub configuration based on boot type
 if [ "$BOOT_DRIVE" == "nodev" ]; then
     # For initial install
-     sed -i '/boot.loader.grub.device/d' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '/boot.loader.grub.efiSupport/d' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '/boot.loader.efi.canTouchfiVariables/d' /etc/nixos/preferences/configuration-preferences.nix
-
-     sed -i '5i boot.loader.grub.devices = ["nodev"];' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '6i boot.loader.grub.efiSupport = true;' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '7i boot.loader.efi.canTouchEfiVariables = false;' /etc/nixos/preferences/configuration-preferences.nix
-     sed -i '5i boot.loader.grub.efiInstallAsRemovable= true;' /etc/nixos/preferences/configuration-preferences.nix
-
-     cp -r /etc/nixos/preferences /mnt/etc/nixos/
+    cp -r preferences /etc/nixos
+    cp -r preferences /mnt/etc/nixos
 
     # For constant preference
 
