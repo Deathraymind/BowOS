@@ -63,6 +63,7 @@
 
         # ISO 
         # Usage: BOWOS_USER=bowyn sudo -E nix build .#nixosConfigurations.iso.config.system.build.isoImage --impure
+        # TODO: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/cd-dvd/iso-image.nix
         iso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -70,23 +71,17 @@
               services.xserver.videoDrivers = [ "amdgpu" ];
             }
             stylix.nixosModules.stylix
-            ./configs/configuration.nix
-            ./configs/applications.nix
+            ./configs/iso-configuration.nix
+            ./configs/stylix.nix
             # ISO Building 
-            <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-            <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-            <nixpkgs/nixos/modules/system/etc/etc.nix>
+            <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
 
             {
               networking.hostName = "bowos";
               isoImage.squashfsCompression = "gzip -Xcompression-level 4";
-
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./configs/home.nix;
+              isoImage.isoBaseName = "BowOS";
+              isoImage.volumeID = "BowOS";
+              isoImage.edition = "-TUI";
             }
           ];
         };
