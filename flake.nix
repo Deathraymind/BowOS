@@ -61,7 +61,8 @@
           ];
         };
 
-        # ISO
+        # ISO 
+        # Usage: BOWOS_USER=bowyn sudo -E nix build .#nixosConfigurations.iso.config.system.build.isoImage --impure
         iso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

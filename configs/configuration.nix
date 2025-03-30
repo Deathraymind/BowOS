@@ -16,8 +16,6 @@ in
       /etc/nixos/preferences/configuration-preferences.nix
       
     ];
-  isoImage.squashfsCompression = "gzip -Xcompression-level 4";
-  isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
 
   
   programs.zsh = {
