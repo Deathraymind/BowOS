@@ -52,22 +52,26 @@ else
     exit 1
 fi
 
-# Remove the current /etc/nixos directory (to prevent conflicts with previous configs).
-rm -r /etc/nixos 
+# Remove any existing /etc/nixos directory
+rm -rf /etc/nixos
 
-# Generate new NixOS configuration for the target system.
+# Generate the NixOS configuration based on the detected hardware
 nixos-generate-config --root /mnt
 
-# Copy the auto-generated NixOS configuration from the mounted partition into /etc/nixos.
+# Ensure the new /etc/nixos directory exists before copying
+mkdir -p /etc/nixos
+
+# Copy generated configuration from /mnt/etc/nixos to /etc/nixos
 cp -r /mnt/etc/nixos/* /etc/nixos
 
-# Copy the BowOS preferences directory into /etc/nixos (this holds custom configuration files).
-cp -r preferences /etc/nixos
+# Copy only the contents of 'preferences' (not the folder itself) into both locations
+cp -r preferences/* /etc/nixos
+cp -r preferences/* /mnt/etc/nixos 
+
 
 # Update the GRUB configuration based on the boot type.
 if [ "$BOOT_DRIVE" == "nodev" ]; then
     # For EFI systems, copy preferences into both /etc/nixos and /mnt/etc/nixos.
-    cp -r preferences /mnt/etc/nixos
 else
     # For BIOS systems, remove any existing GRUB device/efiSupport settings,
     # then insert the correct GRUB device configuration into the generated config.
