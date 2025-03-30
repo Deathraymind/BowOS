@@ -154,99 +154,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-  #  obs-studio
-  #  krita
-  #  alvr
-  #  expressvpn
-  #  blender
-  #  gcc
-  #  libsForQt5.qtstyleplugin-kvantum
-  #  libsForQt5.qt5ct
-  #  libsForQt5.qtstyleplugins
-  #  qt5.qtbase
-  #  adwaita-qt
-  #  wl-color-picker
-  #  neovim
-  #  git
-  #  waybar
-  #  rofi
-  #  ethtool
-  #  gnome.nautilus
-  #  vlc
-  #  wl-clipboard
-  #  libva
-  #  lazygit
-  #  # Terminal
-  #  zsh
-  #  starship
-  #  fzf
-  #  kitty
-  #  alacritty
-  #  # audio
-  #  pipewire
-  #  pamixer
-  #  # network
-  #  networkmanager
-  #  networkmanagerapplet
-  #  # bluetooth
-  #  bluez
-  #  blueman
-  #  brightnessctl
-  #  playerctl
-  #  swaynotificationcenter
-
-  #  # screenshot
-  #  grim
-  #  slurp
-  #  arduino-ide
-  #  swappy
-  #  cliphist
-  #  hyprpicker
-
-  #  ydotool
-
-  #  # dependencies
-  #  polkit-kde-agent
-  #  xdg-desktop-portal-hyprland
-  #  jq
-  #  imagemagick
-  #  ffmpegthumbs
-
-  #  # theme stuff
-  #  nwg-look
-  #  hyprpaper
-  #  fastfetch
-  #  hyprlock
-  #  pavucontrol
-  #  pipewire
-  #  xorg.xrandr
-  #  home-manager
-  #  htop
-  #  playerctl
-  #  dconf
-  #  glib
-  #  # Virtual Machine
-  #  qemu
-  #  gnome.gnome-disk-utility
-  #  udisks2
-  #  firefox
-  #  polkit
-  #  lxqt.lxqt-policykit
-  #  ranger
-  #  # Screen Sharing
-  #  pipewire
-  #  wireplumber
-  #  # Phone Sync
-  #  scrcpy
-  #  v4l2-relayd
-  #  v4l-utils
-  #  android-tools
-  #  cpufrequtils
-  #  libsForQt5.qtstyleplugin-kvantum
-  #  libsForQt5.qt5ct
-  #  obsidian
-  #  helvum
-    # Rocm stuff 
+  
   ];
 
 
@@ -257,79 +165,16 @@ in
   #\___ \ / _ \ '__\ \ / / |/ __| |/ _ \/ __|
   # ___) |  __/ |   \ V /| | (__| |  __/\__ \
   #|____/ \___|_|    \_/ |_|\___|_|\___||___/
-  #programs.steam = {
-  #  enable = true;
-  #  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  #  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  #};
-
-  #virtualisation.docker.enable = true;
-  #services.udisks2.enable = true;
-  #security.polkit.enable = true;
-  #services.openssh.enable = true;
-  #programs.kdeconnect.enable = true;
-  #services.flatpak.enable = true;
-  #services.dbus.enable = true;
-
-  #programs.kdeconnect = {
-  #  package = pkgs.gnomeExtensions.gsconnect;
-  #};
-
-
-  ## power saving
-  #services.tlp = {
-  #  enable = true;
-  #  settings = {
-  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #    CPU_BOOST_ON_BAT = 0;
-  #    CPU_BOOST_ON_AC = 1;
-  #    CPU_MAX_PERF_ON_AC = 95;
-  #    CPU_MAX_PERF_ON_BAT = 30;
-  #  };
-  #};
-
-  #services.openssh.permitRootLogin = "no";
-  #services.openssh.passwordAuthentication = true;
-
+    security.polkit.enable = true;
+  
 
   ## Graphics
-  #hardware.opengl = {
-  #  enable = true;
-  #  driSupport32Bit = true;
-  #};
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+  };
 
-  #home-manager.backupFileExtension = "backup";
-
-  ## File 
-  #services.gvfs.enable = true;
-
-  ## Enable networking
-  #networking.networkmanager.enable = true;
-
-  ## Bluetooth
-  #hardware.bluetooth.enable = true;
-  #hardware.bluetooth.powerOnBoot = true;
-  #services.blueman.enable = true;
-
-  ## Sound
-  #services.pipewire = {
-  #  enable = true;
-  #  alsa.enable = true;
-  #  alsa.support32Bit = true;
-  #  pulse.enable = true;
-  #  jack.enable = false;
-  #};
-
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = with pkgs; [
-  #    xdg-desktop-portal-gtk
-  #    xdg-desktop-portal-wlr
-  #    xdg-desktop-portal-hyprland
-  #  ];
-  #};
-
+  home-manager.backupFileExtension = "backup";
 
 
   ## _____ _                        _ _ 
@@ -338,29 +183,19 @@ in
   ##|  _| | | | |  __/\ V  V / (_| | | |
   ##|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
-  #networking.firewall = {
+  networking.firewall = {
 
 
-  #  enable = true;
+    enable = true;
 
-  #  allowedTCPPorts = [ 9943 9944 51112 ];
-  #  allowedUDPPorts = [ 9943 9944 51112 ];
-  #  allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
-  #  allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
+    allowedTCPPorts = [ 9943 9944 51112 ];
+    allowedUDPPorts = [ 9943 9944 51112 ];
+    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+    allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 
-  #};
+  };
 
-  ## Virtual Machines
-  #programs.virt-manager.enable = true;
-
-  #virtualisation.libvirtd = {
-  #  enable = true;
-  #  qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-  #};
-
-  #virtualisation.virtualbox.host.enable = true;
-  #users.extraGroups.vboxusers.members = [ "bowyn" ];
-
+  
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.11";
