@@ -13,16 +13,16 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/${disk}"; # Ensure `${disk}` is correctly set
+        device = "/dev/${disk}"; # Make sure `${disk}` is properly set
         content = {
-          type = "gpt"; # Keep GPT (MBR is NOT supported by disko)
+          type = "gpt"; # MBR is not supported by `disko`
           partitions = {
             bios_boot = {
               size = "1M";
-              type = "EF02"; # Required for GRUB BIOS boot on GPT
+              type = "EF02"; # Required for GRUB in legacy boot mode
             };
             root = {
-              size = "-${swapSize}G"; # Fill remaining space except for swap
+              size = "100%";  # Use all remaining space
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -30,7 +30,7 @@ in
               };
             };
             swap = {
-              size = "${swapSize}G";
+              size = "${swapSize}G"; # Define swap size directly
               content = {
                 type = "swap";
               };
@@ -43,7 +43,7 @@ in
 
   # Explicitly define the root filesystem in fileSystems
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos"; # Make sure this label matches what you format the root partition with
+    device = "/dev/disk/by-label/nixos"; # Ensure this matches what you format the root partition with
     fsType = "ext4";
   };
 }
