@@ -1,20 +1,10 @@
 # applications.nix 
 # A configuration file for apps
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
-
-environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     obs-studio
-  #  krita
-  #  alvr
-  #  expressvpn
-  #  blender
     gcc
-  #  libsForQt5.qtstyleplugin-kvantum
-  #  libsForQt5.qt5ct
-  #  libsForQt5.qtstyleplugins
-  #  qt5.qtbase
-  #  adwaita-qt
     wl-color-picker
     neovim
     git
@@ -26,56 +16,54 @@ environment.systemPackages = with pkgs; [
     wl-clipboard
     libva
     lazygit
-  #  # Terminal
+    
+    # Terminal
     zsh
     starship
-  #  fzf
     kitty
-  #  alacritty
-  #  # audio
+    
+    # Audio
     pipewire
     pamixer
-  #  # network
+    
+    # Network
     networkmanager
     networkmanagerapplet
-  #  # bluetooth
+    
+    # Bluetooth
     bluez
     blueman
+    
     brightnessctl
     playerctl
     swaynotificationcenter
-
-  #  # screenshot
+    
+    # Screenshot
     grim
     slurp
-  #  arduino-ide
     swappy
     cliphist
     hyprpicker
-
-  #  ydotool
-
-  #  # dependencies
+    
+    # Dependencies
     polkit-kde-agent
     xdg-desktop-portal-hyprland
     jq
     imagemagick
     ffmpegthumbs
-
-  #  # theme stuff
-  #  nwg-look
+    
+    # Theme stuff
     hyprpaper
     fastfetch
     hyprlock
     pavucontrol
-    pipewire
     xorg.xrandr
     home-manager
     htop
-    playerctl
     dconf
     glib
-  #  # Virtual Machine
+    
+    # Virtual Machine
     qemu
     gnome.gnome-disk-utility
     udisks2
@@ -83,36 +71,32 @@ environment.systemPackages = with pkgs; [
     polkit
     lxqt.lxqt-policykit
     ranger
-  #  # Screen Sharing
+    
+    # Screen Sharing
     pipewire
     wireplumber
-  #  # Phone Sync
+    
+    # Phone Sync
     scrcpy
-  #  v4l2-relayd
-  #  v4l-utils
-  #  android-tools
-  #  cpufrequtils
-  #  libsForQt5.qtstyleplugin-kvantum
-  #  libsForQt5.qt5ct
+    
     obsidian
     helvum
-];
+  ];
 
-services = {
-  udisks2.enable = true;
-  dbus.enable = true;
-  # SSH
-  openssh.enable = true;
-  services.openssh.passwordAuthentication = true;
-  services.openssh.permitRootLogin = "no";
-  services.gvfs.enable = true;
-  #programs.kdeconnect.enable = true;
-  #services.flatpak.enable = true;
-  services.blueman.enable = true;
+  services = {
+    udisks2.enable = true;
+    dbus.enable = true;
+    
+    # SSH
+    openssh.enable = true;
+    services.openssh.passwordAuthentication = true;
+    services.openssh.permitRootLogin = "no";
+    
+    services.gvfs.enable = true;
+    services.blueman.enable = true;
+  };
 
-};
-
-services.pipewire = {
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
@@ -120,7 +104,7 @@ services.pipewire = {
     jack.enable = false;
   };
 
-xdg.portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
@@ -129,25 +113,24 @@ xdg.portal = {
     ];
   };
 
-programs.steam = {
+  programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
-programs.virt-manager.enable = true;
-virtualisation.libvirtd = {
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd = {
     enable = true;
     qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
   };
 
-
-hardware.bluetooth = {
+  hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+  };
 
-    };
   services.tlp = {
     enable = true;
     settings = {
@@ -158,14 +141,5 @@ hardware.bluetooth = {
       CPU_MAX_PERF_ON_BAT = 30;
     };
   };
-
-
-
-
-
-
 }
-
-
-
 
