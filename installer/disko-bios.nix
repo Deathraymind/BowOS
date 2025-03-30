@@ -13,17 +13,16 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/${disk}"; # Ensure `${disk}` is properly set
+        device = "/dev/${disk}"; # Ensure `${disk}` is correctly set
         content = {
-          type = "mbr"; # Use MBR for legacy boot
+          type = "gpt"; # Keep GPT (MBR is NOT supported by disko)
           partitions = {
-            boot = {
+            bios_boot = {
               size = "1M";
-              type = "EF02"; # BIOS boot partition for GRUB with GPT (safe to keep for consistency)
+              type = "EF02"; # Required for GRUB BIOS boot on GPT
             };
             root = {
-              size = "-${swapSize}G"; # Uses remaining space minus swap
-              bootable = true; # Required for Legacy Boot
+              size = "-${swapSize}G"; # Fill remaining space except for swap
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -40,6 +39,12 @@ in
         };
       };
     };
+  };
+
+  # Explicitly define the root filesystem in fileSystems
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos"; # Make sure this label matches what you format the root partition with
+    fsType = "ext4";
   };
 }
 
