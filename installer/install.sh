@@ -86,7 +86,7 @@ fi
 
 
 
-cp -r /etc/nixos/preferences /mnt/etc/nixos 
+cp -r /mnt/etc/nixos/preferences /etc/nixos 
 
 # Install NixOS using your flake configuration.
 # --no-root-passwd indicates that no root password is being set during install.
