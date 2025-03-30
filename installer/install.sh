@@ -65,8 +65,8 @@ mkdir -p /etc/nixos
 cp -r /mnt/etc/nixos/* /etc/nixos
 
 # Copy only the contents of 'preferences' (not the folder itself) into both locations
-cp -r preferences/* /etc/nixos
-cp -r preferences/* /mnt/etc/nixos 
+cp -r preferences /etc/nixos
+cp -r preferences /mnt/etc/nixos 
 
 
 # Update the GRUB configuration based on the boot type.
