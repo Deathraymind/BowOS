@@ -13,35 +13,27 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/${disk}";
+        device = "/dev/${disk}"; # Ensure `${disk}` is properly set
         content = {
-          type = "gpt";
+          type = "mbr"; # Use MBR for legacy boot
           partitions = {
             boot = {
               size = "1M";
-              type = "EF02"; # BIOS boot partition for GRUB with GPT
-              # No content field for BIOS boot partition
+              type = "EF02"; # BIOS boot partition for GRUB with GPT (safe to keep for consistency)
             };
-            boot_mount = {
-              size = "512M";
+            root = {
+              size = "-${swapSize}G"; # Uses remaining space minus swap
+              bootable = true; # Required for Legacy Boot
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/boot";
+                mountpoint = "/";
               };
             };
             swap = {
               size = "${swapSize}G";
               content = {
                 type = "swap";
-              };
-            };
-            root = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
               };
             };
           };
