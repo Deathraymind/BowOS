@@ -71,6 +71,7 @@ cp -r preferences/* /mnt/etc/nixos
 
 # Update the GRUB configuration based on the boot type.
 if [ "$BOOT_DRIVE" == "nodev" ]; then
+    :
     # For EFI systems, copy preferences into both /etc/nixos and /mnt/etc/nixos.
 else
     # For BIOS systems, remove any existing GRUB device/efiSupport settings,
