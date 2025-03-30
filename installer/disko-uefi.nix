@@ -12,30 +12,34 @@ in
     disk = {
       main = {
         type = "disk";
-        device = "/dev/${disk}";# More portable
+        device = "/dev/${disk}";  # Replace with your actual disk ID
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              size = "512M";
-              type = "EF00";
+              size = "500M";
+              type = "EF00";  # EFI System Partition type
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
               };
             };
             swap = {
-              size = "${swapSize}G";
+              size = "${swapSize}G";   # Adjust swap size as needed
               content = {
                 type = "swap";
+                # For hibernation, note that using randomEncryption is not compatible.
+                # If you wish to encrypt swap without hibernation, you can uncomment the line below:
+                # randomEncryption = true;
               };
             };
             root = {
               size = "100%";
               content = {
                 type = "filesystem";
-                format = "ext4";  # Changed from tmpfs to ext4
+                format = "ext4";
                 mountpoint = "/";
               };
             };
@@ -45,3 +49,4 @@ in
     };
   };
 }
+
