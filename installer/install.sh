@@ -44,11 +44,10 @@ else
 fi
 
 rm -r /etc/nixos 
-nixos-generate-config
 
 nixos-generate-config --root /mnt
-
-# Copy preferences directory
+cp -r /mnt/etc/nixos/* /etc/nixos
+# Copy preferences directory 
 cp -r preferences /etc/nixos
 
 # Update grub configuration based on boot type
