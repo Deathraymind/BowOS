@@ -66,7 +66,6 @@ cp -r /mnt/etc/nixos/* /etc/nixos
 
 # Copy only the contents of 'preferences' (not the folder itself) into both locations
 cp -r preferences /etc/nixos
-cp -r preferences /mnt/etc/nixos 
 
 
 # Update the GRUB configuration based on the boot type.
@@ -76,15 +75,18 @@ if [ "$BOOT_DRIVE" == "nodev" ]; then
 else
     # For BIOS systems, remove any existing GRUB device/efiSupport settings,
     # then insert the correct GRUB device configuration into the generated config.
-    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/configuration.nix
-    sed -i '/boot.loader.grub.efiSupport/d' /mnt/etc/nixos/configuration.nix
-    sed -i "20i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\";" /mnt/etc/nixos/configuration.nix
+    sed -i '/boot.loader.grub.devices/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i '/boot.loader.grub.efiSupport/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i '/boot.loader.efi.canTouchEfiVariables/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+    sed -i '/boot.loader.grub.efiInstallAsRemovable/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
 
-    # Also update the preferences file with the correct boot device.
-    sed -i '/boot.loader.grub.device/d' /mnt/etc/nixos/preferences/configuration-preferences.nix
+
     sed -i "5i boot.loader.grub.device = \"/dev/$BOOT_DRIVE\";" /mnt/etc/nixos/preferences/configuration-preferences.nix
-    sed -i '/boot.loader.grub.efiSupport/d' /mnt/etc/nixos/configuration.nix
 fi
+
+
+
+cp -r /etc/nixos/preferences /mnt/etc/nixos 
 
 # Install NixOS using your flake configuration.
 # --no-root-passwd indicates that no root password is being set during install.
