@@ -61,6 +61,28 @@
           ];
         };
 
+        # ISO
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            {
+              services.xserver.videoDrivers = [ "amdgpu" ];
+            }
+            stylix.nixosModules.stylix
+            ./configs/configuration.nix
+            ./configs/applications.nix
+            {
+              networking.hostName = "bowos";
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${username} = import ./configs/home.nix;
+            }
+          ];
+        };
+
         # Installer Configuration
         install = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -111,6 +133,7 @@
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
+            ./configs/services.nix
             {
               networking.hostName = "bowos";
             }

@@ -9,11 +9,21 @@ in
 {
   imports =
     [
+      # ISO Building 
+      <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+      <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+      <nixpkgs/nixos/modules/system/etc/etc.nix>
+      
+      # Files
       ./stylix.nix
       /etc/nixos/hardware-configuration.nix 
       /etc/nixos/preferences/configuration-preferences.nix
       
     ];
+  isoImage.squashfsCompression = "gzip -Xcompression-level 4";
+  isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
+
+  
   programs.zsh = {
     enable = true;
     loginShellInit = ''
@@ -46,7 +56,7 @@ in
 
   boot.loader = {
     grub = {
-      enable = true;
+      enable = lib.mkForce true;
       # efiSupport = true;
       # devices = [ "nodev" ];
       configurationName = "BowOS";
