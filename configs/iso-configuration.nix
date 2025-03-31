@@ -147,10 +147,39 @@
 
 
   # isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-  environment.etc."install_bowos.sh".source = ./install-bowos.sh;
+    #  environment.etc."install_bowos.sh".source = ./install-bowos.sh;
   isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
   # environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
-  # system.build.isoImage.isoName = lib.mkForce "bowos-x86-v1.0.1"; 
+  # system.build.isoImage.isoName = lib.mkForce "bowos-x86-v1.0.1";
+ 
+
+  environment.shellInit = ''
+    echo "Installer Countdown ctrl-c to escape to shell"
+    sleep 1
+    echo "4"
+
+    sleep 1
+    echo "3"
+
+    sleep 1
+    echo "2"
+
+    sleep 1
+    echo "1"
+
+    git clone https://github.com/deathraymind/bowos
+    cd bowos/installer 
+    bash install.sh
+
+    '';
+
+services.xserver.displayManager.autoLogin = lib.mkForce {
+    enable = true;
+    user = "root";
+  };
+  services.getty.autologinUser = lib.mkForce "root";
+  users.users.root.initialPassword = "";
+  
 
 
   services.openssh.enable = true; # enables the sshd server on the computer 

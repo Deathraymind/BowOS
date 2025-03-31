@@ -72,7 +72,6 @@
             }
             stylix.nixosModules.stylix
             ./configs/iso-configuration.nix
-            ./configs/stylix.nix
             # ISO Building 
             <nixpkgs/nixos/modules/installer/cd-dvd/iso-image.nix>
 
