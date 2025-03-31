@@ -10,9 +10,13 @@ echo "What drive do you want to install on? (Enter the name only, e.g., for /dev
 read BOWOS_DRIVE
 
 # Ask whether the system boots using EFI or BIOS.
-echo "Is this system EFI or BIOS? (Type 'efi' or 'bios')"
-read BOOT_TYPE
-
+if [ -d /sys/firmware/efi ]; then
+    BOOT_TYPE="efi"
+    echo "Detected boot type: UEFI"
+else
+    BOOT_TYPE="bios"
+    echo "Detected boot type: BIOS"
+fi
 # Set BOOT_DRIVE variable based on boot type:
 # If EFI, use "nodev" (since EFI doesn't use a specific boot device for GRUB in this setup)
 # Otherwise (BIOS), use the drive specified.
