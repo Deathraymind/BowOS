@@ -11,7 +11,7 @@
             positionX = "right";
             positionY = "top";
             fit-to-screen = false;
-            control-center-margin-top = 8;
+            control-center-margin-top = 2;
             # control-center-margin-bottom = 10;
             control-center-margin-right = 8;
             notification-icon-size = 64;

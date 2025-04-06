@@ -74,6 +74,11 @@
         "SUPER, L, movefocus, r"
         "SUPER, J, movefocus, u"
         "SUPER, K, movefocus, d"
+        # Move focus Master 
+        "SUPER ALT, left, layoutmsg, cycleprev loop"
+        "SUPER ALT, left, layoutmsg, swapwithmaster"
+        "SUPER ALT, right, layoutmsg, cyclenext loop"
+        "SUPER ALT, right, layoutmsg, swapwithmaster"
 
         # Switch workspaces directly
         "SUPER, 1, workspace, 1"
@@ -129,8 +134,17 @@
         gaps_in = 4;
         gaps_out = 8;
         border_size = 2;
+        layout = "master";
+      };
+      master = {
+        inherit_fullscreen = true; # Master
+        drop_at_cursor = true;
       };
       decoration = {
+        shadow = {
+            enabled = true;
+            range = 10;
+        };
         rounding = 15;
         blur = {
           enabled = true;
@@ -148,17 +162,24 @@
           ];
 
           animation = [
-            "windows, 1, 6, wind, slide"
-            "windowsIn, 1, 6, winIn, slide"
-            "windowsOut, 1, 5, winOut, slide"
-            "windowsMove, 1, 5, wind, slide"
+            "windows, 1, 6, wind, popin"
+            "windowsIn, 1, 6, winIn, popin"
+            "windowsOut, 1, 5, winOut, popin"
+            "windowsMove, 1, 5, wind, popin"
             "border, 1, 1, liner"
             "borderangle, 1, 30, liner, loop"
-            "fade, 1, 10, default"
+            "fade, 0" # the fade animation disabled opactiy change in transisiotion
             "workspaces, 1, 5, wind"
           ];
         };
-        monitor = [
+       windowrulev2 = [
+    #------for update window------#
+    "float, class:^(kitty)$, title:^(update)$"
+    "float, class:^(kitty)$, initialTitle:^(update)$" # kitty --title "update"
+    "size 50% 10%, class:^(kitty)$, title:^(update)$" # Optional: set size to 80% width, 50% height
+    "move 30% 5%, class:^(kitty)$, title:^(update)$" # moves it down from the top h/w
+    #------for update window------#
+];        monitor = [
         "DP-1, 2560x1440@165, 0x0, 1"
         "HDMI-A-1,1920x1080@240,-1920x0,1"
         "DP-2,1920x1080@60,-1920x0,1"

@@ -11,7 +11,7 @@
     waybar
     rofi
     ethtool
-    gnome.nautilus
+    nautilus
     vlc
     wl-clipboard
     libva
@@ -65,7 +65,7 @@
     
     # Virtual Machine
     qemu
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     udisks2
     firefox
     polkit

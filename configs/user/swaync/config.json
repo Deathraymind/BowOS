@@ -2,7 +2,7 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "control-center-margin-top": 10,
+  "control-center-margin-top": 5,
   "control-center-margin-bottom": 10,
   "control-center-margin-right": 10,
   "notification-icon-size": 64,

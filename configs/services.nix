@@ -6,8 +6,8 @@ dbus.enable = true;
 
 # SSH
 openssh.enable = true;
-openssh.passwordAuthentication = true;
-openssh.permitRootLogin = lib.mkForce "no";
+openssh.settings.PasswordAuthentication = true;
+openssh.settings.PermitRootLogin = lib.mkForce "no";
 
 gvfs.enable = true;
 blueman.enable = true;

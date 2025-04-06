@@ -23,6 +23,8 @@
           "cpu"
           "battery"
           "memory"
+          "custom/configure"
+          "custom/update"
         ];
         modules-center = [
           "hyprland/workspaces"
@@ -69,6 +71,14 @@
           on-scroll-up = "brightnessctl set 5%+";
           on-scroll-down = "brightnessctl set 5%-";
           min-length = 6;
+        };
+        "custom/update" = {
+            format = "󰚰";
+            on-click = "kitty --title 'update' -e bash -c 'BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake BowOS/.#kvm; echo -e \"\\n\\nPress any key to close\"; read -n 1'";
+        };
+        "custom/configure" = {
+            format = "";
+            on-click = "kitty -e bash -c 'cd BowOS && nvim configs/configuration.nix'";
         };
 
         pulseaudio = {
@@ -194,6 +204,20 @@ window#waybar {
     border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
 }
 
+#memory {
+    background: #${config.stylix.base16Scheme.base00};
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px 0px 0px 0px;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+}
+
+
 #pulseaudio {
     background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
@@ -234,7 +258,7 @@ window#waybar {
 
 
 
-#memory {
+#custom-update {
     background: #${config.stylix.base16Scheme.base00};
     opacity: 0.9;
     padding: 0px 10px;
@@ -247,6 +271,27 @@ window#waybar {
     border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
     border-right: 2px solid #${config.stylix.base16Scheme.base0D};
 }
+#custom-update:hover {
+    background-color: #89B4FB;
+}
+
+
+#custom-configure {
+    background: #${config.stylix.base16Scheme.base00};
+    opacity: 0.9;
+    padding: 0px 10px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px 0px 0px 0px;
+    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+}
+#custom-configure:hover {
+    background-color: #89B4FB;
+}
+
 
 #cpu {
     background: #${config.stylix.base16Scheme.base00};

@@ -118,9 +118,9 @@ in
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -173,9 +173,9 @@ in
   
 
   ## Graphics
-  hardware.opengl = {
+  hardware.graphics= {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   home-manager.backupFileExtension = "backup";
