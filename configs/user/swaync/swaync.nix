@@ -19,7 +19,7 @@
             control-center-height = 450;
             notification-body-image-height = 100;
             notification-body-image-width = 200;
-            widgets = ["dnd" "buttons-grid"];
+            widgets = ["dnd" "notifications" "buttons-grid"];
             widget-config = {
                 dnd = {
                     text = "Focus Mode";
@@ -100,14 +100,17 @@
           padding: 5px 5px 5px 5px;
           border-radius: 15px;
           background: @noti-bg-darker;
+          font-size: 50px;
         }
 
         .widget-buttons-grid>flowbox>flowboxchild>button {
-          margin: 3px;
+          margin-left: 8px;
+          font-size: 50px;
+          min-height: 50px;
           background: @cc-bg;
           border-radius: 15px;
           color: #000000;
-          padding: 60px;
+          padding: 5px;
         }
 
         .widget-buttons-grid>flowbox>flowboxchild>button:hover {
@@ -116,10 +119,10 @@
         
         /* Style for the first button */
         .widget-buttons-grid > flowbox > flowboxchild:nth-child(1) > button {
-            margin: 3px;
             background: #${config.stylix.base16Scheme.base08}; /* Red background */
             border-radius: 15px;
             color: #000000;
+            font-size: 50px;
 
         }
         .widget-buttons-grid>flowbox>flowboxchild:nth-child(1)>button:hover {
@@ -128,7 +131,6 @@
 
         /* Style for the second button */
         .widget-buttons-grid > flowbox > flowboxchild:nth-child(2) > button {
-            margin: 3px;
             background: #${config.stylix.base16Scheme.base0B}; /* Green background */
             border-radius: 15px;
             color: #000000; /* Black text */
@@ -139,7 +141,6 @@
 
         /* Style for the third button */
         .widget-buttons-grid > flowbox > flowboxchild:nth-child(3) > button {
-            margin: 3px;
             background: #${config.stylix.base16Scheme.base0A}; /* Blue background */
             border-radius: 15px;
             color: #000000; 
@@ -150,7 +151,6 @@
 
         /* Style for the fourth button */
         .widget-buttons-grid > flowbox > flowboxchild:nth-child(4) > button {
-            margin: 3px;
             background: #${config.stylix.base16Scheme.base07}; /* Yellow background */
             border-radius: 15px;
             color: #000000; /* Black text */
