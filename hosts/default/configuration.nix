@@ -246,6 +246,7 @@ in
     libsForQt5.qt5ct
     obsidian
     helvum
+    twingate
     # Rocm stuff 
   ];
 
@@ -263,14 +264,14 @@ in
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
+    
   virtualisation.docker.enable = true;
   services.udisks2.enable = true;
   security.polkit.enable = true;
   services.openssh.enable = true;
   programs.kdeconnect.enable = true;
   services.flatpak.enable = true;
-
+  services.twingate.enable = true;
   programs.kdeconnect = {
     package = pkgs.gnomeExtensions.gsconnect;
   };
