@@ -8,7 +8,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix,... }@inputs:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       username = builtins.getEnv "BOWOS_USER";
@@ -22,11 +22,22 @@
           modules = [
             {
               services.xserver.videoDrivers = [ "nvidia" ];
-              hardware.nvidia.open = false;
+
+
+                              hardware.nvidia = {
+    modesetting.enable = true;          # required for Wayland
+    powerManagement.enable = true;      # optional but useful
+    nvidiaSettings = true;              # allows nvidia-settings GUI
+    open = false;                       # required for GTX 1080 (no open driver support)
+  };
+
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ]; # important for Wayland
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
+            ./configs/services.nix
+
             {
               networking.hostName = "bowos";
             }
@@ -49,6 +60,8 @@
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
+            ./configs/services.nix
+
             {
               networking.hostName = "bowos";
             }
