@@ -3,6 +3,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    wayvnc
+    alvr
     obs-studio
     gcc
     wl-color-picker
