@@ -54,22 +54,27 @@
         amd = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            {
-              services.xserver.videoDrivers = [ "amdgpu" ];
-            }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
             ./configs/services.nix
 
             {
-              networking.hostName = "bowos";
+              networking.hostName = "bowos-sever";
             }
-            home-manager.nixosModules.home-manager
+          ];
+        };
+
+        server = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            stylix.nixosModules.stylix
+            ./configs/configuration.nix
+            ./configs/applications.nix
+            ./configs/services.nix
+
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./configs/home.nix;
+              networking.hostName = "bowos-server";
             }
           ];
         };
