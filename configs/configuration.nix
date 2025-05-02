@@ -44,7 +44,6 @@ in
     '';
   };
 
-  services.expressvpn.enable = true;
 
   boot.loader = {
     grub = {

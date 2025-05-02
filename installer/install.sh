@@ -123,3 +123,4 @@ BOWOS_USER="$BOWOS_USER" BOWOS_PASSWORD="$BOWOS_PASSWORD" nixos-enter -- nix-she
   "
 '
 
+
