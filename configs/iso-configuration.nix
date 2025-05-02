@@ -24,92 +24,9 @@
 
   environment.systemPackages = with pkgs; [
     # Include all your packages here
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    python3
-    nixd
-    # For nvim 
-    lua-language-server
-    nixd
-    jdt-language-server
-    stylua
-    statix
-    nixpkgs-fmt
-    nodejs
-
-    rsync
-    python3Packages.textual
-    wl-color-picker
-    neovim
-    git
-    kitty
-    waybar
-    rofi
-    ethtool
-    gnome.nautilus
-    vlc
-    wl-clipboard
-    libva
-    lazygit
-    # audio
-    pipewire
-    pamixer
-    # network
-    networkmanager
-    networkmanagerapplet
-    # bluetooth
-    bluez
-    blueman
-    brightnessctl
-    playerctl
-    swaynotificationcenter
-
-    # screenshot
-    grim
-    slurp
-    swappy
-    cliphist
-    hyprpicker
-
-    # dependencies
-    polkit-kde-agent
-    xdg-desktop-portal-hyprland
-    jq
-    imagemagick
-    ffmpegthumbs
-
-    # theme stuff
-    nwg-look
-    hyprpaper
-    fastfetch
-    hyprlock
-    pavucontrol
-    pipewire
-    xorg.xrandr
-    home-manager
-    htop
-    playerctl
-    dconf
-    glib
-    # Virtual Machine
-    qemu
-    gnome.gnome-disk-utility
-    udisks2
-    firefox
-    polkit
-    lxqt.lxqt-policykit
-    ranger
-    # Screen Sharing
-    pipewire
-    wireplumber
-    # Phone Sync
-    scrcpy
-    v4l2-relayd
-    v4l-utils
-    android-tools
-    cpufrequtils
-    hyprland
-
-
+    stylix 
+    openssh 
+    nvim 
   ];
 
   environment.etc."issue".text = ''
@@ -122,7 +39,7 @@
     |██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
     |╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
     '--------------------------------------------'
-    Welcome to BowOS
+    Welcome to BowOS-Server
     \e[0m
 
     \e[34mSteps to install:\e[0m

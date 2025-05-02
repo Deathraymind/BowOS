@@ -5,23 +5,18 @@ let
   username = builtins.getEnv "BOWOS_USER";
 in
     # Use this command to rebuild the system :)
-    # BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake .#kvm
+    # BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake .#server
 {
   imports =
     [
-      
-      # Files
-      ./stylix.nix
-      /etc/nixos/hardware-configuration.nix 
-      /etc/nixos/preferences/configuration-preferences.nix
-      
+        ./stylix.nix
     ];
 
-  
+  # What you want to start when user logins 
   programs.zsh = {
     enable = true;
     loginShellInit = ''
-      Hyprland & 
+   
     '';
   };
 
@@ -35,7 +30,7 @@ in
       GRUB_CFG="/boot/grub/grub.cfg"
       BACKUP_GRUB_CFG="/boot/grub/grub.cfg.bak"
       SEARCH_STR="\"NixOS"
-      REPLACE_STR="\"BowOS"
+      REPLACE_STR="\"BowOS-Server"
 
       if [ -f "$GRUB_CFG" ]; then
           cp "$GRUB_CFG" "$BACKUP_GRUB_CFG"
@@ -53,7 +48,7 @@ in
       enable = lib.mkForce true;
       # efiSupport = true;
       # devices = [ "nodev" ];
-      configurationName = "BowOS";
+      configurationName = "BowOS-Server";
       fontSize = 26;
       useOSProber = true;
     };
@@ -77,13 +72,9 @@ in
     |██████╔╝╚██████╔╝╚███╔███╔╝╚██████╔╝███████║|
     |╚═════╝  ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚══════╝|
     '--------------------------------------------'
-    Welcome to BowOS \e[0m
+    Welcome to BowOS-Server \e[0m
     \n \l
   '';
-  # Phone Camera
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
-  boot.kernelPackages = pkgs.linuxPackages;
 
 
   qt.style = "adwaita-dark";
@@ -93,15 +84,6 @@ in
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
-
-
-
-
-  boot.extraModprobeConfig = ''
-    options v4l2loopback video_nr=1 card_label="VirtualCam" exclusive_caps=1
-  '';
-  # Run this command to run the virtual camera
-  # scrcpy --video-source=camera --camera-size=1920x1080 --v4l2-sink=/dev/video1 --no-video-playback --v4l2-buffer=50
   time.timeZone = lib.mkDefault "Asia/Tokyo";
 
   # Set you location
@@ -127,7 +109,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "disk" "docker" ];
   };
 
 
@@ -192,8 +174,8 @@ in
 
     enable = true;
 
-    allowedTCPPorts = [ 9943 9944 51112 ];
-    allowedUDPPorts = [ 9943 9944 51112 ];
+    allowedTCPPorts = [ ];
+    allowedUDPPorts = [ ];
     allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
     allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 
