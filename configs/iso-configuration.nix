@@ -24,9 +24,9 @@
 
   environment.systemPackages = with pkgs; [
     # Include all your packages here
-    stylix 
     openssh 
-    nvim 
+    neovim
+    git 
   ];
 
   environment.etc."issue".text = ''
@@ -117,56 +117,9 @@ services.xserver.displayManager.autoLogin = lib.mkForce {
     xwayland.enable = true;
   };
 
-  # power saving
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_BOOST_ON_BAT = 0;
-      CPU_BOOST_ON_AC = 1;
-      CPU_MAX_PERF_ON_AC = 95;
-      CPU_MAX_PERF_ON_BAT = 30;
-    };
-  };
-
 
 
   # Graphics
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-  };
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = false;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
-    ];
-  };
-
-
-
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-  };
 
 
 

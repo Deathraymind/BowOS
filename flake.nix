@@ -33,6 +33,20 @@
           ];
         };
 
+        install = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            stylix.nixosModules.stylix
+            ./configs/configuration.nix
+            ./configs/applications.nix
+            ./configs/services.nix
+
+            {
+              networking.hostName = "bowos-server";
+            }
+          ];
+        };
+
         # ISO 
         # Usage: BOWOS_USER=bowyn sudo -E nix build .#nixosConfigurations.iso.config.system.build.isoImage --impure
         # TODO: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/cd-dvd/iso-image.nix
