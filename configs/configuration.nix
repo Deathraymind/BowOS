@@ -10,6 +10,9 @@ in
   imports =
     [
         ./stylix.nix
+         /etc/nixos/hardware-configuration.nix 
+      /etc/nixos/preferences/configuration-preferences.nix
+
     ];
 
   # What you want to start when user logins 
