@@ -20,7 +20,6 @@
     <nixpkgs/nixos/modules/system/etc/etc.nix>
   ];
 
-  isoImage.squashfsCompression = "gzip -Xcompression-level 4";
 
   environment.systemPackages = with pkgs; [
     # Include all your packages here
@@ -64,11 +63,8 @@
 
 
   # isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-    #  environment.etc."install_bowos.sh".source = ./install-bowos.sh;
+  isoImage.squashfsCompression = "gzip -Xcompression-level 4";
   isoImage.isoName = lib.mkForce "bowos-${config.system.nixos.version}.iso";
-  # environment.etc."bowos-packages.nar".source = ./bowos-packages.nar;
-  # system.build.isoImage.isoName = lib.mkForce "bowos-x86-v1.0.1";
- 
 
   environment.shellInit = ''
     echo "Installer Countdown ctrl-c to escape to shell"
@@ -85,6 +81,7 @@
     echo "1"
 
     git clone --branch bowos-server https://github.com/deathraymind/bowos
+    sudo mount -o remount,size=10G,noatime /nix/.rw-store
     cd bowos/installer 
     bash install.sh
 

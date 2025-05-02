@@ -155,14 +155,6 @@ in
   
 
   ## Graphics
-  hardware.graphics= {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  home-manager.backupFileExtension = "backup";
-
-
   ## _____ _                        _ _ 
   ##|  ___(_)_ __ _____      ____ _| | |
   ##| |_  | | '__/ _ \ \ /\ / / _` | | |
@@ -182,7 +174,6 @@ in
   };
 
   
-  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.11";
 }
