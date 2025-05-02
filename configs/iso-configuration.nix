@@ -84,7 +84,7 @@
     sleep 1
     echo "1"
 
-    git clone https://github.com/deathraymind/bowos
+    git clone --branch bowos-server https://github.com/deathraymind/bowos
     cd bowos/installer 
     bash install.sh
 
