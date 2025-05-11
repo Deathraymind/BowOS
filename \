@@ -3,10 +3,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    prismlauncher
-    kicad
-    blender
-    freecad
     gimp
     expressvpn
     localsend

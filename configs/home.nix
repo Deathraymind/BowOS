@@ -35,29 +35,29 @@ in
     enable = true;
     enableZshIntegration = true; # Enable for Bash (or enableZshIntegration for Zsh, etc.)
     settings = {
-      format = ''
-        [┌───────────────────>](bold green)
-        [│](bold green)$directory$rust$package
-        [└─>](bold green) '';
+        format = "$directory$git_branch$git_status$character"; 
+        character ={
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[✗](bold red)";
+        };
+        directory = {
+  truncation_length = 3;
+  style = "blue";
+};
 
-      # Wait 10 milliseconds for starship to check files under the current directory.
-      scan_timeout = 10;
-
-      # Disable the blank line at the start of the prompt
-      add_newline = false;
-
-      # Set 'foo' as custom color palette
-      palette = "foo";
-
-      # Define custom colors
-      # Overwrite existing color
-      blue = "21";
-      # Define new color
-      mustard = "#af8700";
-
+git_branch = {
+  symbol = "🌿 ";
+  style = "green";
+};
     };
   };
   programs = {
+    zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true; 
+        };
     kitty.enable = true;
     home-manager.enable = true;
     git = {

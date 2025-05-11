@@ -127,8 +127,12 @@ in
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" "adbusers" ];
+    extraGroups = [ "dialout" "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" "adbusers" ];
   };
+services.udev.extraRules = ''
+  SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666", GROUP="dialout"
+  SUBSYSTEM=="tty", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="dialout"
+'';
 
 
 
@@ -192,8 +196,8 @@ in
 
     enable = true;
 
-    allowedTCPPorts = [ 9943 9944 51112 ];
-    allowedUDPPorts = [ 9943 9944 51112 ];
+    allowedTCPPorts = [ 9943 9944 51112 5901 53317]; #53317 is for local send
+    allowedUDPPorts = [ 9943 9944 51112 5901 53317 ];
     allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
     allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 

@@ -4,6 +4,7 @@ services = {
 udisks2.enable = true;
 dbus.enable = true;
 flatpak.enable = true;
+expressvpn.enable=true;
 
 # SSH
 openssh.enable = true;
@@ -13,6 +14,17 @@ openssh.settings.PermitRootLogin = lib.mkForce "no";
 gvfs.enable = true;
 blueman.enable = true;
 };
+
+services.syncthing = {
+    enable = true;
+    openDefaultPorts = true; 
+    settings.gui = {
+        user = "bowyn";
+        password = "6255";
+    };
+
+};
+
 networking.networkmanager.enable = true;
 programs.adb.enable = true;
 services.pipewire = {
