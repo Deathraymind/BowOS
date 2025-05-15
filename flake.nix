@@ -56,6 +56,15 @@
           modules = [
             {
               services.xserver.videoDrivers = [ "amdgpu" ];
+            hardware.opengl = {
+  enable = true;
+  driSupport = true;
+  driSupport32Bit = true;
+};
+
+hardware.amdgpu = {
+  enable = true;
+};
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix

@@ -25,7 +25,13 @@ in
     '';
   };
 
+    boot.kernelParams = [
+      "iommu=pt"
+      "amdgpu.gpu_recovery=1"
+    ];
 
+
+rocmTargets = ["gfx803" "gfx900" "gfx906" "gfx1100"];
 
   users.defaultUserShell = pkgs.zsh;
   system.activationScripts.update-grub-menu = {
@@ -83,7 +89,6 @@ in
   # Phone Camera
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
-  boot.kernelPackages = pkgs.linuxPackages;
 
 
   qt.style = "adwaita-dark";

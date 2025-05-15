@@ -92,6 +92,7 @@
     
     obsidian
     helvum
+    # AI shit 
   ];
 
   }
