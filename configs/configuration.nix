@@ -31,7 +31,6 @@ in
     ];
 
 
-rocmTargets = ["gfx803" "gfx900" "gfx906" "gfx1100"];
 
   users.defaultUserShell = pkgs.zsh;
   system.activationScripts.update-grub-menu = {
