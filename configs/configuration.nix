@@ -89,7 +89,6 @@ in
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
 
-
   qt.style = "adwaita-dark";
   qt.enable = true;
 
@@ -131,7 +130,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "dialout" "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" "adbusers" ];
+    extraGroups = [ "dialout" "networkmanager" "wheel" "libvirtd" "vboxusers" "disk" "kvm" "video" "render" "docker" "adbusers" "ydotool" "uinput" ];
   };
 services.udev.extraRules = ''
   SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666", GROUP="dialout"
@@ -200,8 +199,8 @@ services.udev.extraRules = ''
 
     enable = true;
 
-    allowedTCPPorts = [ 9943 9944 51112 5901 53317]; #53317 is for local send
-    allowedUDPPorts = [ 9943 9944 51112 5901 53317 ];
+    allowedTCPPorts = [ 9943 9944 51112 5901 53317 11434]; #53317 is for local send
+    allowedUDPPorts = [ 9943 9944 51112 5901 53317 11434];
     allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
     allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 

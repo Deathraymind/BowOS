@@ -5,7 +5,6 @@ udisks2.enable = true;
 dbus.enable = true;
 flatpak.enable = true;
 expressvpn.enable=true;
-ollama.enable=true;
 
 # SSH
 openssh.enable = true;

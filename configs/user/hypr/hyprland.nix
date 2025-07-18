@@ -12,12 +12,23 @@
         "/usr/lib/kdeconnectd"
         "hyprpaper -c /home/$USER/bowos/wallpaper/hyprpaper.conf"
       ];
+
+     input = {
+        # Disable mouse acceleration for consistent ydotool coordinates
+        force_no_accel = true;
+        accel_profile = "flat";
+        sensitivity = 0.0;
+        
+        # Optional: if you have specific mouse devices causing issues
+        # You can add per-device settings here
+      };
       # Basic window manipulation
       bind = [
         "SUPER, Q, killactive,"
         "SUPER, DELETE, exit,"
         "SUPER, W, togglefloating,"
         "SUPER, A, exec, rofi -show drun"
+        "SUPER, TAB, exec, rofi -show window -theme-str 'window { width: 1500; height: 500; } listview { lines: 15; }'"
         "SUPER, G, togglegroup," # dwindle
         "ALT, return, fullscreen,"
         "SUPER, I, togglesplit," # dwindle

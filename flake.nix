@@ -133,6 +133,15 @@ hardware.amdgpu = {
           system = "x86_64-linux";
           modules = [
             {
+            # AI stuff for AMD
+            hardware.amdgpu.opencl.enable = true;
+            hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
+            environment.systemPackages = [ pkgs.rocmPackages.clr.icd ];
+            systemd.tmpfiles.rules = [
+              "L+ /opt/rocm - - - - ${pkgs.rocmPackages.clr}" 
+            ];
+
+
               boot.kernelParams = [
                 "intel_iommu=on"
                 "vfio-pci.ids=1002:699f,1002:aae0"
@@ -153,11 +162,17 @@ hardware.amdgpu = {
               '';
 
               services.xserver.videoDrivers = [ "amdgpu" ];
+              hardware.opengl = {
+                enable = true;
+                driSupport32Bit = true;
+              };
+
             }
             stylix.nixosModules.stylix
             ./configs/configuration.nix
             ./configs/applications.nix
             ./configs/services.nix
+            ./configs/ollama.nix
             {
               networking.hostName = "bowos";
             }
