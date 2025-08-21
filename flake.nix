@@ -172,6 +172,7 @@ hardware.amdgpu = {
             ./configs/configuration.nix
             ./configs/applications.nix
             ./configs/services.nix
+            ./configs/sunshine.nix
                         # ./configs/ollama.nix
             {
               networking.hostName = "bowos";
