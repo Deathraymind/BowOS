@@ -182,7 +182,7 @@ services.udev.extraRules = ''
   ## Graphics
   hardware.graphics= {
     enable = true;
-    enable32Bit = false;
+    enable32Bit = true;
   };
 
   home-manager.backupFileExtension = "backup";
