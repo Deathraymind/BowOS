@@ -164,7 +164,7 @@ hardware.amdgpu = {
               services.xserver.videoDrivers = [ "amdgpu" ];
               hardware.opengl = {
                 enable = true;
-                driSupport32Bit = true;
+                driSupport32Bit = false;
               };
 
             }
