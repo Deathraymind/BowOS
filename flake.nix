@@ -59,7 +59,7 @@
             hardware.opengl = {
   enable = true;
   driSupport = true;
-  driSupport32Bit = true;
+  driSupport32Bit = false;
 };
 
 hardware.amdgpu = {
@@ -172,7 +172,7 @@ hardware.amdgpu = {
             ./configs/configuration.nix
             ./configs/applications.nix
             ./configs/services.nix
-            ./configs/ollama.nix
+                        # ./configs/ollama.nix
             {
               networking.hostName = "bowos";
             }
