@@ -3,6 +3,16 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    waypipe
+    vscode
+    unityhub
+    r2modman
+    notion 
+    ffmpeg
+    viber
+    qbittorrent
+    sshfs
+    rocmPackages.clr
     ydotool 
     discord
     tmux

@@ -1,0 +1,377 @@
+* fcfa002 (HEAD -> main, origin/main, origin/HEAD) ai start
+* ef37ec5 some changes
+* 7a11458 tmux
+* 8ad552f ai
+* d64c330 stuff
+| * 5d355a7 (origin/bowos-server) removed more homer
+| * 27b4bbf removed homemanager
+| * 5da3690 revert some stuff
+| * af1191d added the hardware files again oops
+| * 8fb3aff removed backup
+| * a487652 removed home manager
+| * ea66066 removed some extra gome manager
+| * 6220c61 install flake added
+| * 8e24da9 bowos-server init
+|/  
+* fb88d2e wayvnc
+* b8c3821 adb server and perms
+* 40355ba services flatpak network manager
+* e1e8718 min-height
+* c50d9e9 waybar & warning fix
+* 9e38eb3 auto uefi or bios
+* 0166835 updated the iso
+* d228e96 fix uefi boot??
+* bd2545c remove iso
+* 5b181c3 ISO builder
+* 643df03 remove iso
+* 614a1c6 services stuff
+* 2c28ea1 services.nix
+* 1c1e1da flake formating
+* bb54bf0 reformat
+* b19ac1a reorganix
+* f2c84ba trash
+* 6fd4869 fix
+* 9f24de2 ficxed
+* aae92f9 fix
+* 0d750ce fixed direotyr
+* c62a607 bios
+* 6618dc6 preferences folder
+* 1b41fda do nothing
+* 478cc9b fixed order
+* 2b1abbc removed redundent git clone
+* c7e6360 bruh copy
+* 7fef6aa comments
+* 4068eba copy hardware config
+* c23831f default for efi
+* 56e7318 disko fix?
+* 1af56ab false
+* 3bb04bd isremoveable
+* 61f4e87 1
+* ce57b6e not working
+* 435207a remove before install
+* 86f1eed efitouch
+* cded7b6 preferences
+* 59fd5c0 # some lines
+* b4da6fd idk man
+* a32201d bare bones
+* f6aaf8a cmon work efi bugged
+* 7e9dfef dbus
+* 5b994ed echo
+* 4e177d1 password testing
+* 44bdade restructred dot files
+* ef33ca5 restructure
+* a5ff54e drive
+* 44fe189 password?
+* 35e166e fix?
+* 04b2f86 made true
+* 08d83a3 ommit
+* 447a9d9 stuff test
+* ac5594b test
+* 6156cec bowos user for build
+* 7dc6001 combine
+* bc4be11 fixed ;
+* 41cdacd fixed the parent directory copy comamnd for install
+* 0ea0cc5 copy lmao
+* a382337 testy
+* cbfd666 test
+* f417a59 installer fixv1.1.2
+* cd3bb41 renamaed to installer as thats what it is
+* edee8d2 install script v1
+* 3673554 nodev and other logic
+* 7be8ca4 preferences start spegot
+* 759e75b redundent incase line exists
+* 3e6b585 bios set?
+* 20485e3 usage
+* 553d7a8 test1
+* 844b781 test
+* 62a25a8 bios disko support
+* 3c751c9 updatead disko
+* 0ca6c20 removed installer/disko.nix
+* cc5db4e comments
+* bd2b4e1 remved
+* 69dc66a mnt
+* d1d38ac hardware.config added to flake
+* a6632c6 hardware.config asdded
+* 2942709 domik
+* 62c7b25 sha fix
+* 96cadf6 removed hardware.nix
+* 6234e86 comment
+* c2ff2e1 variables for disko
+* d337abc disko
+* 2da44d5 tmpfs
+* 5b74f1e corrected path
+* ea660cc fixed?
+* bad4d40 disko seperate flake file
+* 0840a4b disko flake
+* 306dea3 disko
+* aef0185 removed old installe
+* 5faf2e8 variables
+* 9a42eb9 disko
+* 49b7748 Recreating main branch
+* ca2f4bb (origin/nvidia-fix) test
+* 71e514a buttons
+* 5ba8662 buttons smaller for power
+* af68162 swaync
+* 0f613a6 colors!
+* 3ec2819 swaynx stuff
+* 4b728ba style
+* 929b9d4 adding swaync ssettings
+* 78b54f6 swaync
+* 50436ca exec-once variables
+* 05121b1 lots
+* dfbd019 hyprland config borders and animations;
+* 88498aa hyprland
+* fd3f827 swaync
+* e235097 hyprland login
+* b3598f6 logseq removed
+* 68da451 removed rocm
+* 32d780c removed sudo again
+* d069d93 removed vmware
+* 13097df export user
+* 3406e74 removed sudo in the build PAM Error
+* 7185a10 bowos_user
+* 79adc63 fix some stuff
+* 1bb2cdb test sed
+* c60f986 updated security for user and pass
+* 2c41ddd count down
+* a7e792b fixed rebuild command
+* 69cab59 rm bowos direcotry
+* 275413a install-bowos.sh
+* 1b72a21 fixed nvme thing needs test
+* 77afbc9 fixed inputs
+* 260fac7 stuff
+* 87abe0d gcc and monitors
+* cf02b5b waybar and rofi fix
+* 6bc52a3 fastfetch v1
+* ff10a81 bowos logo
+* ed9eb97 add fastfetch png
+* 261efca fastfetch init
+* bbcb295 increased tray icon size
+* adb1864 new rofi menue
+* 1bd0c56 rofi
+* c5eb7be added rofi config
+* 50012ab added floating window for auth window
+* 917d81f added iso README.md
+* d07db65 Create README.md
+* b808ebc vulnerability: removed root ssh login
+* ab74748 removed nixos unstable channel from install
+* 095dd5f removed unstable channel
+* 44e3b29 max compression on iso
+* 896d2f5 added amd and nvidia build options within flake
+* c889eb2 removed rebuild
+* ccef0f7 added impure
+* 410c471 commit NixOS > BowOS
+* daa07de added bowos generation tahgs
+* 4e8ce8b removed
+* c13ec18 no efi stuff
+* 3e7d3dc fixed spelling
+* 1305f0c added default config.nix for build
+* 0bd376f stuff
+* 071b0cf added /tmp dir
+* de9f6eb nodev device added
+* 3a90c36 enabled grub
+* 7a3e779 added grub
+* 737e796 added bowos generation name
+* 6c0ac7d name convention for iso build
+* 5ff50e3 moved unpacking to nixos enter
+* a7dbfd2 hash for wallaper fixed
+* 4c47c73 wallpapers stylix
+* 5bf88f7 .nar support added
+* 4320b93 added packages to iso
+* 2810aa6 "' pairing
+* 128f8cb update unstable repo
+* 1509f1f added unstable channels
+* ee24282 fixed hostname
+* 149ac4b added copy config to disk idk why it wasent there before
+* 507d1a0 add installer files
+* 7f8c0a1 nvidia-fix: init
+| * b87f122 (origin/beta) switched isntaller to nvidia-fix branch
+| * 84c605b test
+| * b223739 if .nar is their if not skip
+| * f3733b6 flake.nix
+| * d7c5338 flake.nix for iso
+| * a4cc7b1 added banner
+| * 8dffd5f NIX_USER > BOWOS_USER
+| * a0269b8 border fix waybar
+| * b87bcca fixed waybar for desktops
+| * 01f9d80 updating style confs
+| * 6eddd82 edited: iso.nix & install
+| * d065544 removed proxy script
+| * 27ac6d3 removed proxy stuff
+| * 57812db okay pls work
+| * 28b6802 password fix
+| * e9e023a ok final time
+| * 28889e4 omg cd too root
+| * 3d4844e fixed the name
+| * 190bbe5 bash script fixing
+| * 8a71eae add file back
+| * 9daa89d Revert "no run bash"
+| * 6c2c927 no run bash
+| * c7e7f21 stuff
+| * c0e613b proxy stuff
+| * 8f80c79 fixed bowos copy
+| * e3b95f3 removed python from config
+| * 4ec8651 making iso
+| * ffec88d enable ssh
+| * 8d0b276 overide fonts for nerds
+| * 2435d74 config for nerdfonts
+| * cae061a iso stuff
+| * 273a035 fixed the fonts hope
+| * 393998c some extra nixiso stuff
+| * ed6bb8a iso.nix
+| * 6b96bb7 removed unstable repo
+| * d5863bf cool generator
+| * 1d8147d stuff
+| * 5855680 add install script
+| * 80e0094 install all packages
+| * 95480b9 cmon work
+| * 9632850 Updated disk_formatter.sh with latest changes
+| * 9a5e2c9 this is a mess
+| * bf8bf75 this is insane
+| * 5b382ef stuff
+| * 062ca47 this sould fix the root password being set
+| * 267a728 Password for the bowos install script
+| * dcb481a this is bowOS
+| * aa4e0e5 password setting
+| * f6f698c added the -i to edit the bash script cant bellieve thats not default
+| * f40da72 this is an updated user script the export the user name wanted in the goofy thing
+| * 2f3eaa5 added export username to install script
+| * 72502ea python script fix
+| * 1ee732c some dope code
+| * e9cc411 fixing the script
+| * 49aec62 user feilds
+| * 3f98d91 installer fixed?
+| * 466b5a7 stuff
+| * c6f7fdf systemd
+| * 24a6ddd downsizing
+| * edbb278 fixed the branche pull
+| * 9015452 fixed loging
+| * bb16952 install scripts
+| * 4d527a7 this is the start
+| * 38fc6fe (origin/bowos-production) removed useless apps
+|/  
+* 327e224 bowos > nixos
+* 8669259 bowos_user fixed loca
+* 3e6ab20 added bowos_user to flake
+* a2af831 refactored: bowos-user > BOWOS_USER
+* db18d45 refactored: bowos-user
+* acfd921 refactored: bowos-username
+* a02e013 bowos-production: init
+* 93bb9cb (origin/fix) enabled homeStylix.nix
+* 49d87f4 gtk: icons
+* 155510c formated: stylix.nix
+* e6a7819 removed: theme.nix reason depricated
+* c8b50fb cleaning comments
+* 2836642 kitty 1.0 > 0.9
+* 3f1c0ff added: waybar.nix
+* b786f98 added: copilot.lua
+* 2679c31 stuff no worky
+* 64807f9 removed kitty conf
+* 67837bd kitty theme conf
+* d370cfd updated alot of stuff
+* ca7156f rly needed to updated this
+* 49ffe71 function keys
+* 8b6b135 logseq
+* 34db923 auto completions
+* 5e2da17 stuff
+* c637cf9 cool plugins
+* a27b595 null_ls
+* df3f990 start cleaned
+* 28c78ea LSP working with some extra stuff working state
+* dc8b461 lsp working on homemanager
+* d5622ee nvim homemanager start
+* d9853a8 firefox nix
+* d69c8ce firefox home.nix
+* 1e8ec15 stuff
+* db5f6f7 firefox
+* a865d0f firefox git
+* 8a108cf fix transpeprecny
+* 83586ce Battery Optimization
+* a874eec homemanager clean up
+* c32991d new file tree
+* a3040e8 removed vs code
+* dae7989 nvim fix cmon man work pls
+* fa55ee8 bruh
+* 0e24558 lazy fix
+* f4c926e merging stuff
+* 2e9dd6b lazyggit
+* ef027d2 this is a test
+* a9584b7 this is a east
+* 30b3f51 suff
+* ca2e563 toggle erm
+* cafbc16 wlclip
+* 095387a alpha.lua plugin
+* dec9c18 stuff
+* b0f9d73 lsp lua
+* ea39058 stuff
+* b2fc7f1 lualine
+* a26665d bruhg
+* 1f587cf vim
+* 10e19dc vim-options
+* 2189a55 treesitter
+* be8f462 neo-tree
+* 3af197b updated directory
+* 2aa9cd6 pls wprl
+* 447d3c5 telesocope
+* 0ef9bfa treesitter
+* 428410c telescope
+* 4b9f0b2 plugins.lua
+* a7a84ab nvim ep 1
+* 8f67c43 nvim
+* 524ccde finally a rofi theme
+* dc0d26d new wallpoaper
+* 47ecfd7 new wallpaper
+* ed3c42a rofi
+* dc85370 rofi theme
+* 3b62a37 camera
+* 1947eb1 adbcamera.sh
+* edbdde4 tcp connect for adb
+* f930be5 ADB pairscript final
+* 43a59c5 adb scripts
+* da741dc adb script
+* 5a094d7 adb backend
+* dd77519 phone backend linking
+* 4a7d9b3 nvim
+* 9e4041b rofi theme fix
+* 392c681 rofi fix
+* 1311bed rofi theme fix
+* dbf1c55 rofi theme
+* a3943a6 waybar toggle
+* dd44006 whats app intagration
+* 24e0c82 whats app on waybar
+* d792849 fixed hardware import
+* 391e5e3 removed hardware.conf
+* a7ddc09 cleaning
+* 96ad3e2 removed old theme
+* 0eb5c24 cleaning up more
+* 6e85e62 formating
+* d7321b6 package organized
+* 36260ce bluetooth windows fix
+* 9dbbb4e mouse fix!
+* 5efad9a gtk themeing
+* 9fd0270 kde connect firewall punchthrough
+* ff13e7e notification center button fixes and kde connect installed
+* 5eb84fa swaync css
+* 9a03e61 swaync theme fix
+* ad48578 Swaync startup and button for waybar
+* 76d3f2c wallpaper fix + waybar config
+* e4cf8f4 gpu checker
+* fa292ff removed new master monitor config due to deprication in the hyprland package
+* 32d34be blue theme home file
+* a9102a4 obs
+* 4cfad02 blue theme day one
+* 7845f4c wallpapers fix
+* cff5637 bluetheme v1
+* 81a3a55 hyprblue windows rules
+* 1226a61 bluetheme hypr
+* f901084 hyprland theme blue
+* 98c07b1 blue waybar
+* df7439a bluetheme init
+* e61fa6d Bluetheme init
+* 0ce6fb7 .profile
+* e2a56e2 update
+* 1c47563 test
+* 97e246b Add files via upload
+* 28a4075 Add files via upload
+* 7ccb081 Add files via upload
+* 6f45422 Add files via upload

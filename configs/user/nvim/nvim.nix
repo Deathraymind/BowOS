@@ -6,6 +6,7 @@
     lua-language-server # Lua LSP
     nixd
     jdt-language-server
+    omnisharp-roslyn
 
     #none_ls
     stylua
@@ -32,6 +33,7 @@
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       none-ls-nvim
+      omnisharp-extended-lsp-nvim
     ];
   };
 }

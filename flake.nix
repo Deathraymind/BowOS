@@ -8,7 +8,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix,... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       username = builtins.getEnv "BOWOS_USER";
@@ -134,12 +134,12 @@ hardware.amdgpu = {
           modules = [
             {
             # AI stuff for AMD
-            hardware.amdgpu.opencl.enable = true;
-            hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
-            environment.systemPackages = [ pkgs.rocmPackages.clr.icd ];
-            systemd.tmpfiles.rules = [
-              "L+ /opt/rocm - - - - ${pkgs.rocmPackages.clr}" 
-            ];
+                            # hardware.amdgpu.opencl.enable = true;
+                            # hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
+                            # environment.systemPackages = [ pkgs.rocmPackages.clr.icd ];
+                            # systemd.tmpfiles.rules = [
+                            # "L+ /opt/rocm - - - - ${pkgs.rocmPackages.clr}" 
+                            # ];
 
 
               boot.kernelParams = [

@@ -16,7 +16,7 @@ blueman.enable = true;
 };
 
 services.syncthing = {
-    enable = true;
+    enable = false;
     openDefaultPorts = true; 
     settings.gui = {
         user = "bowyn";

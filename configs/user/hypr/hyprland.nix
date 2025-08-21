@@ -152,14 +152,16 @@
         drop_at_cursor = true;
       };
       decoration = {
+        active_opacity = 0.99;
+        inactive_opacity = 0.98;
         shadow = {
             enabled = true;
             range = 10;
         };
-        rounding = 15;
+        rounding = 10;
         blur = {
           enabled = true;
-          size = 1;
+          size = 5;
           passes = 4;
           new_optimizations = true;
         };
@@ -183,20 +185,23 @@
             "workspaces, 1, 5, wind"
           ];
         };
-       windowrulev2 = [
+       windowrulev2 = lib.mkForce [
     #------for update window------#
     "float, class:^(kitty)$, title:^(update)$"
     "float, class:^(kitty)$, initialTitle:^(update)$" # kitty --title "update"
     "size 50% 10%, class:^(kitty)$, title:^(update)$" # Optional: set size to 80% width, 50% height
     "move 30% 5%, class:^(kitty)$, title:^(update)$" # moves it down from the top h/w
     #------for update window------#
+    "unset, class:^(firefox)$"
+    "opacity 1 1,class:^(firefox)$"
 ];        monitor = [
-        "DP-1, 2560x1440@165, 0x0, 1"
-        "HDMI-A-1,1920x1080@75,-1920x0,1"
-        "DP-2,1920x1080@60,-1920x0,1"
-        "DP-3,1920x1080@60,+1920x0,1"
-        "Virtual-1, 1920x1080@60, 0x0, 1"
-        "eDP-1, 1920x1080@60, 0x0 ,1"
+                     "DP-1, 2560x1440@165, 0x0, 1"
+                    # "HDMI-A-1,3840x2160@60,0x0, 2"
+                     "HDMI-A-1,1920x1080@75,-1920x0,1"
+                     "DP-2,1920x1080@60,-1920x0,1"
+                     "DP-3,1920x1080@60,+1920x0,1"
+                    "Virtual-1, 1920x1080@60, 0x0, 1"
+                     "eDP-1, 1920x1080@60, 0x0 ,1"
         ];
       };
     };
@@ -205,10 +210,10 @@
         enable = true;
         settings = {
             preload = [
-                "/home/bowyn/.config/hypr/wallpapers/wallpaper.jpg"
+                "/home/bowyn/BowOS/wallpaper/darknet.png"
             ];
             wallpaper = [ 
-                ",/home/bowyn/.config/hypr/wallpapers/wallpaper.jpg"
+                ",/home/bowyn/BowOS/wallpaper/darknet.png"
             ];
             splash = false;
         };

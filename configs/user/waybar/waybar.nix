@@ -5,7 +5,13 @@
 , ...
 }:
 
+let 
+    colors={
+        background = config.stylix.base16Scheme.base00;
 
+        border = "2px solid #${config.stylix.base16Scheme.base00}";
+    };
+in
 {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -151,14 +157,14 @@ window#waybar {
 
 #tooltip {
     opacity: 0.9;
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
 }
 
 #tray {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -166,7 +172,7 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border};
     border-bottom: 2px solid #${config.stylix.base16Scheme.base0D}
 }
 
@@ -175,7 +181,7 @@ window#waybar {
 }
 
 #custom-gpu-usage {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -192,7 +198,7 @@ window#waybar {
 }
 
 #battery {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -205,7 +211,7 @@ window#waybar {
 }
 
 #memory {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -219,7 +225,7 @@ window#waybar {
 
 
 #pulseaudio {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -239,7 +245,7 @@ window#waybar {
 }
 
 #backlight {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -259,7 +265,7 @@ window#waybar {
 
 
 #custom-update {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -277,7 +283,7 @@ window#waybar {
 
 
 #custom-configure {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -294,7 +300,7 @@ window#waybar {
 
 
 #cpu {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -308,7 +314,7 @@ window#waybar {
 }
 
 #clock {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -322,7 +328,7 @@ window#waybar {
 }
 
 #custom-divider {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -333,7 +339,7 @@ window#waybar {
 }
 
 #custom-notifications {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -352,7 +358,7 @@ window#waybar {
 }
 
 #custom-launcher {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -372,7 +378,7 @@ window#waybar {
 }
 
 #workspaces {
-    background: #${config.stylix.base16Scheme.base00};
+    background: #${colors.background};
     opacity: 0.9;
     padding: 0px 10px;
     margin-top: 4px;
@@ -403,3 +409,4 @@ window#waybar {
     ];
   };
 }
+
