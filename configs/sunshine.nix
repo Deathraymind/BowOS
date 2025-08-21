@@ -14,5 +14,14 @@
       min_log_level = "info";
     };
   };
+
+  security.wrappers.sunshine = {
+    source = "${pkgs.sunshine}/bin/sunshine";
+    capabilities = "cap_sys_admin+ep";
+    owner = "root";
+    group = "root";
+  };
 }
+
+
 
