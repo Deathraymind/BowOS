@@ -1,11 +1,13 @@
 { pkgs, lib, ...}:
 {
+
+hardware.opentabletdriver.enable = true; # OTD supports Wayland
 services = {
 udisks2.enable = true;
 dbus.enable = true;
 flatpak.enable = true;
 expressvpn.enable=true;
-
+xserver.wacom.enable = true;
 # SSH
 openssh.enable = true;
 openssh.settings.PasswordAuthentication = true;

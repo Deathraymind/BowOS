@@ -3,6 +3,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    rnote
     waypipe
     vscode
     unityhub
