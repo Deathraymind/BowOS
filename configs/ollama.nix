@@ -5,9 +5,9 @@ let
   };
 in
 {
-  ########################
-  ## GPU & ROCm plumbing
-  ########################
+  #########################
+  ## GPU & ROCm plumbing ##
+  #########################
   hardware.graphics = {
     enable = true;
     enable32Bit = true;     # safe to keep on
@@ -37,7 +37,7 @@ in
   # (rocBLAS + hipBLAS + hipBLASLt are the important ones)
   systemd.services.ollama.serviceConfig.Environment = [
     "LD_LIBRARY_PATH=${lib.makeLibraryPath [
-      pkgs.rocmPackages.rocblas
+      pkgs.rocmPackages.rocblasq
       pkgs.rocmPackages.hipblas
     ]}"
   ];

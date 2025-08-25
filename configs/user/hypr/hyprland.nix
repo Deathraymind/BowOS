@@ -3,14 +3,14 @@
     enable = true;
     settings = {
       exec-once = [
+        "hyprlock -c ~/BowOS/configs/user/hypr/hyprlock.conf"
+        "hyprpaper"
         "mkdir -p ~/Pictures/screenshots"
         "waybar"
         "blueman-applet"
         "nm-applet"
         "lxqt-policykit-agent"
         "swaync"
-        "/usr/lib/kdeconnectd"
-        "hyprpaper -c /home/$USER/bowos/wallpaper/hyprpaper.conf"
       ];
 
      input = {
@@ -218,4 +218,28 @@
             splash = false;
         };
     };
+    programs.hyprlock.enable = true;
+
+     services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "pidof hyprlock >/dev/null || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+      };
+
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = "hyprlock -c ~/BowOS/configs/user/hypr/hyprlock.conf";
+        }
+        {
+          timeout = 330;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume  = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
 }

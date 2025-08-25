@@ -3,6 +3,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    libreoffice
+    anki
+    swtpm
     rnote
     waypipe
     vscode

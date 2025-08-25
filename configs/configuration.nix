@@ -136,6 +136,7 @@ services.udev.extraRules = ''
   SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666", GROUP="dialout"
   SUBSYSTEM=="tty", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="dialout"
 '';
+services.getty.autologinUser = "bowyn";
 
 
 
