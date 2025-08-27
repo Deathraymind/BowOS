@@ -9,7 +9,7 @@ let
     colors={
         background = config.stylix.base16Scheme.base00;
 
-        border = "2px solid #${config.stylix.base16Scheme.base00}";
+        border = "2px solid #${config.stylix.base16Scheme.base0D}";
     };
 in
 {
@@ -173,7 +173,7 @@ window#waybar {
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
     border-top: ${colors.border};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D}
+    border-bottom: ${colors.border}; 
 }
 
 #tray:hover {
@@ -206,10 +206,9 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border}; 
+    border-bottom: ${colors.border};
 }
-
 #memory {
     background: #${colors.background};
     opacity: 0.9;
@@ -219,8 +218,8 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
 }
 
 
@@ -234,9 +233,9 @@ window#waybar {
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-left: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
+    border-left: ${colors.border}; 
 }
 
 #pulseaudio:hover {
@@ -254,10 +253,9 @@ window#waybar {
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border};
+    border-bottom: ${colors.border}; 
 }
-
 #backlight:hover {
     background-color: #89B4FB;
 }
@@ -273,9 +271,9 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-right: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
+    border-right: ${colors.border}; 
 }
 #custom-update:hover {
     background-color: #89B4FB;
@@ -291,9 +289,9 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-}
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
+    }
 #custom-configure:hover {
     background-color: #89B4FB;
 }
@@ -308,10 +306,10 @@ window#waybar {
     margin-left: 8px;
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-left: 2px solid #${config.stylix.base16Scheme.base0D}; 
-}
+    border-top: ${colors.border}; 
+    border-bottom: ${colors.border};
+    border-left: ${colors.border};
+    }
 
 #clock {
     background: #${colors.background};
@@ -322,9 +320,8 @@ window#waybar {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 0px 0px 0px 0px;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};    
 }
 
 #custom-divider {
@@ -348,10 +345,10 @@ window#waybar {
     margin-right: 8px;
     border-radius: 0px 10px 10px 0px;
     transition: background-color 0.3s ease;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-right: 2px solid #${config.stylix.base16Scheme.base0D}; 
-}
+    border-top: ${colors.border}; 
+    border-bottom: ${colors.border};
+    border-right: ${colors.border};
+    }
 
 #custom-notifications:hover {
     background-color: #89B4FB;
@@ -367,9 +364,9 @@ window#waybar {
     margin-right: 0px;
     border-radius: 0px 10px 10px 0px;
     border: solid #${config.stylix.base16Scheme.base0D};
-    border-right: 2px solid #${config.stylix.base16Scheme.base0D}; /* Explicitly set the right border */
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
+    border-right: ${colors.border};  /* Explicitly set the right border */
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
     transition: background-color 0.3s ease;
 }
 
@@ -387,11 +384,10 @@ window#waybar {
     margin-right: 0px;
     border-radius: 10px 0px 0px 10px;
     color: #B8C0E2;
-    border-top: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-bottom: 2px solid #${config.stylix.base16Scheme.base0D};
-    border-left: 2px solid #${config.stylix.base16Scheme.base0D}; 
+    border-top: ${colors.border};
+    border-bottom: ${colors.border};
+    border-left: ${colors.border};
 }
-
 #workspaces button label {
     color: #B8C0E2;
     font-size: 14px;
