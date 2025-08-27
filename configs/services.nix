@@ -72,7 +72,7 @@ settings = {
   CPU_BOOST_ON_BAT = 0;
   CPU_BOOST_ON_AC = 1;
   CPU_MAX_PERF_ON_AC = 95;
-  CPU_MAX_PERF_ON_BAT = 30;
+  CPU_MAX_PERF_ON_BAT = 70;
 };
 };
 }
