@@ -7,13 +7,17 @@
     nixd
     jdt-language-server
     omnisharp-roslyn
-
+    rust-analyzer
+    rustc cargo
+    rustfmt  # formatting via LSP
+    clippy   # better diagnostics on save (optional)
     #none_ls
     stylua
     statix
     nixpkgs-fmt
     nodejs
     ripgrep
+    jdk17_headless
   ];
 
   programs.neovim = {

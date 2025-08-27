@@ -36,7 +36,7 @@
         # Screenshots
         "SUPER, P, exec, grim -g \"$(slurp)\" ~/Pictures/screenshots/temp_screenshot.png && swappy -f ~/Pictures/screenshots/temp_screenshot.png --output-file ~/Pictures/screenshots/screenshot_$(date +\"%Y%m%d_%H%M%S\").png"
         # AI answers 
-        "SUPER, V, exec, kitty --title 'ai-response' -e bash -c '~/Documents/BowOSAi/target/debug/BowosAI -p; echo -e \"\\n\\nPress any key to close\"; read -n 1; pkill swappy'"
+        "SUPER, V, exec, kitty --title 'ai-response' -e bash -c '~/Documents/BowOSAi/target/debug/BowosAI -p -d '/home/bowyn/Pictures/screenshots/temp_screenshot.png'; echo -e \"\\n\\nPress any key to close\"; read -n 1; pkill swappy'"
         "SUPER, B, exec, kitty --title 'ai-response' -e bash -c '~/Documents/BowOSAi/target/debug/BowosAI -c; echo -e \"\\n\\nPress any key to close\"; read -n 1'"
 
         # Toggle Waybar
