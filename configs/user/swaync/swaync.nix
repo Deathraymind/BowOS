@@ -40,7 +40,7 @@
                       }
                       {
                         label = "󰌾";
-                        command = "hyprlock -c ~/BowOS/configs/user/hypr/hyprlock.conf";
+                        command = "bash -lc 'hyprlock -c \"$HOME/BowOS/configs/user/hypr/hyprlock.conf\"'";
                       }
                     ];
                 };
