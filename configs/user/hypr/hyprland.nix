@@ -35,9 +35,15 @@
 
         # Screenshots
         "SUPER, P, exec, grim -g \"$(slurp)\" ~/Pictures/screenshots/temp_screenshot.png && swappy -f ~/Pictures/screenshots/temp_screenshot.png --output-file ~/Pictures/screenshots/screenshot_$(date +\"%Y%m%d_%H%M%S\").png"
+        # AI answers 
+        "SUPER, V, exec, kitty --title 'ai-response' -e bash -c '~/Documents/BowOSAi/target/debug/BowosAI -p; echo -e \"\\n\\nPress any key to close\"; read -n 1; pkill swappy'"
+        "SUPER, B, exec, kitty --title 'ai-response' -e bash -c '~/Documents/BowOSAi/target/debug/BowosAI -c; echo -e \"\\n\\nPress any key to close\"; read -n 1'"
 
         # Toggle Waybar
         "SUPER, R, exec, pgrep waybar && pkill waybar || waybar &"
+
+        # Update 
+        "Super, O, exec, kitty --title 'update' -e bash -c 'BOWOS_USER=bowyn sudo -E nixos-rebuild switch --impure --flake BowOS/.#kvm; echo -e \"\\n\\nPress any key to close\"; read -n 1' "
 
         # Application shortcuts
         "SUPER, T, exec, kitty"
@@ -145,7 +151,7 @@
         gaps_in = 4;
         gaps_out = 8;
         border_size = 2;
-        layout = "master";
+        layout = "dwindle";
       };
       master = {
         inherit_fullscreen = true; # Master
@@ -190,8 +196,18 @@
     "float, class:^(kitty)$, title:^(update)$"
     "float, class:^(kitty)$, initialTitle:^(update)$" # kitty --title "update"
     "size 50% 10%, class:^(kitty)$, title:^(update)$" # Optional: set size to 80% width, 50% height
-    "move 30% 5%, class:^(kitty)$, title:^(update)$" # moves it down from the top h/w
-    #------for update window------#
+    "move 25% 5%, class:^(kitty)$, title:^(update)$" # moves it down from the top h/w
+    "opacity .70 .70, title:^(update)$"
+
+    #------for ai-response window------#
+    "float, class:^(kitty)$, title:^(ai-responose)$"
+    "float, class:^(kitty)$, initialTitle:^(ai-response)$" 
+    "size 50% 30%, class:^(kitty)$, title:^(ai-response)$" 
+    "move 25% 5%, class:^(kitty)$, title:^(ai-response)$" 
+    "opacity .70 .70, title:^(ai-response)$"
+
+
+    #------for ai-response window------#
     "unset, class:^(firefox)$"
     "opacity 1 1,class:^(firefox)$"
 ];        monitor = [

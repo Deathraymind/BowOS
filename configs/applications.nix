@@ -3,6 +3,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    chromium
+    chatgpt-cli
     libreoffice
     anki
     swtpm
