@@ -50,7 +50,7 @@
         "SUPER, E, exec, nautilus"
         "SUPER, C, exec, chromium"
         "SUPER, F, exec, firefox"
-        "SUPER, C, exec, wl-color-picker"
+        "SUPER, I, exec, wl-color-picker"
 
         # Switch workspaces relative
         "SUPER CTRL, right, workspace, r+1"
