@@ -48,8 +48,8 @@
         # Application shortcuts
         "SUPER, T, exec, kitty"
         "SUPER, E, exec, nautilus"
-        "SUPER, C, exec, code"
-        "SUPER, F, exec, flatpak run io.github.zen_browser.zen"
+        "SUPER, C, exec, chromium"
+        "SUPER, F, exec, firefox"
         "SUPER, C, exec, wl-color-picker"
 
         # Switch workspaces relative

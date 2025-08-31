@@ -4,13 +4,10 @@
 {
   environment.systemPackages = with pkgs; [
     chromium
-    chatgpt-cli
     libreoffice
     anki
     swtpm
-    rnote
     waypipe
-    vscode
     unityhub
     r2modman
     notion 
