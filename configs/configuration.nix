@@ -86,8 +86,10 @@ in
     \n \l
   '';
   # Phone Camera
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" ];
+    boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" "acpi-cpufreq" "hid-wiimote" ];
 
   qt.style = "adwaita-dark";
   qt.enable = true;
@@ -135,6 +137,9 @@ in
 services.udev.extraRules = ''
   SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666", GROUP="dialout"
   SUBSYSTEM=="tty", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="dialout"
+  SUBSYSTEM=="usb", ATTR{idVendor}=="0a12", ATTR{idProduct}=="0001", MODE="0666"
+  SUBSYSTEM=="usb", ATTR{idVendor}=="1038", ATTR{idProduct}=="1614", MODE="0666"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0b05", ATTR{idProduct}=="19af", MODE="0666"
 '';
 services.getty.autologinUser = "bowyn";
 

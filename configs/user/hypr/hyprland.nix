@@ -74,6 +74,17 @@
         "SUPER SHIFT CONTROL, K, movewindow, u"
         "SUPER SHIFT CONTROL, J, movewindow, d"
 
+
+
+
+
+
+
+
+
+
+
+
         # Workspace scroll
         "SUPER, mouse_down, workspace, e+1"
         "SUPER, mouse_up, workspace, e-1"
@@ -212,8 +223,8 @@
     "opacity 1 1,class:^(firefox)$"
 ];        monitor = [
                      "DP-1, 2560x1440@165, 0x0, 1"
-                    # "HDMI-A-1,3840x2160@60,0x0, 2"
-                     "HDMI-A-1,1920x1080@75,-1920x0,1"
+                    #           "HDMI-A-1,3840x2160@60,0x0, 2"
+                     "HDMI-A-1,1920x1080@70, -1920x0, 1"
                      "DP-2,1920x1080@60,-1920x0,1"
                      "DP-3,1920x1080@60,+1920x0,1"
                     "Virtual-1, 1920x1080@60, 0x0, 1"

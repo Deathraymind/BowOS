@@ -3,6 +3,10 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    twingate
+    gobuster
+    openvpn
+    dolphin-emu
     chromium
     libreoffice
     anki

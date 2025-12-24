@@ -3,6 +3,7 @@
 
 hardware.opentabletdriver.enable = true; # OTD supports Wayland
 services = {
+twingate.enable = true;
 udisks2.enable = true;
 dbus.enable = true;
 flatpak.enable = true;
