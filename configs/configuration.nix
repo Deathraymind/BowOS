@@ -244,5 +244,5 @@ networking.firewall = {
   
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 }
