@@ -192,7 +192,7 @@ services.getty.autologinUser = "bowyn";
   };
 
   home-manager.backupFileExtension = "backup";
-
+systemd.services.NetworkManager-wait-online.enable = false;
 
   ## _____ _                        _ _ 
   ##|  ___(_)_ __ _____      ____ _| | |
@@ -200,18 +200,47 @@ services.getty.autologinUser = "bowyn";
   ##|  _| | | | |  __/\ V  V / (_| | | |
   ##|_|   |_|_|  \___| \_/\_/ \__,_|_|_|
 
-  networking.firewall = {
+networking.firewall = {
+  enable = true;
 
+  # Individual ports
+  allowedTCPPorts = [
+    9943
+    9944
+    51112
+    5901
+    53317   # LocalSend
+    11434
 
-    enable = true;
+    # Steam Link
+    27036
+    27037
+  ];
 
-    allowedTCPPorts = [ 9943 9944 51112 5901 53317 11434]; #53317 is for local send
-    allowedUDPPorts = [ 9943 9944 51112 5901 53317 11434];
-    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
-    allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
+  allowedUDPPorts = [
+    9943
+    9944
+    51112
+    5901
+    53317   # LocalSend
+    11434
+  ];
 
-  };
+  # Port ranges
+  allowedTCPPortRanges = [
+    { from = 1714; to = 1764; }
 
+    # Steam Link
+    { from = 27031; to = 27036; }
+  ];
+
+  allowedUDPPortRanges = [
+    { from = 1714; to = 1764; }
+
+    # Steam Link
+    { from = 27031; to = 27036; }
+  ];
+}; 
   
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
