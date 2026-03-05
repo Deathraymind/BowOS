@@ -10,7 +10,7 @@ in
     ./user/waybar/waybar.nix
     ./user/rofi/rofi.nix
     ./user/fastfetch/fastfetch.nix
-    ./user/hypr/hyprland.nix
+    ./user/hypr/AxiomOS.nix
     ./user/swaync/swaync.nix
     ./homeStylix.nix
   ];
@@ -67,5 +67,5 @@ git_branch = {
     };
   };
   # State version
-  home.stateVersion = "25.11";
+  home.stateVersion = "25.05";
 }

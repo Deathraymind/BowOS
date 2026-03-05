@@ -3,6 +3,13 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    python313Packages.pip
+    python312Packages.platformdirs
+    printrun 
+    python3
+    arduino-ide
+    virtualbox
+    solanum
     twingate
     gobuster
     openvpn

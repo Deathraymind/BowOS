@@ -1,11 +1,15 @@
 { pkgs, lib, ...}:
 {
+services.jellyfin = {
+  enable = true;
+};
 
 hardware.opentabletdriver.enable = true; # OTD supports Wayland
 services = {
 twingate.enable = true;
 udisks2.enable = true;
 dbus.enable = true;
+octoprint.enable = true;
 flatpak.enable = true;
 expressvpn.enable=true;
 xserver.wacom.enable = true;

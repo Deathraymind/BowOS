@@ -211,10 +211,13 @@ networking.firewall = {
     5901
     53317   # LocalSend
     11434
+    8096
 
     # Steam Link
     27036
     27037
+    8920
+
   ];
 
   allowedUDPPorts = [
@@ -224,6 +227,8 @@ networking.firewall = {
     5901
     53317   # LocalSend
     11434
+    8096
+    8920
   ];
 
   # Port ranges

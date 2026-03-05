@@ -156,7 +156,6 @@
         ", xf86audiomute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
       ];
       gestures = {
-        workspace_swipe = true; 
       };
       general = {
         gaps_in = 4;
