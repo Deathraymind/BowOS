@@ -232,18 +232,6 @@
       };
     };
   };
-    services.hyprpaper = {
-        enable = true;
-        settings = {
-            preload = [
-                "/home/bowyn/BowOS/wallpaper/darknet.png"
-            ];
-            wallpaper = [ 
-                ",/home/bowyn/BowOS/wallpaper/darknet.png"
-            ];
-            splash = false;
-        };
-    };
     programs.hyprlock.enable = true;
 
      services.hypridle = {
